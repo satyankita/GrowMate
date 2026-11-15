@@ -1,0 +1,177 @@
+
+.classroom-dashboard {
+  min-height: 100vh;
+  background: #f7f6fc;
+  color: #29263d;
+  font-family: Arial, sans-serif;
+}
+
+.classroom-topbar {
+  min-height: 70px;
+  padding: 0 6%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #eceaf3;
+}
+
+.classroom-topbar button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: transparent;
+  color: #635bdb;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.classroom-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #635bdb;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.classroom-hero {
+  margin: 30px auto;
+  width: 88%;
+  padding: 38px;
+  border-radius: 18px;
+  color: white;
+  background: linear-gradient(120deg, #635bdb, #9188ed);
+}
+
+.classroom-hero > p:first-child {
+  font-size: 12px;
+  letter-spacing: 2px;
+  opacity: 0.85;
+}
+
+.classroom-hero h1 {
+  margin: 12px 0;
+  font-size: 32px;
+}
+
+.classroom-hero p {
+  line-height: 1.6;
+}
+
+.classroom-hero span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.classroom-tabs {
+  width: 88%;
+  margin: 0 auto;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e8e5f0;
+}
+
+.classroom-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  padding: 13px 17px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: #77738a;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.classroom-tabs button:hover {
+  background: #eeecfb;
+  color: #635bdb;
+}
+
+.classroom-tabs button.active {
+  background: #635bdb;
+  color: white;
+}
+
+.classroom-content {
+  width: 88%;
+  margin: 28px auto;
+  padding-bottom: 40px;
+}
+
+.classroom-content h2 {
+  margin-bottom: 20px;
+  font-size: 23px;
+}
+
+.participant-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.participant-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #eceaf3;
+  border-radius: 13px;
+}
+
+.participant-card h3 {
+  margin: 0 0 7px;
+  font-size: 16px;
+}
+
+.participant-card p {
+  margin: 0;
+  color: #858197;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.participant-card span {
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: #eeecfb;
+  color: #635bdb;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .classroom-topbar {
+    padding: 0 5%;
+  }
+
+  .classroom-hero {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .classroom-hero h1 {
+    font-size: 25px;
+  }
+
+  .classroom-tabs,
+  .classroom-content {
+    width: 90%;
+  }
+
+  .classroom-tabs button {
+    padding: 11px 13px;
+  }
+}

@@ -1,0 +1,211 @@
+
+/* =========================
+   THEME TOGGLE
+========================= */
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #e8e3f3;
+  border-radius: 10px;
+  background: #f7f5ff;
+  color: #7964cf;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* =========================
+   DARK MODE BASE
+========================= */
+
+.dark-mode {
+  background: #171625;
+  color: #f5f3ff;
+}
+
+.dark-mode .welcome-page,
+.dark-mode main {
+  background: #171625;
+  color: #f5f3ff;
+}
+
+/* =========================
+   NAVBAR & FOOTER
+========================= */
+
+.dark-mode .welcome-navbar,
+.dark-mode .welcome-footer {
+  background: #211f32;
+  border-color: #37334a;
+}
+
+.dark-mode .brand,
+.dark-mode .welcome-footer p {
+  color: #f5f3ff;
+}
+
+.dark-mode .nav-menu a,
+.dark-mode .login-btn,
+.dark-mode .secondary-btn {
+  color: #c5bfd9;
+}
+
+/* =========================
+   HEADINGS & TEXT
+========================= */
+
+.dark-mode .hero-content h1,
+.dark-mode .section-heading h2 {
+  color: #f5f3ff;
+}
+
+.dark-mode .hero-description,
+.dark-mode .section-heading p,
+.dark-mode .feature-card p,
+.dark-mode .hero-points span,
+.dark-mode .growth-task p,
+.dark-mode .floating-note small {
+  color: #b2acc5;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.dark-mode .hero-section {
+  background:
+    radial-gradient(circle at 85% 30%, #302849, transparent 38%),
+    #171625;
+}
+
+.dark-mode .hero-tag {
+  background: #37304f;
+  color: #d1c6ff;
+}
+
+/* =========================
+   ABOUT & FEATURES
+========================= */
+
+.dark-mode .about-section {
+  background: #211e35;
+}
+
+.dark-mode .features-section {
+  background: #171625;
+}
+
+.dark-mode .growth-card,
+.dark-mode .feature-card,
+.dark-mode .floating-note {
+  background: #29263d;
+  border-color: #403954;
+  color: #f5f3ff;
+}
+
+.dark-mode .growth-card h3,
+.dark-mode .growth-task strong,
+.dark-mode .feature-card h3,
+.dark-mode .floating-note strong {
+  color: #f5f3ff;
+}
+
+/* =========================
+   GROWTH CARD
+========================= */
+
+.dark-mode .growth-quote {
+  background: #37304f;
+  color: #d1c6ff;
+}
+
+.dark-mode .progress-track {
+  background: #403954;
+}
+
+/* =========================
+   BOTTOM CTA
+========================= */
+
+.dark-mode .bottom-cta {
+  width: calc(100% - 48px);
+  max-width: 1150px;
+  margin: 55px auto 45px;
+  padding: 65px 25px;
+  text-align: center;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #30294b, #40345f);
+  border: 1px solid #50446f;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+}
+
+.dark-mode .bottom-cta h2 {
+  color: #ffffff;
+}
+
+.dark-mode .bottom-cta p {
+  color: #d0c8e5;
+}
+
+/* CTA Button */
+
+.dark-mode .bottom-cta .primary-btn {
+  background: #f5f3ff;
+  color: #40345f;
+}
+
+.dark-mode .bottom-cta .primary-btn:hover {
+  background: #ded6ff;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.dark-mode .welcome-footer {
+  margin-top: 0;
+  background: #211f32;
+  border-top: 1px solid #37334a;
+}
+
+/* =========================
+   THEME BUTTON DARK MODE
+========================= */
+
+.dark-mode .theme-toggle {
+  background: #37304f;
+  border-color: #50466c;
+  color: #f5d77a;
+}
+/* Fix white gap around CTA and footer in dark mode */
+
+.dark-mode .welcome-page {
+  background: #171625 !important;
+  min-height: 100vh;
+}
+
+.dark-mode main {
+  background: #171625 !important;
+  margin: 0 !important;
+  padding-bottom: 1px !important;
+}
+
+.dark-mode .bottom-cta {
+  margin: 55px auto 45px !important;
+  background: linear-gradient(135deg, #30294b, #40345f) !important;
+}
+
+.dark-mode .welcome-footer {
+  margin: 0 !important;
+  background: #211f32 !important;
+  border-top: 1px solid #37334a;
+}
+
+
+.dark-mode .bottom-cta::before,
+.dark-mode .bottom-cta::after {
+  color: #c4b3ff;
+  opacity: 0.75;
+}

@@ -1,0 +1,285 @@
+
+.reflection-page {
+  max-width: 900px;
+}
+
+.reflection-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #635bdb;
+  margin-bottom: 25px;
+}
+
+.reflection-label {
+  color: #8b84dc;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.reflection-heading h2 {
+  color: #29263d;
+  margin: 8px 0;
+}
+
+.reflection-heading p {
+  color: #858197;
+  margin: 0;
+}
+
+.reflection-form,
+.reflection-success {
+  padding: 25px;
+  background: white;
+  border: 1px solid #eceaf3;
+  border-radius: 14px;
+}
+
+.reflection-form label {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #29263d;
+}
+
+.reflection-form p {
+  color: #858197;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.reflection-form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 180px;
+  padding: 15px;
+  border: 1px solid #e3e0ef;
+  border-radius: 10px;
+  outline: none;
+  resize: vertical;
+  font: inherit;
+  line-height: 1.6;
+}
+
+.reflection-form textarea:focus {
+  border-color: #635bdb;
+}
+
+.reflection-form button,
+.reflection-success button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 17px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 9px;
+  background: #635bdb;
+  color: white;
+  cursor: pointer;
+}
+
+.reflection-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.reflection-success {
+  text-align: center;
+  color: #635bdb;
+}
+
+.reflection-success h3 {
+  color: #29263d;
+}
+
+.reflection-success p {
+  color: #858197;
+}
+
+.reflection-answer {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 10px;
+  background: #f7f6fc;
+  color: #555168;
+  text-align: left;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 550px) {
+  .reflection-form,
+  .reflection-success {
+    padding: 18px;
+  }
+}
+
+
+
+.reflection-common-goal,
+.reflection-task-summary {
+  margin-bottom: 24px;
+  padding: 22px;
+  background: #fff;
+  border: 1px solid #ebe8fa;
+  border-radius: 14px;
+}
+
+.reflection-common-goal h3,
+.reflection-task-summary h3 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #6558c9;
+  margin-top: 0;
+}
+
+.reflection-common-goal p {
+  color: #55516b;
+  line-height: 1.6;
+}
+
+.reflection-schedule {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6558c9;
+  font-size: 14px;
+}
+
+.reflection-task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.reflection-task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: #f8f7ff;
+  border-radius: 9px;
+  color: #514b70;
+}
+
+.reflection-task-item small {
+  margin-left: auto;
+  color: #77738c;
+}
+
+
+.ai-reflection-section {
+  margin-top: 28px;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #ebe8fa;
+  border-radius: 16px;
+}
+
+.ai-reflection-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  color: #6558c9;
+  margin-bottom: 20px;
+}
+
+.ai-reflection-heading h3 {
+  margin: 0 0 7px;
+  color: #51478f;
+}
+
+.ai-reflection-heading p {
+  margin: 0;
+  color: #77738c;
+  line-height: 1.5;
+}
+
+.ai-generate-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 9px;
+  background: #7162d8;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ai-generate-button:hover {
+  background: #5e50c2;
+}
+
+.ai-generate-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.ai-questions-container {
+  margin-top: 22px;
+}
+
+.ai-questions-container h4 {
+  color: #51478f;
+  margin-bottom: 12px;
+}
+
+.ai-task-summary {
+  color: #77738c;
+  font-size: 14px;
+}
+
+.ai-question-card {
+  margin: 16px 0;
+  padding: 18px;
+  background: #f8f7ff;
+  border: 1px solid #ebe8fa;
+  border-radius: 12px;
+}
+
+.ai-question-card label {
+  display: block;
+  margin-bottom: 12px;
+  color: #514b70;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.ai-question-card label span {
+  color: #7162d8;
+}
+
+.ai-question-card textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #ded9f4;
+  border-radius: 8px;
+  resize: vertical;
+  font: inherit;
+  outline: none;
+}
+
+.ai-question-card textarea:focus {
+  border-color: #7162d8;
+}
+
+.ai-spinner {
+  animation: ai-spin 1s linear infinite;
+}
+
+@keyframes ai-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+

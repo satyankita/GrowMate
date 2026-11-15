@@ -1,0 +1,165 @@
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+/* ==============================
+   THEME TOGGLE
+================================ */
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #e8e3f3;
+  border-radius: 10px;
+  background: #f7f5ff;
+  color: #7964cf;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  background: #eee9ff;
+}
+
+/* ==============================
+   DARK MODE
+================================ */
+
+.dark-mode {
+  background: #171625;
+  color: #f5f3ff;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode .welcome-navbar,
+.dark-mode .welcome-footer {
+  background: #211f32;
+  border-color: #37334a;
+}
+
+.dark-mode .brand,
+.dark-mode .hero-content h1,
+.dark-mode .section-heading h2,
+.dark-mode .bottom-cta h2 {
+  color: #f5f3ff;
+}
+
+.dark-mode .nav-menu a,
+.dark-mode .login-btn,
+.dark-mode .secondary-btn {
+  color: #c5bfd9;
+}
+
+.dark-mode .nav-menu a:hover,
+.dark-mode .login-btn:hover {
+  color: #a995ff;
+}
+
+.dark-mode .hero-section {
+  background:
+    radial-gradient(circle at 85% 30%, #302849, transparent 38%),
+    #171625;
+}
+
+.dark-mode .hero-description,
+.dark-mode .section-heading p,
+.dark-mode .feature-card p,
+.dark-mode .welcome-footer p,
+.dark-mode .hero-points span {
+  color: #b2acc5;
+}
+
+.dark-mode .about-section,
+.dark-mode .bottom-cta {
+  background: #211f32;
+}
+
+.dark-mode .features-section {
+  background: #171625;
+}
+
+.dark-mode .growth-card,
+.dark-mode .feature-card,
+.dark-mode .floating-note {
+  background: #29263d;
+  border-color: #403954;
+  color: #f5f3ff;
+}
+
+.dark-mode .growth-card h3,
+.dark-mode .growth-task strong,
+.dark-mode .feature-card h3,
+.dark-mode .floating-note strong {
+  color: #f5f3ff;
+}
+
+.dark-mode .growth-task {
+  border-color: #403954;
+}
+
+.dark-mode .growth-task p,
+.dark-mode .floating-note small {
+  color: #b2acc5;
+}
+
+.dark-mode .growth-quote,
+.dark-mode .hero-tag {
+  background: #37304f;
+  color: #d1c6ff;
+}
+
+.dark-mode .progress-track {
+  background: #403954;
+}
+
+.dark-mode .small-label {
+  color: #a995ff;
+}
+
+.dark-mode .section-tag {
+  color: #b5a5ff;
+}
+
+.dark-mode .theme-toggle {
+  background: #37304f;
+  border-color: #50466c;
+  color: #f5d77a;
+}
+
+.dark-mode .theme-toggle:hover {
+  background: #494064;
+}
+
+/* ==============================
+   SMOOTH THEME TRANSITION
+================================ */
+
+.welcome-page,
+.welcome-navbar,
+.hero-section,
+.about-section,
+.features-section,
+.bottom-cta,
+.welcome-footer,
+.growth-card,
+.feature-card,
+.floating-note {
+  transition: background 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* ==============================
+   MOBILE THEME TOGGLE
+================================ */
+
+@media (max-width: 600px) {
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+}

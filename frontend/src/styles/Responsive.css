@@ -1,0 +1,113 @@
+@media (max-width: 1000px) {
+  .hero-section {
+    padding: 65px 5%;
+    gap: 25px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .note-one {
+    left: 0;
+  }
+
+  .note-two {
+    right: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .welcome-navbar {
+    padding: 0 5%;
+    height: 70px;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+
+  .nav-actions {
+    gap: 14px;
+  }
+
+  .signup-btn {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .hero-section {
+    grid-template-columns: 1fr;
+    padding: 55px 6%;
+  }
+
+  .hero-content h1 {
+    font-size: 39px;
+  }
+
+  .hero-visual {
+    min-height: 400px;
+    margin-top: 15px;
+  }
+
+  .growth-card {
+    width: min(330px, 90%);
+  }
+
+  .note-one {
+    top: 5px;
+  }
+
+  .note-two {
+    bottom: 5px;
+  }
+
+  .about-section,
+  .features-section {
+    padding: 65px 6%;
+  }
+
+  .section-heading h2,
+  .bottom-cta h2 {
+    font-size: 27px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom-cta {
+    margin: 10px 6% 55px;
+    padding: 40px 15px;
+  }
+
+  .welcome-footer {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 390px) {
+  .brand {
+    font-size: 19px;
+  }
+
+  .brand-icon {
+    width: 31px;
+    height: 31px;
+  }
+
+  .login-btn {
+    font-size: 12px;
+  }
+
+  .hero-content h1 {
+    font-size: 34px;
+  }
+
+  .hero-buttons {
+    gap: 13px;
+    flex-wrap: wrap;
+  }
+}
