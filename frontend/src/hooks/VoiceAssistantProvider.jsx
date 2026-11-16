@@ -37,21 +37,36 @@ export function VoiceAssistantProvider({ children }) {
     const utterance = new window.SpeechSynthesisUtterance(text.trim());
     utterance.lang = options.lang || "en-IN";
     utterance.rate = options.rate || 0.95;
-    utterance.onstart = () => setSpeechStatus("speaking");
+    utterance.onstart = () => {
+      setSpeechStatus("speaking");
+      options.onStart?.();
+    };
     utterance.onpause = () => setSpeechStatus("paused");
     utterance.onresume = () => setSpeechStatus("speaking");
     utterance.onend = () => {
       setSpeechStatus("idle");
       if (utteranceRef.current === utterance) utteranceRef.current = null;
     };
-    utterance.onerror = () => {
+    utterance.onerror = (event) => {
       setSpeechStatus("idle");
       if (utteranceRef.current === utterance) utteranceRef.current = null;
+      options.onError?.(event.error || "speech-error");
+      if (!['canceled', 'interrupted'].includes(event.error)) {
+        setVoiceError("Speech playback failed. Please try again.");
+      }
     };
     utteranceRef.current = utterance;
     setVoiceError("");
-    window.speechSynthesis.speak(utterance);
-    return true;
+    try {
+      window.speechSynthesis.speak(utterance);
+      return true;
+    } catch {
+      if (utteranceRef.current === utterance) utteranceRef.current = null;
+      setSpeechStatus("idle");
+      setVoiceError("Could not start speech playback. Please try again.");
+      options.onError?.("synthesis-failed");
+      return false;
+    }
   }, [isMuted]);
 
   const pauseSpeech = useCallback(() => {
