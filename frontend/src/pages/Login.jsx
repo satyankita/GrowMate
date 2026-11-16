@@ -26,7 +26,7 @@ function Login() {
     setSubmitting(true);
     const data = new FormData(e.currentTarget);
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", {
+      const response = await axios.post("https://growmate-backend-jpp4.onrender.com/api/auth/login", {
         email: data.get("email"), password: data.get("password"),
       });
       localStorage.setItem("token", response.data.token);
@@ -45,7 +45,7 @@ const handleGoogleSuccess = async (credentialResponse) => {
     setGoogleError("");
 
     const response = await axios.post(
-      "http://localhost:5000/api/auth/google",
+      "https://growmate-backend-jpp4.onrender.com/api/auth/google",
       {
         credential: credentialResponse.credential,
       }

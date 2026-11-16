@@ -6,7 +6,7 @@ import { Settings, Save, Clock, Target, ListChecks, Mic, MicOff, Volume2, Pause,
 import useVoiceAssistant from "../hooks/useVoiceAssistant";
 import "./ClassroomSettings.css";
 
-const API_URL = "http://localhost:5000/api/classrooms";
+const API_URL = "https://growmate-backend-jpp4.onrender.com/api/classrooms";
 
 function ClassroomSettings() {
   const { classroomId } = useParams();

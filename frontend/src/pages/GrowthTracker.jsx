@@ -11,7 +11,7 @@ import {
 
 import "./GrowthTracker.css";
 
-const API_URL = "http://localhost:5000/api/daily-growth";
+const API_URL = "https://growmate-backend-jpp4.onrender.com/api/daily-growth";
 
 function getToday(timezone = "Asia/Kolkata") {
   return new Intl.DateTimeFormat("en-CA", { timeZone: timezone, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
@@ -38,7 +38,7 @@ function GrowthTracker() {
         const headers = { Authorization: `Bearer ${token}` };
         const [response, settingsResponse] = await Promise.all([
           axios.get(`${API_URL}/${classroomId}`, { headers, params: { date: today } }),
-          axios.get(`http://localhost:5000/api/classrooms/${classroomId}/settings`, { headers }),
+          axios.get(`https://growmate-backend-jpp4.onrender.com/api/classrooms/${classroomId}/settings`, { headers }),
         ]);
 
         setTasks(response.data.goal?.tasks || []);

@@ -33,7 +33,7 @@ import { getClassroomTheme } from "../utils/classroomTheme";
 
 import "./Classroom.css";
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://growmate-backend-jpp4.onrender.com/api";
 
 const getToday = (timezone = "Asia/Kolkata") =>
   new Intl.DateTimeFormat("en-CA", {

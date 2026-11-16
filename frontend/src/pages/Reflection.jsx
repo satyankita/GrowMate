@@ -24,9 +24,9 @@ import useVoiceAssistant from "../hooks/useVoiceAssistant";
 
 import "./Reflection.css";
 
-const API_URL = "http://localhost:5000/api/daily-growth";
-const CLASSROOM_API = "http://localhost:5000/api/classrooms";
-const AI_API_URL = "http://localhost:5000/api/ai-reflection";
+const API_URL = "https://growmate-backend-jpp4.onrender.com/api/daily-growth";
+const CLASSROOM_API = "https://growmate-backend-jpp4.onrender.com/api/classrooms";
+const AI_API_URL = "https://growmate-backend-jpp4.onrender.com/api/ai-reflection";
 
 function getToday(timezone = "Asia/Kolkata") {
   return new Intl.DateTimeFormat("en-CA", { timeZone: timezone, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());

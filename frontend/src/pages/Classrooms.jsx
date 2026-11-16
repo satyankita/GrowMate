@@ -22,7 +22,7 @@ import ClassroomNotifications from "../components/ClassroomNotifications";
 import { getClassroomTheme } from "../utils/classroomTheme";
 import Navbar from "../components/Navbar";
 
-const API_URL = "http://localhost:5000/api/classrooms";
+const API_URL = "https://growmate-backend-jpp4.onrender.com/api/classrooms";
 
 function Classrooms() {
   const navigate = useNavigate();

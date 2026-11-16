@@ -20,7 +20,7 @@ function Signup() {
     if (password !== confirmPassword) return setError("Passwords do not match.");
     setSubmitting(true);
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/register", { name, email, password, confirmPassword });
+      const response = await axios.post("https://growmate-backend-jpp4.onrender.com/api/auth/register", { name, email, password, confirmPassword });
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
       const pendingJoinCode = localStorage.getItem("pendingJoinCode");

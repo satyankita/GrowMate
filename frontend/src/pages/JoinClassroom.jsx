@@ -4,7 +4,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { Users, GraduationCap, CheckCircle, AlertCircle, LoaderCircle } from "lucide-react";
 import axios from "axios";
 import "./JoinClassroom.css";
-const API_URL = "http://localhost:5000/api/classrooms";
+const API_URL = "https://growmate-backend-jpp4.onrender.com/api/classrooms";
 
 function JoinClassroom() {
   const [searchParams] = useSearchParams();

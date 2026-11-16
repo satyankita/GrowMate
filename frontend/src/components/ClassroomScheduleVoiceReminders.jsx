@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import useVoiceAssistant from "../hooks/useVoiceAssistant";
 
-const CLASSROOM_API = "http://localhost:5000/api/classrooms";
-const GROWTH_API = "http://localhost:5000/api/daily-growth";
+const CLASSROOM_API = "https://growmate-backend-jpp4.onrender.com/api/classrooms";
+const GROWTH_API = "https://growmate-backend-jpp4.onrender.com/api/daily-growth";
 
 const VALID_TIME = /^([01]\d|2[0-3]):[0-5]\d$/;
 const GOAL_REMINDER_LEAD_MINUTES = 30;

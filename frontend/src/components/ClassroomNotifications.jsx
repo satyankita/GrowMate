@@ -5,7 +5,7 @@ import { Bell, Volume2, Pause, Play, Square, MicOff } from "lucide-react";
 import useVoiceAssistant from "../hooks/useVoiceAssistant";
 import "./ClassroomNotifications.css";
 
-const API_URL = "http://localhost:5000/api/classrooms";
+const API_URL = "https://growmate-backend-jpp4.onrender.com/api/classrooms";
 
 function ClassroomNotifications({ classroomId: classroomIdProp }) {
   const params = useParams();

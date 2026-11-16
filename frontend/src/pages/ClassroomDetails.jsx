@@ -17,7 +17,7 @@ function ClassroomDetails() {
         const token = localStorage.getItem("token");
 
         const response = await axios.get(
-          `http://localhost:5000/api/classrooms/${classroomId}`,
+          `https://growmate-backend-jpp4.onrender.com/api/classrooms/${classroomId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
