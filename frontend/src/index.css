@@ -163,3 +163,118 @@ body {
     height: 36px;
   }
 }
+
+/* GrowMate visual foundations */
+:root {
+  font-family: Inter, "DM Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #23233d;
+  background: #f7f8fc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --gm-ink: #23233d;
+  --gm-ink-soft: #46465f;
+  --gm-muted: #77788f;
+  --gm-primary: #6d5bd0;
+  --gm-primary-deep: #5542b3;
+  --gm-primary-soft: #f0edff;
+  --gm-teal: #219b8b;
+  --gm-teal-soft: #e9f8f4;
+  --gm-surface: #ffffff;
+  --gm-canvas: #f7f8fc;
+  --gm-border: #e8e9f2;
+  --gm-shadow-sm: 0 5px 16px rgba(40, 43, 83, 0.055);
+  --gm-shadow-md: 0 14px 36px rgba(40, 43, 83, 0.09);
+  --gm-shadow-lg: 0 26px 70px rgba(40, 43, 83, 0.13);
+  --gm-radius-sm: 10px;
+  --gm-radius-md: 16px;
+  --gm-radius-lg: 23px;
+  --gm-ease: 180ms cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+body {
+  min-width: 320px;
+  background: var(--gm-canvas);
+  color: var(--gm-ink);
+  font-family: inherit;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  transition: color var(--gm-ease), background var(--gm-ease), border-color var(--gm-ease), box-shadow var(--gm-ease), transform var(--gm-ease), opacity var(--gm-ease);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(109, 91, 208, 0.32);
+  outline-offset: 3px;
+}
+
+::selection {
+  color: #30245f;
+  background: #e4ddff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.settings-day-part {
+  display: grid;
+  grid-template-columns: auto minmax(120px, 1fr) repeat(2, minmax(145px, 1fr)) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--gm-border);
+  border-radius: 12px;
+}
+
+.settings-day-part label {
+  display: grid !important;
+  grid-template-columns: auto minmax(90px, 1fr);
+}
+
+.history-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(32px, 1fr));
+  gap: 6px;
+}
+
+.history-calendar-grid > * {
+  min-height: 36px;
+  display: grid;
+  place-items: center;
+}
+
+.history-calendar-grid button {
+  border: 1px solid var(--gm-border);
+  border-radius: 9px;
+  background: var(--gm-surface);
+  color: var(--gm-ink);
+}
+
+.history-calendar-grid button.has-history { border-color: #8173dd; font-weight: 700; }
+.history-calendar-grid button.is-active { background: #6354c7; color: #fff; }
+.history-calendar-grid button:disabled { opacity: .42; cursor: default; }
+
+@media (max-width: 680px) {
+  .settings-day-part { grid-template-columns: 1fr 1fr; }
+  .settings-day-part > strong { grid-column: 1 / -1; }
+  .settings-day-part > button { grid-column: 1 / -1; }
+}

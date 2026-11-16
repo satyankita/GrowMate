@@ -123,6 +123,7 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   googleId: 'googleId',
+  passwordHash: 'passwordHash',
   name: 'name',
   email: 'email',
   picture: 'picture',
@@ -141,7 +142,10 @@ exports.Prisma.ClassroomScalarFieldEnum = {
   dailyGoal: 'dailyGoal',
   goalSettingTime: 'goalSettingTime',
   reflectionTime: 'reflectionTime',
-  tasksPerDay: 'tasksPerDay'
+  tasksPerDay: 'tasksPerDay',
+  dayParts: 'dayParts',
+  timezone: 'timezone',
+  allowLateGoalEdits: 'allowLateGoalEdits'
 };
 
 exports.Prisma.ClassroomMemberScalarFieldEnum = {
@@ -166,6 +170,7 @@ exports.Prisma.DailyGoalScalarFieldEnum = {
   userId: 'userId',
   classroomId: 'classroomId',
   date: 'date',
+  statement: 'statement',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -184,13 +189,40 @@ exports.Prisma.DailyReflectionScalarFieldEnum = {
   classroomId: 'classroomId',
   date: 'date',
   content: 'content',
+  assessmentScore: 'assessmentScore',
+  assessmentCorrect: 'assessmentCorrect',
+  assessmentTotal: 'assessmentTotal',
+  assessmentDetails: 'assessmentDetails',
+  assessedAt: 'assessedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ClassroomNotificationScalarFieldEnum = {
+  id: 'id',
+  classroomId: 'classroomId',
+  createdById: 'createdById',
+  recipientEmail: 'recipientEmail',
+  type: 'type',
+  title: 'title',
+  content: 'content',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ClassroomNotificationReadScalarFieldEnum = {
+  notificationId: 'notificationId',
+  userId: 'userId',
+  readAt: 'readAt'
 };
 
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -201,6 +233,12 @@ exports.Prisma.QueryMode = {
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 exports.MemberRole = exports.$Enums.MemberRole = {
   HOST: 'HOST',
@@ -222,7 +260,9 @@ exports.Prisma.ModelName = {
   ClassroomJoinRequest: 'ClassroomJoinRequest',
   DailyGoal: 'DailyGoal',
   DailyGoalTask: 'DailyGoalTask',
-  DailyReflection: 'DailyReflection'
+  DailyReflection: 'DailyReflection',
+  ClassroomNotification: 'ClassroomNotification',
+  ClassroomNotificationRead: 'ClassroomNotificationRead'
 };
 
 /**

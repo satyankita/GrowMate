@@ -48,6 +48,16 @@ export type DailyGoalTask = $Result.DefaultSelection<Prisma.$DailyGoalTaskPayloa
  * 
  */
 export type DailyReflection = $Result.DefaultSelection<Prisma.$DailyReflectionPayload>
+/**
+ * Model ClassroomNotification
+ * 
+ */
+export type ClassroomNotification = $Result.DefaultSelection<Prisma.$ClassroomNotificationPayload>
+/**
+ * Model ClassroomNotificationRead
+ * 
+ */
+export type ClassroomNotificationRead = $Result.DefaultSelection<Prisma.$ClassroomNotificationReadPayload>
 
 /**
  * Enums
@@ -271,6 +281,26 @@ export class PrismaClient<
     * ```
     */
   get dailyReflection(): Prisma.DailyReflectionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.classroomNotification`: Exposes CRUD operations for the **ClassroomNotification** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ClassroomNotifications
+    * const classroomNotifications = await prisma.classroomNotification.findMany()
+    * ```
+    */
+  get classroomNotification(): Prisma.ClassroomNotificationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.classroomNotificationRead`: Exposes CRUD operations for the **ClassroomNotificationRead** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ClassroomNotificationReads
+    * const classroomNotificationReads = await prisma.classroomNotificationRead.findMany()
+    * ```
+    */
+  get classroomNotificationRead(): Prisma.ClassroomNotificationReadDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -724,7 +754,9 @@ export namespace Prisma {
     ClassroomJoinRequest: 'ClassroomJoinRequest',
     DailyGoal: 'DailyGoal',
     DailyGoalTask: 'DailyGoalTask',
-    DailyReflection: 'DailyReflection'
+    DailyReflection: 'DailyReflection',
+    ClassroomNotification: 'ClassroomNotification',
+    ClassroomNotificationRead: 'ClassroomNotificationRead'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -740,7 +772,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "classroom" | "classroomMember" | "classroomJoinRequest" | "dailyGoal" | "dailyGoalTask" | "dailyReflection"
+      modelProps: "user" | "classroom" | "classroomMember" | "classroomJoinRequest" | "dailyGoal" | "dailyGoalTask" | "dailyReflection" | "classroomNotification" | "classroomNotificationRead"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1262,6 +1294,154 @@ export namespace Prisma {
           }
         }
       }
+      ClassroomNotification: {
+        payload: Prisma.$ClassroomNotificationPayload<ExtArgs>
+        fields: Prisma.ClassroomNotificationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ClassroomNotificationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ClassroomNotificationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationPayload>
+          }
+          findFirst: {
+            args: Prisma.ClassroomNotificationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ClassroomNotificationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationPayload>
+          }
+          findMany: {
+            args: Prisma.ClassroomNotificationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationPayload>[]
+          }
+          create: {
+            args: Prisma.ClassroomNotificationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationPayload>
+          }
+          createMany: {
+            args: Prisma.ClassroomNotificationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ClassroomNotificationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationPayload>[]
+          }
+          delete: {
+            args: Prisma.ClassroomNotificationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationPayload>
+          }
+          update: {
+            args: Prisma.ClassroomNotificationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationPayload>
+          }
+          deleteMany: {
+            args: Prisma.ClassroomNotificationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ClassroomNotificationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ClassroomNotificationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationPayload>[]
+          }
+          upsert: {
+            args: Prisma.ClassroomNotificationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationPayload>
+          }
+          aggregate: {
+            args: Prisma.ClassroomNotificationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateClassroomNotification>
+          }
+          groupBy: {
+            args: Prisma.ClassroomNotificationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ClassroomNotificationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ClassroomNotificationCountArgs<ExtArgs>
+            result: $Utils.Optional<ClassroomNotificationCountAggregateOutputType> | number
+          }
+        }
+      }
+      ClassroomNotificationRead: {
+        payload: Prisma.$ClassroomNotificationReadPayload<ExtArgs>
+        fields: Prisma.ClassroomNotificationReadFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ClassroomNotificationReadFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationReadPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ClassroomNotificationReadFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationReadPayload>
+          }
+          findFirst: {
+            args: Prisma.ClassroomNotificationReadFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationReadPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ClassroomNotificationReadFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationReadPayload>
+          }
+          findMany: {
+            args: Prisma.ClassroomNotificationReadFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationReadPayload>[]
+          }
+          create: {
+            args: Prisma.ClassroomNotificationReadCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationReadPayload>
+          }
+          createMany: {
+            args: Prisma.ClassroomNotificationReadCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ClassroomNotificationReadCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationReadPayload>[]
+          }
+          delete: {
+            args: Prisma.ClassroomNotificationReadDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationReadPayload>
+          }
+          update: {
+            args: Prisma.ClassroomNotificationReadUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationReadPayload>
+          }
+          deleteMany: {
+            args: Prisma.ClassroomNotificationReadDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ClassroomNotificationReadUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ClassroomNotificationReadUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationReadPayload>[]
+          }
+          upsert: {
+            args: Prisma.ClassroomNotificationReadUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClassroomNotificationReadPayload>
+          }
+          aggregate: {
+            args: Prisma.ClassroomNotificationReadAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateClassroomNotificationRead>
+          }
+          groupBy: {
+            args: Prisma.ClassroomNotificationReadGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ClassroomNotificationReadGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ClassroomNotificationReadCountArgs<ExtArgs>
+            result: $Utils.Optional<ClassroomNotificationReadCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1392,6 +1572,8 @@ export namespace Prisma {
     dailyGoal?: DailyGoalOmit
     dailyGoalTask?: DailyGoalTaskOmit
     dailyReflection?: DailyReflectionOmit
+    classroomNotification?: ClassroomNotificationOmit
+    classroomNotificationRead?: ClassroomNotificationReadOmit
   }
 
   /* Types for Logging */
@@ -1477,6 +1659,8 @@ export namespace Prisma {
     classroomJoinRequests: number
     dailyGoals: number
     dailyReflections: number
+    notificationsCreated: number
+    notificationReads: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1485,6 +1669,8 @@ export namespace Prisma {
     classroomJoinRequests?: boolean | UserCountOutputTypeCountClassroomJoinRequestsArgs
     dailyGoals?: boolean | UserCountOutputTypeCountDailyGoalsArgs
     dailyReflections?: boolean | UserCountOutputTypeCountDailyReflectionsArgs
+    notificationsCreated?: boolean | UserCountOutputTypeCountNotificationsCreatedArgs
+    notificationReads?: boolean | UserCountOutputTypeCountNotificationReadsArgs
   }
 
   // Custom InputTypes
@@ -1533,6 +1719,20 @@ export namespace Prisma {
     where?: DailyReflectionWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountNotificationsCreatedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ClassroomNotificationWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountNotificationReadsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ClassroomNotificationReadWhereInput
+  }
+
 
   /**
    * Count Type ClassroomCountOutputType
@@ -1543,6 +1743,7 @@ export namespace Prisma {
     joinRequests: number
     dailyGoals: number
     dailyReflections: number
+    notifications: number
   }
 
   export type ClassroomCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1550,6 +1751,7 @@ export namespace Prisma {
     joinRequests?: boolean | ClassroomCountOutputTypeCountJoinRequestsArgs
     dailyGoals?: boolean | ClassroomCountOutputTypeCountDailyGoalsArgs
     dailyReflections?: boolean | ClassroomCountOutputTypeCountDailyReflectionsArgs
+    notifications?: boolean | ClassroomCountOutputTypeCountNotificationsArgs
   }
 
   // Custom InputTypes
@@ -1591,6 +1793,13 @@ export namespace Prisma {
     where?: DailyReflectionWhereInput
   }
 
+  /**
+   * ClassroomCountOutputType without action
+   */
+  export type ClassroomCountOutputTypeCountNotificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ClassroomNotificationWhereInput
+  }
+
 
   /**
    * Count Type DailyGoalCountOutputType
@@ -1624,6 +1833,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type ClassroomNotificationCountOutputType
+   */
+
+  export type ClassroomNotificationCountOutputType = {
+    reads: number
+  }
+
+  export type ClassroomNotificationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reads?: boolean | ClassroomNotificationCountOutputTypeCountReadsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ClassroomNotificationCountOutputType without action
+   */
+  export type ClassroomNotificationCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotificationCountOutputType
+     */
+    select?: ClassroomNotificationCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ClassroomNotificationCountOutputType without action
+   */
+  export type ClassroomNotificationCountOutputTypeCountReadsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ClassroomNotificationReadWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -1640,6 +1880,7 @@ export namespace Prisma {
   export type UserMinAggregateOutputType = {
     id: string | null
     googleId: string | null
+    passwordHash: string | null
     name: string | null
     email: string | null
     picture: string | null
@@ -1650,6 +1891,7 @@ export namespace Prisma {
   export type UserMaxAggregateOutputType = {
     id: string | null
     googleId: string | null
+    passwordHash: string | null
     name: string | null
     email: string | null
     picture: string | null
@@ -1660,6 +1902,7 @@ export namespace Prisma {
   export type UserCountAggregateOutputType = {
     id: number
     googleId: number
+    passwordHash: number
     name: number
     email: number
     picture: number
@@ -1672,6 +1915,7 @@ export namespace Prisma {
   export type UserMinAggregateInputType = {
     id?: true
     googleId?: true
+    passwordHash?: true
     name?: true
     email?: true
     picture?: true
@@ -1682,6 +1926,7 @@ export namespace Prisma {
   export type UserMaxAggregateInputType = {
     id?: true
     googleId?: true
+    passwordHash?: true
     name?: true
     email?: true
     picture?: true
@@ -1692,6 +1937,7 @@ export namespace Prisma {
   export type UserCountAggregateInputType = {
     id?: true
     googleId?: true
+    passwordHash?: true
     name?: true
     email?: true
     picture?: true
@@ -1774,7 +2020,8 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: string
-    googleId: string
+    googleId: string | null
+    passwordHash: string | null
     name: string
     email: string
     picture: string | null
@@ -1802,6 +2049,7 @@ export namespace Prisma {
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     googleId?: boolean
+    passwordHash?: boolean
     name?: boolean
     email?: boolean
     picture?: boolean
@@ -1812,12 +2060,15 @@ export namespace Prisma {
     classroomJoinRequests?: boolean | User$classroomJoinRequestsArgs<ExtArgs>
     dailyGoals?: boolean | User$dailyGoalsArgs<ExtArgs>
     dailyReflections?: boolean | User$dailyReflectionsArgs<ExtArgs>
+    notificationsCreated?: boolean | User$notificationsCreatedArgs<ExtArgs>
+    notificationReads?: boolean | User$notificationReadsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     googleId?: boolean
+    passwordHash?: boolean
     name?: boolean
     email?: boolean
     picture?: boolean
@@ -1828,6 +2079,7 @@ export namespace Prisma {
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     googleId?: boolean
+    passwordHash?: boolean
     name?: boolean
     email?: boolean
     picture?: boolean
@@ -1838,6 +2090,7 @@ export namespace Prisma {
   export type UserSelectScalar = {
     id?: boolean
     googleId?: boolean
+    passwordHash?: boolean
     name?: boolean
     email?: boolean
     picture?: boolean
@@ -1845,13 +2098,15 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "googleId" | "name" | "email" | "picture" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "googleId" | "passwordHash" | "name" | "email" | "picture" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     hostedClassrooms?: boolean | User$hostedClassroomsArgs<ExtArgs>
     memberships?: boolean | User$membershipsArgs<ExtArgs>
     classroomJoinRequests?: boolean | User$classroomJoinRequestsArgs<ExtArgs>
     dailyGoals?: boolean | User$dailyGoalsArgs<ExtArgs>
     dailyReflections?: boolean | User$dailyReflectionsArgs<ExtArgs>
+    notificationsCreated?: boolean | User$notificationsCreatedArgs<ExtArgs>
+    notificationReads?: boolean | User$notificationReadsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1865,10 +2120,13 @@ export namespace Prisma {
       classroomJoinRequests: Prisma.$ClassroomJoinRequestPayload<ExtArgs>[]
       dailyGoals: Prisma.$DailyGoalPayload<ExtArgs>[]
       dailyReflections: Prisma.$DailyReflectionPayload<ExtArgs>[]
+      notificationsCreated: Prisma.$ClassroomNotificationPayload<ExtArgs>[]
+      notificationReads: Prisma.$ClassroomNotificationReadPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      googleId: string
+      googleId: string | null
+      passwordHash: string | null
       name: string
       email: string
       picture: string | null
@@ -2273,6 +2531,8 @@ export namespace Prisma {
     classroomJoinRequests<T extends User$classroomJoinRequestsArgs<ExtArgs> = {}>(args?: Subset<T, User$classroomJoinRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassroomJoinRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     dailyGoals<T extends User$dailyGoalsArgs<ExtArgs> = {}>(args?: Subset<T, User$dailyGoalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DailyGoalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     dailyReflections<T extends User$dailyReflectionsArgs<ExtArgs> = {}>(args?: Subset<T, User$dailyReflectionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DailyReflectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    notificationsCreated<T extends User$notificationsCreatedArgs<ExtArgs> = {}>(args?: Subset<T, User$notificationsCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassroomNotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    notificationReads<T extends User$notificationReadsArgs<ExtArgs> = {}>(args?: Subset<T, User$notificationReadsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassroomNotificationReadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2304,6 +2564,7 @@ export namespace Prisma {
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
     readonly googleId: FieldRef<"User", 'String'>
+    readonly passwordHash: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly picture: FieldRef<"User", 'String'>
@@ -2822,6 +3083,54 @@ export namespace Prisma {
   }
 
   /**
+   * User.notificationsCreated
+   */
+  export type User$notificationsCreatedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotification
+     */
+    select?: ClassroomNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotification
+     */
+    omit?: ClassroomNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationInclude<ExtArgs> | null
+    where?: ClassroomNotificationWhereInput
+    orderBy?: ClassroomNotificationOrderByWithRelationInput | ClassroomNotificationOrderByWithRelationInput[]
+    cursor?: ClassroomNotificationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ClassroomNotificationScalarFieldEnum | ClassroomNotificationScalarFieldEnum[]
+  }
+
+  /**
+   * User.notificationReads
+   */
+  export type User$notificationReadsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotificationRead
+     */
+    select?: ClassroomNotificationReadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotificationRead
+     */
+    omit?: ClassroomNotificationReadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationReadInclude<ExtArgs> | null
+    where?: ClassroomNotificationReadWhereInput
+    orderBy?: ClassroomNotificationReadOrderByWithRelationInput | ClassroomNotificationReadOrderByWithRelationInput[]
+    cursor?: ClassroomNotificationReadWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ClassroomNotificationReadScalarFieldEnum | ClassroomNotificationReadScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2872,6 +3181,8 @@ export namespace Prisma {
     goalSettingTime: string | null
     reflectionTime: string | null
     tasksPerDay: number | null
+    timezone: string | null
+    allowLateGoalEdits: boolean | null
   }
 
   export type ClassroomMaxAggregateOutputType = {
@@ -2886,6 +3197,8 @@ export namespace Prisma {
     goalSettingTime: string | null
     reflectionTime: string | null
     tasksPerDay: number | null
+    timezone: string | null
+    allowLateGoalEdits: boolean | null
   }
 
   export type ClassroomCountAggregateOutputType = {
@@ -2900,6 +3213,9 @@ export namespace Prisma {
     goalSettingTime: number
     reflectionTime: number
     tasksPerDay: number
+    dayParts: number
+    timezone: number
+    allowLateGoalEdits: number
     _all: number
   }
 
@@ -2924,6 +3240,8 @@ export namespace Prisma {
     goalSettingTime?: true
     reflectionTime?: true
     tasksPerDay?: true
+    timezone?: true
+    allowLateGoalEdits?: true
   }
 
   export type ClassroomMaxAggregateInputType = {
@@ -2938,6 +3256,8 @@ export namespace Prisma {
     goalSettingTime?: true
     reflectionTime?: true
     tasksPerDay?: true
+    timezone?: true
+    allowLateGoalEdits?: true
   }
 
   export type ClassroomCountAggregateInputType = {
@@ -2952,6 +3272,9 @@ export namespace Prisma {
     goalSettingTime?: true
     reflectionTime?: true
     tasksPerDay?: true
+    dayParts?: true
+    timezone?: true
+    allowLateGoalEdits?: true
     _all?: true
   }
 
@@ -3053,6 +3376,9 @@ export namespace Prisma {
     goalSettingTime: string | null
     reflectionTime: string | null
     tasksPerDay: number
+    dayParts: JsonValue | null
+    timezone: string
+    allowLateGoalEdits: boolean
     _count: ClassroomCountAggregateOutputType | null
     _avg: ClassroomAvgAggregateOutputType | null
     _sum: ClassroomSumAggregateOutputType | null
@@ -3086,11 +3412,15 @@ export namespace Prisma {
     goalSettingTime?: boolean
     reflectionTime?: boolean
     tasksPerDay?: boolean
+    dayParts?: boolean
+    timezone?: boolean
+    allowLateGoalEdits?: boolean
     host?: boolean | UserDefaultArgs<ExtArgs>
     members?: boolean | Classroom$membersArgs<ExtArgs>
     joinRequests?: boolean | Classroom$joinRequestsArgs<ExtArgs>
     dailyGoals?: boolean | Classroom$dailyGoalsArgs<ExtArgs>
     dailyReflections?: boolean | Classroom$dailyReflectionsArgs<ExtArgs>
+    notifications?: boolean | Classroom$notificationsArgs<ExtArgs>
     _count?: boolean | ClassroomCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["classroom"]>
 
@@ -3106,6 +3436,9 @@ export namespace Prisma {
     goalSettingTime?: boolean
     reflectionTime?: boolean
     tasksPerDay?: boolean
+    dayParts?: boolean
+    timezone?: boolean
+    allowLateGoalEdits?: boolean
     host?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["classroom"]>
 
@@ -3121,6 +3454,9 @@ export namespace Prisma {
     goalSettingTime?: boolean
     reflectionTime?: boolean
     tasksPerDay?: boolean
+    dayParts?: boolean
+    timezone?: boolean
+    allowLateGoalEdits?: boolean
     host?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["classroom"]>
 
@@ -3136,15 +3472,19 @@ export namespace Prisma {
     goalSettingTime?: boolean
     reflectionTime?: boolean
     tasksPerDay?: boolean
+    dayParts?: boolean
+    timezone?: boolean
+    allowLateGoalEdits?: boolean
   }
 
-  export type ClassroomOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "joinCode" | "hostId" | "createdAt" | "updatedAt" | "dailyGoal" | "goalSettingTime" | "reflectionTime" | "tasksPerDay", ExtArgs["result"]["classroom"]>
+  export type ClassroomOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "joinCode" | "hostId" | "createdAt" | "updatedAt" | "dailyGoal" | "goalSettingTime" | "reflectionTime" | "tasksPerDay" | "dayParts" | "timezone" | "allowLateGoalEdits", ExtArgs["result"]["classroom"]>
   export type ClassroomInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     host?: boolean | UserDefaultArgs<ExtArgs>
     members?: boolean | Classroom$membersArgs<ExtArgs>
     joinRequests?: boolean | Classroom$joinRequestsArgs<ExtArgs>
     dailyGoals?: boolean | Classroom$dailyGoalsArgs<ExtArgs>
     dailyReflections?: boolean | Classroom$dailyReflectionsArgs<ExtArgs>
+    notifications?: boolean | Classroom$notificationsArgs<ExtArgs>
     _count?: boolean | ClassroomCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ClassroomIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3162,6 +3502,7 @@ export namespace Prisma {
       joinRequests: Prisma.$ClassroomJoinRequestPayload<ExtArgs>[]
       dailyGoals: Prisma.$DailyGoalPayload<ExtArgs>[]
       dailyReflections: Prisma.$DailyReflectionPayload<ExtArgs>[]
+      notifications: Prisma.$ClassroomNotificationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3175,6 +3516,9 @@ export namespace Prisma {
       goalSettingTime: string | null
       reflectionTime: string | null
       tasksPerDay: number
+      dayParts: Prisma.JsonValue | null
+      timezone: string
+      allowLateGoalEdits: boolean
     }, ExtArgs["result"]["classroom"]>
     composites: {}
   }
@@ -3574,6 +3918,7 @@ export namespace Prisma {
     joinRequests<T extends Classroom$joinRequestsArgs<ExtArgs> = {}>(args?: Subset<T, Classroom$joinRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassroomJoinRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     dailyGoals<T extends Classroom$dailyGoalsArgs<ExtArgs> = {}>(args?: Subset<T, Classroom$dailyGoalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DailyGoalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     dailyReflections<T extends Classroom$dailyReflectionsArgs<ExtArgs> = {}>(args?: Subset<T, Classroom$dailyReflectionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DailyReflectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    notifications<T extends Classroom$notificationsArgs<ExtArgs> = {}>(args?: Subset<T, Classroom$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassroomNotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3614,6 +3959,9 @@ export namespace Prisma {
     readonly goalSettingTime: FieldRef<"Classroom", 'String'>
     readonly reflectionTime: FieldRef<"Classroom", 'String'>
     readonly tasksPerDay: FieldRef<"Classroom", 'Int'>
+    readonly dayParts: FieldRef<"Classroom", 'Json'>
+    readonly timezone: FieldRef<"Classroom", 'String'>
+    readonly allowLateGoalEdits: FieldRef<"Classroom", 'Boolean'>
   }
     
 
@@ -4108,6 +4456,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: DailyReflectionScalarFieldEnum | DailyReflectionScalarFieldEnum[]
+  }
+
+  /**
+   * Classroom.notifications
+   */
+  export type Classroom$notificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotification
+     */
+    select?: ClassroomNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotification
+     */
+    omit?: ClassroomNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationInclude<ExtArgs> | null
+    where?: ClassroomNotificationWhereInput
+    orderBy?: ClassroomNotificationOrderByWithRelationInput | ClassroomNotificationOrderByWithRelationInput[]
+    cursor?: ClassroomNotificationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ClassroomNotificationScalarFieldEnum | ClassroomNotificationScalarFieldEnum[]
   }
 
   /**
@@ -6299,6 +6671,7 @@ export namespace Prisma {
     userId: string | null
     classroomId: string | null
     date: Date | null
+    statement: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6308,6 +6681,7 @@ export namespace Prisma {
     userId: string | null
     classroomId: string | null
     date: Date | null
+    statement: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6317,6 +6691,7 @@ export namespace Prisma {
     userId: number
     classroomId: number
     date: number
+    statement: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -6328,6 +6703,7 @@ export namespace Prisma {
     userId?: true
     classroomId?: true
     date?: true
+    statement?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -6337,6 +6713,7 @@ export namespace Prisma {
     userId?: true
     classroomId?: true
     date?: true
+    statement?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -6346,6 +6723,7 @@ export namespace Prisma {
     userId?: true
     classroomId?: true
     date?: true
+    statement?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -6428,6 +6806,7 @@ export namespace Prisma {
     userId: string
     classroomId: string
     date: Date
+    statement: string | null
     createdAt: Date
     updatedAt: Date
     _count: DailyGoalCountAggregateOutputType | null
@@ -6454,6 +6833,7 @@ export namespace Prisma {
     userId?: boolean
     classroomId?: boolean
     date?: boolean
+    statement?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -6467,6 +6847,7 @@ export namespace Prisma {
     userId?: boolean
     classroomId?: boolean
     date?: boolean
+    statement?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -6478,6 +6859,7 @@ export namespace Prisma {
     userId?: boolean
     classroomId?: boolean
     date?: boolean
+    statement?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -6489,11 +6871,12 @@ export namespace Prisma {
     userId?: boolean
     classroomId?: boolean
     date?: boolean
+    statement?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type DailyGoalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "classroomId" | "date" | "createdAt" | "updatedAt", ExtArgs["result"]["dailyGoal"]>
+  export type DailyGoalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "classroomId" | "date" | "statement" | "createdAt" | "updatedAt", ExtArgs["result"]["dailyGoal"]>
   export type DailyGoalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     classroom?: boolean | ClassroomDefaultArgs<ExtArgs>
@@ -6521,6 +6904,7 @@ export namespace Prisma {
       userId: string
       classroomId: string
       date: Date
+      statement: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["dailyGoal"]>
@@ -6953,6 +7337,7 @@ export namespace Prisma {
     readonly userId: FieldRef<"DailyGoal", 'String'>
     readonly classroomId: FieldRef<"DailyGoal", 'String'>
     readonly date: FieldRef<"DailyGoal", 'DateTime'>
+    readonly statement: FieldRef<"DailyGoal", 'String'>
     readonly createdAt: FieldRef<"DailyGoal", 'DateTime'>
     readonly updatedAt: FieldRef<"DailyGoal", 'DateTime'>
   }
@@ -8467,8 +8852,22 @@ export namespace Prisma {
 
   export type AggregateDailyReflection = {
     _count: DailyReflectionCountAggregateOutputType | null
+    _avg: DailyReflectionAvgAggregateOutputType | null
+    _sum: DailyReflectionSumAggregateOutputType | null
     _min: DailyReflectionMinAggregateOutputType | null
     _max: DailyReflectionMaxAggregateOutputType | null
+  }
+
+  export type DailyReflectionAvgAggregateOutputType = {
+    assessmentScore: number | null
+    assessmentCorrect: number | null
+    assessmentTotal: number | null
+  }
+
+  export type DailyReflectionSumAggregateOutputType = {
+    assessmentScore: number | null
+    assessmentCorrect: number | null
+    assessmentTotal: number | null
   }
 
   export type DailyReflectionMinAggregateOutputType = {
@@ -8477,6 +8876,10 @@ export namespace Prisma {
     classroomId: string | null
     date: Date | null
     content: string | null
+    assessmentScore: number | null
+    assessmentCorrect: number | null
+    assessmentTotal: number | null
+    assessedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -8487,6 +8890,10 @@ export namespace Prisma {
     classroomId: string | null
     date: Date | null
     content: string | null
+    assessmentScore: number | null
+    assessmentCorrect: number | null
+    assessmentTotal: number | null
+    assessedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -8497,11 +8904,28 @@ export namespace Prisma {
     classroomId: number
     date: number
     content: number
+    assessmentScore: number
+    assessmentCorrect: number
+    assessmentTotal: number
+    assessmentDetails: number
+    assessedAt: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
+
+  export type DailyReflectionAvgAggregateInputType = {
+    assessmentScore?: true
+    assessmentCorrect?: true
+    assessmentTotal?: true
+  }
+
+  export type DailyReflectionSumAggregateInputType = {
+    assessmentScore?: true
+    assessmentCorrect?: true
+    assessmentTotal?: true
+  }
 
   export type DailyReflectionMinAggregateInputType = {
     id?: true
@@ -8509,6 +8933,10 @@ export namespace Prisma {
     classroomId?: true
     date?: true
     content?: true
+    assessmentScore?: true
+    assessmentCorrect?: true
+    assessmentTotal?: true
+    assessedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -8519,6 +8947,10 @@ export namespace Prisma {
     classroomId?: true
     date?: true
     content?: true
+    assessmentScore?: true
+    assessmentCorrect?: true
+    assessmentTotal?: true
+    assessedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -8529,6 +8961,11 @@ export namespace Prisma {
     classroomId?: true
     date?: true
     content?: true
+    assessmentScore?: true
+    assessmentCorrect?: true
+    assessmentTotal?: true
+    assessmentDetails?: true
+    assessedAt?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -8572,6 +9009,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: DailyReflectionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DailyReflectionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: DailyReflectionMinAggregateInputType
@@ -8602,6 +9051,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: DailyReflectionCountAggregateInputType | true
+    _avg?: DailyReflectionAvgAggregateInputType
+    _sum?: DailyReflectionSumAggregateInputType
     _min?: DailyReflectionMinAggregateInputType
     _max?: DailyReflectionMaxAggregateInputType
   }
@@ -8612,9 +9063,16 @@ export namespace Prisma {
     classroomId: string
     date: Date
     content: string
+    assessmentScore: number | null
+    assessmentCorrect: number | null
+    assessmentTotal: number | null
+    assessmentDetails: JsonValue | null
+    assessedAt: Date | null
     createdAt: Date
     updatedAt: Date
     _count: DailyReflectionCountAggregateOutputType | null
+    _avg: DailyReflectionAvgAggregateOutputType | null
+    _sum: DailyReflectionSumAggregateOutputType | null
     _min: DailyReflectionMinAggregateOutputType | null
     _max: DailyReflectionMaxAggregateOutputType | null
   }
@@ -8639,6 +9097,11 @@ export namespace Prisma {
     classroomId?: boolean
     date?: boolean
     content?: boolean
+    assessmentScore?: boolean
+    assessmentCorrect?: boolean
+    assessmentTotal?: boolean
+    assessmentDetails?: boolean
+    assessedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -8651,6 +9114,11 @@ export namespace Prisma {
     classroomId?: boolean
     date?: boolean
     content?: boolean
+    assessmentScore?: boolean
+    assessmentCorrect?: boolean
+    assessmentTotal?: boolean
+    assessmentDetails?: boolean
+    assessedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -8663,6 +9131,11 @@ export namespace Prisma {
     classroomId?: boolean
     date?: boolean
     content?: boolean
+    assessmentScore?: boolean
+    assessmentCorrect?: boolean
+    assessmentTotal?: boolean
+    assessmentDetails?: boolean
+    assessedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -8675,11 +9148,16 @@ export namespace Prisma {
     classroomId?: boolean
     date?: boolean
     content?: boolean
+    assessmentScore?: boolean
+    assessmentCorrect?: boolean
+    assessmentTotal?: boolean
+    assessmentDetails?: boolean
+    assessedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type DailyReflectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "classroomId" | "date" | "content" | "createdAt" | "updatedAt", ExtArgs["result"]["dailyReflection"]>
+  export type DailyReflectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "classroomId" | "date" | "content" | "assessmentScore" | "assessmentCorrect" | "assessmentTotal" | "assessmentDetails" | "assessedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["dailyReflection"]>
   export type DailyReflectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     classroom?: boolean | ClassroomDefaultArgs<ExtArgs>
@@ -8705,6 +9183,11 @@ export namespace Prisma {
       classroomId: string
       date: Date
       content: string
+      assessmentScore: number | null
+      assessmentCorrect: number | null
+      assessmentTotal: number | null
+      assessmentDetails: Prisma.JsonValue | null
+      assessedAt: Date | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["dailyReflection"]>
@@ -9137,6 +9620,11 @@ export namespace Prisma {
     readonly classroomId: FieldRef<"DailyReflection", 'String'>
     readonly date: FieldRef<"DailyReflection", 'DateTime'>
     readonly content: FieldRef<"DailyReflection", 'String'>
+    readonly assessmentScore: FieldRef<"DailyReflection", 'Int'>
+    readonly assessmentCorrect: FieldRef<"DailyReflection", 'Int'>
+    readonly assessmentTotal: FieldRef<"DailyReflection", 'Int'>
+    readonly assessmentDetails: FieldRef<"DailyReflection", 'Json'>
+    readonly assessedAt: FieldRef<"DailyReflection", 'DateTime'>
     readonly createdAt: FieldRef<"DailyReflection", 'DateTime'>
     readonly updatedAt: FieldRef<"DailyReflection", 'DateTime'>
   }
@@ -9559,6 +10047,2210 @@ export namespace Prisma {
 
 
   /**
+   * Model ClassroomNotification
+   */
+
+  export type AggregateClassroomNotification = {
+    _count: ClassroomNotificationCountAggregateOutputType | null
+    _min: ClassroomNotificationMinAggregateOutputType | null
+    _max: ClassroomNotificationMaxAggregateOutputType | null
+  }
+
+  export type ClassroomNotificationMinAggregateOutputType = {
+    id: string | null
+    classroomId: string | null
+    createdById: string | null
+    recipientEmail: string | null
+    type: string | null
+    title: string | null
+    content: string | null
+    createdAt: Date | null
+  }
+
+  export type ClassroomNotificationMaxAggregateOutputType = {
+    id: string | null
+    classroomId: string | null
+    createdById: string | null
+    recipientEmail: string | null
+    type: string | null
+    title: string | null
+    content: string | null
+    createdAt: Date | null
+  }
+
+  export type ClassroomNotificationCountAggregateOutputType = {
+    id: number
+    classroomId: number
+    createdById: number
+    recipientEmail: number
+    type: number
+    title: number
+    content: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ClassroomNotificationMinAggregateInputType = {
+    id?: true
+    classroomId?: true
+    createdById?: true
+    recipientEmail?: true
+    type?: true
+    title?: true
+    content?: true
+    createdAt?: true
+  }
+
+  export type ClassroomNotificationMaxAggregateInputType = {
+    id?: true
+    classroomId?: true
+    createdById?: true
+    recipientEmail?: true
+    type?: true
+    title?: true
+    content?: true
+    createdAt?: true
+  }
+
+  export type ClassroomNotificationCountAggregateInputType = {
+    id?: true
+    classroomId?: true
+    createdById?: true
+    recipientEmail?: true
+    type?: true
+    title?: true
+    content?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ClassroomNotificationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ClassroomNotification to aggregate.
+     */
+    where?: ClassroomNotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ClassroomNotifications to fetch.
+     */
+    orderBy?: ClassroomNotificationOrderByWithRelationInput | ClassroomNotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ClassroomNotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ClassroomNotifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ClassroomNotifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ClassroomNotifications
+    **/
+    _count?: true | ClassroomNotificationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ClassroomNotificationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ClassroomNotificationMaxAggregateInputType
+  }
+
+  export type GetClassroomNotificationAggregateType<T extends ClassroomNotificationAggregateArgs> = {
+        [P in keyof T & keyof AggregateClassroomNotification]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateClassroomNotification[P]>
+      : GetScalarType<T[P], AggregateClassroomNotification[P]>
+  }
+
+
+
+
+  export type ClassroomNotificationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ClassroomNotificationWhereInput
+    orderBy?: ClassroomNotificationOrderByWithAggregationInput | ClassroomNotificationOrderByWithAggregationInput[]
+    by: ClassroomNotificationScalarFieldEnum[] | ClassroomNotificationScalarFieldEnum
+    having?: ClassroomNotificationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ClassroomNotificationCountAggregateInputType | true
+    _min?: ClassroomNotificationMinAggregateInputType
+    _max?: ClassroomNotificationMaxAggregateInputType
+  }
+
+  export type ClassroomNotificationGroupByOutputType = {
+    id: string
+    classroomId: string
+    createdById: string | null
+    recipientEmail: string | null
+    type: string
+    title: string
+    content: string
+    createdAt: Date
+    _count: ClassroomNotificationCountAggregateOutputType | null
+    _min: ClassroomNotificationMinAggregateOutputType | null
+    _max: ClassroomNotificationMaxAggregateOutputType | null
+  }
+
+  type GetClassroomNotificationGroupByPayload<T extends ClassroomNotificationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ClassroomNotificationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ClassroomNotificationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ClassroomNotificationGroupByOutputType[P]>
+            : GetScalarType<T[P], ClassroomNotificationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ClassroomNotificationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    classroomId?: boolean
+    createdById?: boolean
+    recipientEmail?: boolean
+    type?: boolean
+    title?: boolean
+    content?: boolean
+    createdAt?: boolean
+    classroom?: boolean | ClassroomDefaultArgs<ExtArgs>
+    createdBy?: boolean | ClassroomNotification$createdByArgs<ExtArgs>
+    reads?: boolean | ClassroomNotification$readsArgs<ExtArgs>
+    _count?: boolean | ClassroomNotificationCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["classroomNotification"]>
+
+  export type ClassroomNotificationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    classroomId?: boolean
+    createdById?: boolean
+    recipientEmail?: boolean
+    type?: boolean
+    title?: boolean
+    content?: boolean
+    createdAt?: boolean
+    classroom?: boolean | ClassroomDefaultArgs<ExtArgs>
+    createdBy?: boolean | ClassroomNotification$createdByArgs<ExtArgs>
+  }, ExtArgs["result"]["classroomNotification"]>
+
+  export type ClassroomNotificationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    classroomId?: boolean
+    createdById?: boolean
+    recipientEmail?: boolean
+    type?: boolean
+    title?: boolean
+    content?: boolean
+    createdAt?: boolean
+    classroom?: boolean | ClassroomDefaultArgs<ExtArgs>
+    createdBy?: boolean | ClassroomNotification$createdByArgs<ExtArgs>
+  }, ExtArgs["result"]["classroomNotification"]>
+
+  export type ClassroomNotificationSelectScalar = {
+    id?: boolean
+    classroomId?: boolean
+    createdById?: boolean
+    recipientEmail?: boolean
+    type?: boolean
+    title?: boolean
+    content?: boolean
+    createdAt?: boolean
+  }
+
+  export type ClassroomNotificationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "classroomId" | "createdById" | "recipientEmail" | "type" | "title" | "content" | "createdAt", ExtArgs["result"]["classroomNotification"]>
+  export type ClassroomNotificationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    classroom?: boolean | ClassroomDefaultArgs<ExtArgs>
+    createdBy?: boolean | ClassroomNotification$createdByArgs<ExtArgs>
+    reads?: boolean | ClassroomNotification$readsArgs<ExtArgs>
+    _count?: boolean | ClassroomNotificationCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ClassroomNotificationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    classroom?: boolean | ClassroomDefaultArgs<ExtArgs>
+    createdBy?: boolean | ClassroomNotification$createdByArgs<ExtArgs>
+  }
+  export type ClassroomNotificationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    classroom?: boolean | ClassroomDefaultArgs<ExtArgs>
+    createdBy?: boolean | ClassroomNotification$createdByArgs<ExtArgs>
+  }
+
+  export type $ClassroomNotificationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ClassroomNotification"
+    objects: {
+      classroom: Prisma.$ClassroomPayload<ExtArgs>
+      createdBy: Prisma.$UserPayload<ExtArgs> | null
+      reads: Prisma.$ClassroomNotificationReadPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      classroomId: string
+      createdById: string | null
+      recipientEmail: string | null
+      type: string
+      title: string
+      content: string
+      createdAt: Date
+    }, ExtArgs["result"]["classroomNotification"]>
+    composites: {}
+  }
+
+  type ClassroomNotificationGetPayload<S extends boolean | null | undefined | ClassroomNotificationDefaultArgs> = $Result.GetResult<Prisma.$ClassroomNotificationPayload, S>
+
+  type ClassroomNotificationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ClassroomNotificationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ClassroomNotificationCountAggregateInputType | true
+    }
+
+  export interface ClassroomNotificationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ClassroomNotification'], meta: { name: 'ClassroomNotification' } }
+    /**
+     * Find zero or one ClassroomNotification that matches the filter.
+     * @param {ClassroomNotificationFindUniqueArgs} args - Arguments to find a ClassroomNotification
+     * @example
+     * // Get one ClassroomNotification
+     * const classroomNotification = await prisma.classroomNotification.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ClassroomNotificationFindUniqueArgs>(args: SelectSubset<T, ClassroomNotificationFindUniqueArgs<ExtArgs>>): Prisma__ClassroomNotificationClient<$Result.GetResult<Prisma.$ClassroomNotificationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ClassroomNotification that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ClassroomNotificationFindUniqueOrThrowArgs} args - Arguments to find a ClassroomNotification
+     * @example
+     * // Get one ClassroomNotification
+     * const classroomNotification = await prisma.classroomNotification.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ClassroomNotificationFindUniqueOrThrowArgs>(args: SelectSubset<T, ClassroomNotificationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ClassroomNotificationClient<$Result.GetResult<Prisma.$ClassroomNotificationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ClassroomNotification that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClassroomNotificationFindFirstArgs} args - Arguments to find a ClassroomNotification
+     * @example
+     * // Get one ClassroomNotification
+     * const classroomNotification = await prisma.classroomNotification.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ClassroomNotificationFindFirstArgs>(args?: SelectSubset<T, ClassroomNotificationFindFirstArgs<ExtArgs>>): Prisma__ClassroomNotificationClient<$Result.GetResult<Prisma.$ClassroomNotificationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ClassroomNotification that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClassroomNotificationFindFirstOrThrowArgs} args - Arguments to find a ClassroomNotification
+     * @example
+     * // Get one ClassroomNotification
+     * const classroomNotification = await prisma.classroomNotification.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ClassroomNotificationFindFirstOrThrowArgs>(args?: SelectSubset<T, ClassroomNotificationFindFirstOrThrowArgs<ExtArgs>>): Prisma__ClassroomNotificationClient<$Result.GetResult<Prisma.$ClassroomNotificationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ClassroomNotifications that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClassroomNotificationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ClassroomNotifications
+     * const classroomNotifications = await prisma.classroomNotification.findMany()
+     * 
+     * // Get first 10 ClassroomNotifications
+     * const classroomNotifications = await prisma.classroomNotification.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const classroomNotificationWithIdOnly = await prisma.classroomNotification.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ClassroomNotificationFindManyArgs>(args?: SelectSubset<T, ClassroomNotificationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassroomNotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ClassroomNotification.
+     * @param {ClassroomNotificationCreateArgs} args - Arguments to create a ClassroomNotification.
+     * @example
+     * // Create one ClassroomNotification
+     * const ClassroomNotification = await prisma.classroomNotification.create({
+     *   data: {
+     *     // ... data to create a ClassroomNotification
+     *   }
+     * })
+     * 
+     */
+    create<T extends ClassroomNotificationCreateArgs>(args: SelectSubset<T, ClassroomNotificationCreateArgs<ExtArgs>>): Prisma__ClassroomNotificationClient<$Result.GetResult<Prisma.$ClassroomNotificationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ClassroomNotifications.
+     * @param {ClassroomNotificationCreateManyArgs} args - Arguments to create many ClassroomNotifications.
+     * @example
+     * // Create many ClassroomNotifications
+     * const classroomNotification = await prisma.classroomNotification.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ClassroomNotificationCreateManyArgs>(args?: SelectSubset<T, ClassroomNotificationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ClassroomNotifications and returns the data saved in the database.
+     * @param {ClassroomNotificationCreateManyAndReturnArgs} args - Arguments to create many ClassroomNotifications.
+     * @example
+     * // Create many ClassroomNotifications
+     * const classroomNotification = await prisma.classroomNotification.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ClassroomNotifications and only return the `id`
+     * const classroomNotificationWithIdOnly = await prisma.classroomNotification.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ClassroomNotificationCreateManyAndReturnArgs>(args?: SelectSubset<T, ClassroomNotificationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassroomNotificationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ClassroomNotification.
+     * @param {ClassroomNotificationDeleteArgs} args - Arguments to delete one ClassroomNotification.
+     * @example
+     * // Delete one ClassroomNotification
+     * const ClassroomNotification = await prisma.classroomNotification.delete({
+     *   where: {
+     *     // ... filter to delete one ClassroomNotification
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ClassroomNotificationDeleteArgs>(args: SelectSubset<T, ClassroomNotificationDeleteArgs<ExtArgs>>): Prisma__ClassroomNotificationClient<$Result.GetResult<Prisma.$ClassroomNotificationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ClassroomNotification.
+     * @param {ClassroomNotificationUpdateArgs} args - Arguments to update one ClassroomNotification.
+     * @example
+     * // Update one ClassroomNotification
+     * const classroomNotification = await prisma.classroomNotification.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ClassroomNotificationUpdateArgs>(args: SelectSubset<T, ClassroomNotificationUpdateArgs<ExtArgs>>): Prisma__ClassroomNotificationClient<$Result.GetResult<Prisma.$ClassroomNotificationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ClassroomNotifications.
+     * @param {ClassroomNotificationDeleteManyArgs} args - Arguments to filter ClassroomNotifications to delete.
+     * @example
+     * // Delete a few ClassroomNotifications
+     * const { count } = await prisma.classroomNotification.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ClassroomNotificationDeleteManyArgs>(args?: SelectSubset<T, ClassroomNotificationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ClassroomNotifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClassroomNotificationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ClassroomNotifications
+     * const classroomNotification = await prisma.classroomNotification.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ClassroomNotificationUpdateManyArgs>(args: SelectSubset<T, ClassroomNotificationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ClassroomNotifications and returns the data updated in the database.
+     * @param {ClassroomNotificationUpdateManyAndReturnArgs} args - Arguments to update many ClassroomNotifications.
+     * @example
+     * // Update many ClassroomNotifications
+     * const classroomNotification = await prisma.classroomNotification.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ClassroomNotifications and only return the `id`
+     * const classroomNotificationWithIdOnly = await prisma.classroomNotification.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ClassroomNotificationUpdateManyAndReturnArgs>(args: SelectSubset<T, ClassroomNotificationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassroomNotificationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ClassroomNotification.
+     * @param {ClassroomNotificationUpsertArgs} args - Arguments to update or create a ClassroomNotification.
+     * @example
+     * // Update or create a ClassroomNotification
+     * const classroomNotification = await prisma.classroomNotification.upsert({
+     *   create: {
+     *     // ... data to create a ClassroomNotification
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ClassroomNotification we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ClassroomNotificationUpsertArgs>(args: SelectSubset<T, ClassroomNotificationUpsertArgs<ExtArgs>>): Prisma__ClassroomNotificationClient<$Result.GetResult<Prisma.$ClassroomNotificationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ClassroomNotifications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClassroomNotificationCountArgs} args - Arguments to filter ClassroomNotifications to count.
+     * @example
+     * // Count the number of ClassroomNotifications
+     * const count = await prisma.classroomNotification.count({
+     *   where: {
+     *     // ... the filter for the ClassroomNotifications we want to count
+     *   }
+     * })
+    **/
+    count<T extends ClassroomNotificationCountArgs>(
+      args?: Subset<T, ClassroomNotificationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ClassroomNotificationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ClassroomNotification.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClassroomNotificationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ClassroomNotificationAggregateArgs>(args: Subset<T, ClassroomNotificationAggregateArgs>): Prisma.PrismaPromise<GetClassroomNotificationAggregateType<T>>
+
+    /**
+     * Group by ClassroomNotification.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClassroomNotificationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ClassroomNotificationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ClassroomNotificationGroupByArgs['orderBy'] }
+        : { orderBy?: ClassroomNotificationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ClassroomNotificationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClassroomNotificationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ClassroomNotification model
+   */
+  readonly fields: ClassroomNotificationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ClassroomNotification.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ClassroomNotificationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    classroom<T extends ClassroomDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClassroomDefaultArgs<ExtArgs>>): Prisma__ClassroomClient<$Result.GetResult<Prisma.$ClassroomPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    createdBy<T extends ClassroomNotification$createdByArgs<ExtArgs> = {}>(args?: Subset<T, ClassroomNotification$createdByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    reads<T extends ClassroomNotification$readsArgs<ExtArgs> = {}>(args?: Subset<T, ClassroomNotification$readsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassroomNotificationReadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ClassroomNotification model
+   */
+  interface ClassroomNotificationFieldRefs {
+    readonly id: FieldRef<"ClassroomNotification", 'String'>
+    readonly classroomId: FieldRef<"ClassroomNotification", 'String'>
+    readonly createdById: FieldRef<"ClassroomNotification", 'String'>
+    readonly recipientEmail: FieldRef<"ClassroomNotification", 'String'>
+    readonly type: FieldRef<"ClassroomNotification", 'String'>
+    readonly title: FieldRef<"ClassroomNotification", 'String'>
+    readonly content: FieldRef<"ClassroomNotification", 'String'>
+    readonly createdAt: FieldRef<"ClassroomNotification", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ClassroomNotification findUnique
+   */
+  export type ClassroomNotificationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotification
+     */
+    select?: ClassroomNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotification
+     */
+    omit?: ClassroomNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which ClassroomNotification to fetch.
+     */
+    where: ClassroomNotificationWhereUniqueInput
+  }
+
+  /**
+   * ClassroomNotification findUniqueOrThrow
+   */
+  export type ClassroomNotificationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotification
+     */
+    select?: ClassroomNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotification
+     */
+    omit?: ClassroomNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which ClassroomNotification to fetch.
+     */
+    where: ClassroomNotificationWhereUniqueInput
+  }
+
+  /**
+   * ClassroomNotification findFirst
+   */
+  export type ClassroomNotificationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotification
+     */
+    select?: ClassroomNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotification
+     */
+    omit?: ClassroomNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which ClassroomNotification to fetch.
+     */
+    where?: ClassroomNotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ClassroomNotifications to fetch.
+     */
+    orderBy?: ClassroomNotificationOrderByWithRelationInput | ClassroomNotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ClassroomNotifications.
+     */
+    cursor?: ClassroomNotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ClassroomNotifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ClassroomNotifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ClassroomNotifications.
+     */
+    distinct?: ClassroomNotificationScalarFieldEnum | ClassroomNotificationScalarFieldEnum[]
+  }
+
+  /**
+   * ClassroomNotification findFirstOrThrow
+   */
+  export type ClassroomNotificationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotification
+     */
+    select?: ClassroomNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotification
+     */
+    omit?: ClassroomNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which ClassroomNotification to fetch.
+     */
+    where?: ClassroomNotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ClassroomNotifications to fetch.
+     */
+    orderBy?: ClassroomNotificationOrderByWithRelationInput | ClassroomNotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ClassroomNotifications.
+     */
+    cursor?: ClassroomNotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ClassroomNotifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ClassroomNotifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ClassroomNotifications.
+     */
+    distinct?: ClassroomNotificationScalarFieldEnum | ClassroomNotificationScalarFieldEnum[]
+  }
+
+  /**
+   * ClassroomNotification findMany
+   */
+  export type ClassroomNotificationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotification
+     */
+    select?: ClassroomNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotification
+     */
+    omit?: ClassroomNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationInclude<ExtArgs> | null
+    /**
+     * Filter, which ClassroomNotifications to fetch.
+     */
+    where?: ClassroomNotificationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ClassroomNotifications to fetch.
+     */
+    orderBy?: ClassroomNotificationOrderByWithRelationInput | ClassroomNotificationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ClassroomNotifications.
+     */
+    cursor?: ClassroomNotificationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ClassroomNotifications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ClassroomNotifications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ClassroomNotifications.
+     */
+    distinct?: ClassroomNotificationScalarFieldEnum | ClassroomNotificationScalarFieldEnum[]
+  }
+
+  /**
+   * ClassroomNotification create
+   */
+  export type ClassroomNotificationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotification
+     */
+    select?: ClassroomNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotification
+     */
+    omit?: ClassroomNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ClassroomNotification.
+     */
+    data: XOR<ClassroomNotificationCreateInput, ClassroomNotificationUncheckedCreateInput>
+  }
+
+  /**
+   * ClassroomNotification createMany
+   */
+  export type ClassroomNotificationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ClassroomNotifications.
+     */
+    data: ClassroomNotificationCreateManyInput | ClassroomNotificationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ClassroomNotification createManyAndReturn
+   */
+  export type ClassroomNotificationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotification
+     */
+    select?: ClassroomNotificationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotification
+     */
+    omit?: ClassroomNotificationOmit<ExtArgs> | null
+    /**
+     * The data used to create many ClassroomNotifications.
+     */
+    data: ClassroomNotificationCreateManyInput | ClassroomNotificationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ClassroomNotification update
+   */
+  export type ClassroomNotificationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotification
+     */
+    select?: ClassroomNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotification
+     */
+    omit?: ClassroomNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ClassroomNotification.
+     */
+    data: XOR<ClassroomNotificationUpdateInput, ClassroomNotificationUncheckedUpdateInput>
+    /**
+     * Choose, which ClassroomNotification to update.
+     */
+    where: ClassroomNotificationWhereUniqueInput
+  }
+
+  /**
+   * ClassroomNotification updateMany
+   */
+  export type ClassroomNotificationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ClassroomNotifications.
+     */
+    data: XOR<ClassroomNotificationUpdateManyMutationInput, ClassroomNotificationUncheckedUpdateManyInput>
+    /**
+     * Filter which ClassroomNotifications to update
+     */
+    where?: ClassroomNotificationWhereInput
+    /**
+     * Limit how many ClassroomNotifications to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ClassroomNotification updateManyAndReturn
+   */
+  export type ClassroomNotificationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotification
+     */
+    select?: ClassroomNotificationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotification
+     */
+    omit?: ClassroomNotificationOmit<ExtArgs> | null
+    /**
+     * The data used to update ClassroomNotifications.
+     */
+    data: XOR<ClassroomNotificationUpdateManyMutationInput, ClassroomNotificationUncheckedUpdateManyInput>
+    /**
+     * Filter which ClassroomNotifications to update
+     */
+    where?: ClassroomNotificationWhereInput
+    /**
+     * Limit how many ClassroomNotifications to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ClassroomNotification upsert
+   */
+  export type ClassroomNotificationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotification
+     */
+    select?: ClassroomNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotification
+     */
+    omit?: ClassroomNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ClassroomNotification to update in case it exists.
+     */
+    where: ClassroomNotificationWhereUniqueInput
+    /**
+     * In case the ClassroomNotification found by the `where` argument doesn't exist, create a new ClassroomNotification with this data.
+     */
+    create: XOR<ClassroomNotificationCreateInput, ClassroomNotificationUncheckedCreateInput>
+    /**
+     * In case the ClassroomNotification was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ClassroomNotificationUpdateInput, ClassroomNotificationUncheckedUpdateInput>
+  }
+
+  /**
+   * ClassroomNotification delete
+   */
+  export type ClassroomNotificationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotification
+     */
+    select?: ClassroomNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotification
+     */
+    omit?: ClassroomNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationInclude<ExtArgs> | null
+    /**
+     * Filter which ClassroomNotification to delete.
+     */
+    where: ClassroomNotificationWhereUniqueInput
+  }
+
+  /**
+   * ClassroomNotification deleteMany
+   */
+  export type ClassroomNotificationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ClassroomNotifications to delete
+     */
+    where?: ClassroomNotificationWhereInput
+    /**
+     * Limit how many ClassroomNotifications to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ClassroomNotification.createdBy
+   */
+  export type ClassroomNotification$createdByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * ClassroomNotification.reads
+   */
+  export type ClassroomNotification$readsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotificationRead
+     */
+    select?: ClassroomNotificationReadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotificationRead
+     */
+    omit?: ClassroomNotificationReadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationReadInclude<ExtArgs> | null
+    where?: ClassroomNotificationReadWhereInput
+    orderBy?: ClassroomNotificationReadOrderByWithRelationInput | ClassroomNotificationReadOrderByWithRelationInput[]
+    cursor?: ClassroomNotificationReadWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ClassroomNotificationReadScalarFieldEnum | ClassroomNotificationReadScalarFieldEnum[]
+  }
+
+  /**
+   * ClassroomNotification without action
+   */
+  export type ClassroomNotificationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotification
+     */
+    select?: ClassroomNotificationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotification
+     */
+    omit?: ClassroomNotificationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ClassroomNotificationRead
+   */
+
+  export type AggregateClassroomNotificationRead = {
+    _count: ClassroomNotificationReadCountAggregateOutputType | null
+    _min: ClassroomNotificationReadMinAggregateOutputType | null
+    _max: ClassroomNotificationReadMaxAggregateOutputType | null
+  }
+
+  export type ClassroomNotificationReadMinAggregateOutputType = {
+    notificationId: string | null
+    userId: string | null
+    readAt: Date | null
+  }
+
+  export type ClassroomNotificationReadMaxAggregateOutputType = {
+    notificationId: string | null
+    userId: string | null
+    readAt: Date | null
+  }
+
+  export type ClassroomNotificationReadCountAggregateOutputType = {
+    notificationId: number
+    userId: number
+    readAt: number
+    _all: number
+  }
+
+
+  export type ClassroomNotificationReadMinAggregateInputType = {
+    notificationId?: true
+    userId?: true
+    readAt?: true
+  }
+
+  export type ClassroomNotificationReadMaxAggregateInputType = {
+    notificationId?: true
+    userId?: true
+    readAt?: true
+  }
+
+  export type ClassroomNotificationReadCountAggregateInputType = {
+    notificationId?: true
+    userId?: true
+    readAt?: true
+    _all?: true
+  }
+
+  export type ClassroomNotificationReadAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ClassroomNotificationRead to aggregate.
+     */
+    where?: ClassroomNotificationReadWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ClassroomNotificationReads to fetch.
+     */
+    orderBy?: ClassroomNotificationReadOrderByWithRelationInput | ClassroomNotificationReadOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ClassroomNotificationReadWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ClassroomNotificationReads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ClassroomNotificationReads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ClassroomNotificationReads
+    **/
+    _count?: true | ClassroomNotificationReadCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ClassroomNotificationReadMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ClassroomNotificationReadMaxAggregateInputType
+  }
+
+  export type GetClassroomNotificationReadAggregateType<T extends ClassroomNotificationReadAggregateArgs> = {
+        [P in keyof T & keyof AggregateClassroomNotificationRead]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateClassroomNotificationRead[P]>
+      : GetScalarType<T[P], AggregateClassroomNotificationRead[P]>
+  }
+
+
+
+
+  export type ClassroomNotificationReadGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ClassroomNotificationReadWhereInput
+    orderBy?: ClassroomNotificationReadOrderByWithAggregationInput | ClassroomNotificationReadOrderByWithAggregationInput[]
+    by: ClassroomNotificationReadScalarFieldEnum[] | ClassroomNotificationReadScalarFieldEnum
+    having?: ClassroomNotificationReadScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ClassroomNotificationReadCountAggregateInputType | true
+    _min?: ClassroomNotificationReadMinAggregateInputType
+    _max?: ClassroomNotificationReadMaxAggregateInputType
+  }
+
+  export type ClassroomNotificationReadGroupByOutputType = {
+    notificationId: string
+    userId: string
+    readAt: Date
+    _count: ClassroomNotificationReadCountAggregateOutputType | null
+    _min: ClassroomNotificationReadMinAggregateOutputType | null
+    _max: ClassroomNotificationReadMaxAggregateOutputType | null
+  }
+
+  type GetClassroomNotificationReadGroupByPayload<T extends ClassroomNotificationReadGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ClassroomNotificationReadGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ClassroomNotificationReadGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ClassroomNotificationReadGroupByOutputType[P]>
+            : GetScalarType<T[P], ClassroomNotificationReadGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ClassroomNotificationReadSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    notificationId?: boolean
+    userId?: boolean
+    readAt?: boolean
+    notification?: boolean | ClassroomNotificationDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["classroomNotificationRead"]>
+
+  export type ClassroomNotificationReadSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    notificationId?: boolean
+    userId?: boolean
+    readAt?: boolean
+    notification?: boolean | ClassroomNotificationDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["classroomNotificationRead"]>
+
+  export type ClassroomNotificationReadSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    notificationId?: boolean
+    userId?: boolean
+    readAt?: boolean
+    notification?: boolean | ClassroomNotificationDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["classroomNotificationRead"]>
+
+  export type ClassroomNotificationReadSelectScalar = {
+    notificationId?: boolean
+    userId?: boolean
+    readAt?: boolean
+  }
+
+  export type ClassroomNotificationReadOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"notificationId" | "userId" | "readAt", ExtArgs["result"]["classroomNotificationRead"]>
+  export type ClassroomNotificationReadInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    notification?: boolean | ClassroomNotificationDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ClassroomNotificationReadIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    notification?: boolean | ClassroomNotificationDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ClassroomNotificationReadIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    notification?: boolean | ClassroomNotificationDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ClassroomNotificationReadPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ClassroomNotificationRead"
+    objects: {
+      notification: Prisma.$ClassroomNotificationPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      notificationId: string
+      userId: string
+      readAt: Date
+    }, ExtArgs["result"]["classroomNotificationRead"]>
+    composites: {}
+  }
+
+  type ClassroomNotificationReadGetPayload<S extends boolean | null | undefined | ClassroomNotificationReadDefaultArgs> = $Result.GetResult<Prisma.$ClassroomNotificationReadPayload, S>
+
+  type ClassroomNotificationReadCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ClassroomNotificationReadFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ClassroomNotificationReadCountAggregateInputType | true
+    }
+
+  export interface ClassroomNotificationReadDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ClassroomNotificationRead'], meta: { name: 'ClassroomNotificationRead' } }
+    /**
+     * Find zero or one ClassroomNotificationRead that matches the filter.
+     * @param {ClassroomNotificationReadFindUniqueArgs} args - Arguments to find a ClassroomNotificationRead
+     * @example
+     * // Get one ClassroomNotificationRead
+     * const classroomNotificationRead = await prisma.classroomNotificationRead.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ClassroomNotificationReadFindUniqueArgs>(args: SelectSubset<T, ClassroomNotificationReadFindUniqueArgs<ExtArgs>>): Prisma__ClassroomNotificationReadClient<$Result.GetResult<Prisma.$ClassroomNotificationReadPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ClassroomNotificationRead that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ClassroomNotificationReadFindUniqueOrThrowArgs} args - Arguments to find a ClassroomNotificationRead
+     * @example
+     * // Get one ClassroomNotificationRead
+     * const classroomNotificationRead = await prisma.classroomNotificationRead.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ClassroomNotificationReadFindUniqueOrThrowArgs>(args: SelectSubset<T, ClassroomNotificationReadFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ClassroomNotificationReadClient<$Result.GetResult<Prisma.$ClassroomNotificationReadPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ClassroomNotificationRead that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClassroomNotificationReadFindFirstArgs} args - Arguments to find a ClassroomNotificationRead
+     * @example
+     * // Get one ClassroomNotificationRead
+     * const classroomNotificationRead = await prisma.classroomNotificationRead.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ClassroomNotificationReadFindFirstArgs>(args?: SelectSubset<T, ClassroomNotificationReadFindFirstArgs<ExtArgs>>): Prisma__ClassroomNotificationReadClient<$Result.GetResult<Prisma.$ClassroomNotificationReadPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ClassroomNotificationRead that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClassroomNotificationReadFindFirstOrThrowArgs} args - Arguments to find a ClassroomNotificationRead
+     * @example
+     * // Get one ClassroomNotificationRead
+     * const classroomNotificationRead = await prisma.classroomNotificationRead.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ClassroomNotificationReadFindFirstOrThrowArgs>(args?: SelectSubset<T, ClassroomNotificationReadFindFirstOrThrowArgs<ExtArgs>>): Prisma__ClassroomNotificationReadClient<$Result.GetResult<Prisma.$ClassroomNotificationReadPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ClassroomNotificationReads that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClassroomNotificationReadFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ClassroomNotificationReads
+     * const classroomNotificationReads = await prisma.classroomNotificationRead.findMany()
+     * 
+     * // Get first 10 ClassroomNotificationReads
+     * const classroomNotificationReads = await prisma.classroomNotificationRead.findMany({ take: 10 })
+     * 
+     * // Only select the `notificationId`
+     * const classroomNotificationReadWithNotificationIdOnly = await prisma.classroomNotificationRead.findMany({ select: { notificationId: true } })
+     * 
+     */
+    findMany<T extends ClassroomNotificationReadFindManyArgs>(args?: SelectSubset<T, ClassroomNotificationReadFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassroomNotificationReadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ClassroomNotificationRead.
+     * @param {ClassroomNotificationReadCreateArgs} args - Arguments to create a ClassroomNotificationRead.
+     * @example
+     * // Create one ClassroomNotificationRead
+     * const ClassroomNotificationRead = await prisma.classroomNotificationRead.create({
+     *   data: {
+     *     // ... data to create a ClassroomNotificationRead
+     *   }
+     * })
+     * 
+     */
+    create<T extends ClassroomNotificationReadCreateArgs>(args: SelectSubset<T, ClassroomNotificationReadCreateArgs<ExtArgs>>): Prisma__ClassroomNotificationReadClient<$Result.GetResult<Prisma.$ClassroomNotificationReadPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ClassroomNotificationReads.
+     * @param {ClassroomNotificationReadCreateManyArgs} args - Arguments to create many ClassroomNotificationReads.
+     * @example
+     * // Create many ClassroomNotificationReads
+     * const classroomNotificationRead = await prisma.classroomNotificationRead.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ClassroomNotificationReadCreateManyArgs>(args?: SelectSubset<T, ClassroomNotificationReadCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ClassroomNotificationReads and returns the data saved in the database.
+     * @param {ClassroomNotificationReadCreateManyAndReturnArgs} args - Arguments to create many ClassroomNotificationReads.
+     * @example
+     * // Create many ClassroomNotificationReads
+     * const classroomNotificationRead = await prisma.classroomNotificationRead.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ClassroomNotificationReads and only return the `notificationId`
+     * const classroomNotificationReadWithNotificationIdOnly = await prisma.classroomNotificationRead.createManyAndReturn({
+     *   select: { notificationId: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ClassroomNotificationReadCreateManyAndReturnArgs>(args?: SelectSubset<T, ClassroomNotificationReadCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassroomNotificationReadPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ClassroomNotificationRead.
+     * @param {ClassroomNotificationReadDeleteArgs} args - Arguments to delete one ClassroomNotificationRead.
+     * @example
+     * // Delete one ClassroomNotificationRead
+     * const ClassroomNotificationRead = await prisma.classroomNotificationRead.delete({
+     *   where: {
+     *     // ... filter to delete one ClassroomNotificationRead
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ClassroomNotificationReadDeleteArgs>(args: SelectSubset<T, ClassroomNotificationReadDeleteArgs<ExtArgs>>): Prisma__ClassroomNotificationReadClient<$Result.GetResult<Prisma.$ClassroomNotificationReadPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ClassroomNotificationRead.
+     * @param {ClassroomNotificationReadUpdateArgs} args - Arguments to update one ClassroomNotificationRead.
+     * @example
+     * // Update one ClassroomNotificationRead
+     * const classroomNotificationRead = await prisma.classroomNotificationRead.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ClassroomNotificationReadUpdateArgs>(args: SelectSubset<T, ClassroomNotificationReadUpdateArgs<ExtArgs>>): Prisma__ClassroomNotificationReadClient<$Result.GetResult<Prisma.$ClassroomNotificationReadPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ClassroomNotificationReads.
+     * @param {ClassroomNotificationReadDeleteManyArgs} args - Arguments to filter ClassroomNotificationReads to delete.
+     * @example
+     * // Delete a few ClassroomNotificationReads
+     * const { count } = await prisma.classroomNotificationRead.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ClassroomNotificationReadDeleteManyArgs>(args?: SelectSubset<T, ClassroomNotificationReadDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ClassroomNotificationReads.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClassroomNotificationReadUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ClassroomNotificationReads
+     * const classroomNotificationRead = await prisma.classroomNotificationRead.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ClassroomNotificationReadUpdateManyArgs>(args: SelectSubset<T, ClassroomNotificationReadUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ClassroomNotificationReads and returns the data updated in the database.
+     * @param {ClassroomNotificationReadUpdateManyAndReturnArgs} args - Arguments to update many ClassroomNotificationReads.
+     * @example
+     * // Update many ClassroomNotificationReads
+     * const classroomNotificationRead = await prisma.classroomNotificationRead.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ClassroomNotificationReads and only return the `notificationId`
+     * const classroomNotificationReadWithNotificationIdOnly = await prisma.classroomNotificationRead.updateManyAndReturn({
+     *   select: { notificationId: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ClassroomNotificationReadUpdateManyAndReturnArgs>(args: SelectSubset<T, ClassroomNotificationReadUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassroomNotificationReadPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ClassroomNotificationRead.
+     * @param {ClassroomNotificationReadUpsertArgs} args - Arguments to update or create a ClassroomNotificationRead.
+     * @example
+     * // Update or create a ClassroomNotificationRead
+     * const classroomNotificationRead = await prisma.classroomNotificationRead.upsert({
+     *   create: {
+     *     // ... data to create a ClassroomNotificationRead
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ClassroomNotificationRead we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ClassroomNotificationReadUpsertArgs>(args: SelectSubset<T, ClassroomNotificationReadUpsertArgs<ExtArgs>>): Prisma__ClassroomNotificationReadClient<$Result.GetResult<Prisma.$ClassroomNotificationReadPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ClassroomNotificationReads.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClassroomNotificationReadCountArgs} args - Arguments to filter ClassroomNotificationReads to count.
+     * @example
+     * // Count the number of ClassroomNotificationReads
+     * const count = await prisma.classroomNotificationRead.count({
+     *   where: {
+     *     // ... the filter for the ClassroomNotificationReads we want to count
+     *   }
+     * })
+    **/
+    count<T extends ClassroomNotificationReadCountArgs>(
+      args?: Subset<T, ClassroomNotificationReadCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ClassroomNotificationReadCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ClassroomNotificationRead.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClassroomNotificationReadAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ClassroomNotificationReadAggregateArgs>(args: Subset<T, ClassroomNotificationReadAggregateArgs>): Prisma.PrismaPromise<GetClassroomNotificationReadAggregateType<T>>
+
+    /**
+     * Group by ClassroomNotificationRead.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClassroomNotificationReadGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ClassroomNotificationReadGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ClassroomNotificationReadGroupByArgs['orderBy'] }
+        : { orderBy?: ClassroomNotificationReadGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ClassroomNotificationReadGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClassroomNotificationReadGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ClassroomNotificationRead model
+   */
+  readonly fields: ClassroomNotificationReadFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ClassroomNotificationRead.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ClassroomNotificationReadClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    notification<T extends ClassroomNotificationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClassroomNotificationDefaultArgs<ExtArgs>>): Prisma__ClassroomNotificationClient<$Result.GetResult<Prisma.$ClassroomNotificationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ClassroomNotificationRead model
+   */
+  interface ClassroomNotificationReadFieldRefs {
+    readonly notificationId: FieldRef<"ClassroomNotificationRead", 'String'>
+    readonly userId: FieldRef<"ClassroomNotificationRead", 'String'>
+    readonly readAt: FieldRef<"ClassroomNotificationRead", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ClassroomNotificationRead findUnique
+   */
+  export type ClassroomNotificationReadFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotificationRead
+     */
+    select?: ClassroomNotificationReadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotificationRead
+     */
+    omit?: ClassroomNotificationReadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationReadInclude<ExtArgs> | null
+    /**
+     * Filter, which ClassroomNotificationRead to fetch.
+     */
+    where: ClassroomNotificationReadWhereUniqueInput
+  }
+
+  /**
+   * ClassroomNotificationRead findUniqueOrThrow
+   */
+  export type ClassroomNotificationReadFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotificationRead
+     */
+    select?: ClassroomNotificationReadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotificationRead
+     */
+    omit?: ClassroomNotificationReadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationReadInclude<ExtArgs> | null
+    /**
+     * Filter, which ClassroomNotificationRead to fetch.
+     */
+    where: ClassroomNotificationReadWhereUniqueInput
+  }
+
+  /**
+   * ClassroomNotificationRead findFirst
+   */
+  export type ClassroomNotificationReadFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotificationRead
+     */
+    select?: ClassroomNotificationReadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotificationRead
+     */
+    omit?: ClassroomNotificationReadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationReadInclude<ExtArgs> | null
+    /**
+     * Filter, which ClassroomNotificationRead to fetch.
+     */
+    where?: ClassroomNotificationReadWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ClassroomNotificationReads to fetch.
+     */
+    orderBy?: ClassroomNotificationReadOrderByWithRelationInput | ClassroomNotificationReadOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ClassroomNotificationReads.
+     */
+    cursor?: ClassroomNotificationReadWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ClassroomNotificationReads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ClassroomNotificationReads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ClassroomNotificationReads.
+     */
+    distinct?: ClassroomNotificationReadScalarFieldEnum | ClassroomNotificationReadScalarFieldEnum[]
+  }
+
+  /**
+   * ClassroomNotificationRead findFirstOrThrow
+   */
+  export type ClassroomNotificationReadFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotificationRead
+     */
+    select?: ClassroomNotificationReadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotificationRead
+     */
+    omit?: ClassroomNotificationReadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationReadInclude<ExtArgs> | null
+    /**
+     * Filter, which ClassroomNotificationRead to fetch.
+     */
+    where?: ClassroomNotificationReadWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ClassroomNotificationReads to fetch.
+     */
+    orderBy?: ClassroomNotificationReadOrderByWithRelationInput | ClassroomNotificationReadOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ClassroomNotificationReads.
+     */
+    cursor?: ClassroomNotificationReadWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ClassroomNotificationReads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ClassroomNotificationReads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ClassroomNotificationReads.
+     */
+    distinct?: ClassroomNotificationReadScalarFieldEnum | ClassroomNotificationReadScalarFieldEnum[]
+  }
+
+  /**
+   * ClassroomNotificationRead findMany
+   */
+  export type ClassroomNotificationReadFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotificationRead
+     */
+    select?: ClassroomNotificationReadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotificationRead
+     */
+    omit?: ClassroomNotificationReadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationReadInclude<ExtArgs> | null
+    /**
+     * Filter, which ClassroomNotificationReads to fetch.
+     */
+    where?: ClassroomNotificationReadWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ClassroomNotificationReads to fetch.
+     */
+    orderBy?: ClassroomNotificationReadOrderByWithRelationInput | ClassroomNotificationReadOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ClassroomNotificationReads.
+     */
+    cursor?: ClassroomNotificationReadWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ClassroomNotificationReads from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ClassroomNotificationReads.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ClassroomNotificationReads.
+     */
+    distinct?: ClassroomNotificationReadScalarFieldEnum | ClassroomNotificationReadScalarFieldEnum[]
+  }
+
+  /**
+   * ClassroomNotificationRead create
+   */
+  export type ClassroomNotificationReadCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotificationRead
+     */
+    select?: ClassroomNotificationReadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotificationRead
+     */
+    omit?: ClassroomNotificationReadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationReadInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ClassroomNotificationRead.
+     */
+    data: XOR<ClassroomNotificationReadCreateInput, ClassroomNotificationReadUncheckedCreateInput>
+  }
+
+  /**
+   * ClassroomNotificationRead createMany
+   */
+  export type ClassroomNotificationReadCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ClassroomNotificationReads.
+     */
+    data: ClassroomNotificationReadCreateManyInput | ClassroomNotificationReadCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ClassroomNotificationRead createManyAndReturn
+   */
+  export type ClassroomNotificationReadCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotificationRead
+     */
+    select?: ClassroomNotificationReadSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotificationRead
+     */
+    omit?: ClassroomNotificationReadOmit<ExtArgs> | null
+    /**
+     * The data used to create many ClassroomNotificationReads.
+     */
+    data: ClassroomNotificationReadCreateManyInput | ClassroomNotificationReadCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationReadIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ClassroomNotificationRead update
+   */
+  export type ClassroomNotificationReadUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotificationRead
+     */
+    select?: ClassroomNotificationReadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotificationRead
+     */
+    omit?: ClassroomNotificationReadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationReadInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ClassroomNotificationRead.
+     */
+    data: XOR<ClassroomNotificationReadUpdateInput, ClassroomNotificationReadUncheckedUpdateInput>
+    /**
+     * Choose, which ClassroomNotificationRead to update.
+     */
+    where: ClassroomNotificationReadWhereUniqueInput
+  }
+
+  /**
+   * ClassroomNotificationRead updateMany
+   */
+  export type ClassroomNotificationReadUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ClassroomNotificationReads.
+     */
+    data: XOR<ClassroomNotificationReadUpdateManyMutationInput, ClassroomNotificationReadUncheckedUpdateManyInput>
+    /**
+     * Filter which ClassroomNotificationReads to update
+     */
+    where?: ClassroomNotificationReadWhereInput
+    /**
+     * Limit how many ClassroomNotificationReads to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ClassroomNotificationRead updateManyAndReturn
+   */
+  export type ClassroomNotificationReadUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotificationRead
+     */
+    select?: ClassroomNotificationReadSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotificationRead
+     */
+    omit?: ClassroomNotificationReadOmit<ExtArgs> | null
+    /**
+     * The data used to update ClassroomNotificationReads.
+     */
+    data: XOR<ClassroomNotificationReadUpdateManyMutationInput, ClassroomNotificationReadUncheckedUpdateManyInput>
+    /**
+     * Filter which ClassroomNotificationReads to update
+     */
+    where?: ClassroomNotificationReadWhereInput
+    /**
+     * Limit how many ClassroomNotificationReads to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationReadIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ClassroomNotificationRead upsert
+   */
+  export type ClassroomNotificationReadUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotificationRead
+     */
+    select?: ClassroomNotificationReadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotificationRead
+     */
+    omit?: ClassroomNotificationReadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationReadInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ClassroomNotificationRead to update in case it exists.
+     */
+    where: ClassroomNotificationReadWhereUniqueInput
+    /**
+     * In case the ClassroomNotificationRead found by the `where` argument doesn't exist, create a new ClassroomNotificationRead with this data.
+     */
+    create: XOR<ClassroomNotificationReadCreateInput, ClassroomNotificationReadUncheckedCreateInput>
+    /**
+     * In case the ClassroomNotificationRead was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ClassroomNotificationReadUpdateInput, ClassroomNotificationReadUncheckedUpdateInput>
+  }
+
+  /**
+   * ClassroomNotificationRead delete
+   */
+  export type ClassroomNotificationReadDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotificationRead
+     */
+    select?: ClassroomNotificationReadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotificationRead
+     */
+    omit?: ClassroomNotificationReadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationReadInclude<ExtArgs> | null
+    /**
+     * Filter which ClassroomNotificationRead to delete.
+     */
+    where: ClassroomNotificationReadWhereUniqueInput
+  }
+
+  /**
+   * ClassroomNotificationRead deleteMany
+   */
+  export type ClassroomNotificationReadDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ClassroomNotificationReads to delete
+     */
+    where?: ClassroomNotificationReadWhereInput
+    /**
+     * Limit how many ClassroomNotificationReads to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ClassroomNotificationRead without action
+   */
+  export type ClassroomNotificationReadDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClassroomNotificationRead
+     */
+    select?: ClassroomNotificationReadSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ClassroomNotificationRead
+     */
+    omit?: ClassroomNotificationReadOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassroomNotificationReadInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -9575,6 +12267,7 @@ export namespace Prisma {
   export const UserScalarFieldEnum: {
     id: 'id',
     googleId: 'googleId',
+    passwordHash: 'passwordHash',
     name: 'name',
     email: 'email',
     picture: 'picture',
@@ -9596,7 +12289,10 @@ export namespace Prisma {
     dailyGoal: 'dailyGoal',
     goalSettingTime: 'goalSettingTime',
     reflectionTime: 'reflectionTime',
-    tasksPerDay: 'tasksPerDay'
+    tasksPerDay: 'tasksPerDay',
+    dayParts: 'dayParts',
+    timezone: 'timezone',
+    allowLateGoalEdits: 'allowLateGoalEdits'
   };
 
   export type ClassroomScalarFieldEnum = (typeof ClassroomScalarFieldEnum)[keyof typeof ClassroomScalarFieldEnum]
@@ -9630,6 +12326,7 @@ export namespace Prisma {
     userId: 'userId',
     classroomId: 'classroomId',
     date: 'date',
+    statement: 'statement',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -9654,11 +12351,39 @@ export namespace Prisma {
     classroomId: 'classroomId',
     date: 'date',
     content: 'content',
+    assessmentScore: 'assessmentScore',
+    assessmentCorrect: 'assessmentCorrect',
+    assessmentTotal: 'assessmentTotal',
+    assessmentDetails: 'assessmentDetails',
+    assessedAt: 'assessedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
   export type DailyReflectionScalarFieldEnum = (typeof DailyReflectionScalarFieldEnum)[keyof typeof DailyReflectionScalarFieldEnum]
+
+
+  export const ClassroomNotificationScalarFieldEnum: {
+    id: 'id',
+    classroomId: 'classroomId',
+    createdById: 'createdById',
+    recipientEmail: 'recipientEmail',
+    type: 'type',
+    title: 'title',
+    content: 'content',
+    createdAt: 'createdAt'
+  };
+
+  export type ClassroomNotificationScalarFieldEnum = (typeof ClassroomNotificationScalarFieldEnum)[keyof typeof ClassroomNotificationScalarFieldEnum]
+
+
+  export const ClassroomNotificationReadScalarFieldEnum: {
+    notificationId: 'notificationId',
+    userId: 'userId',
+    readAt: 'readAt'
+  };
+
+  export type ClassroomNotificationReadScalarFieldEnum = (typeof ClassroomNotificationReadScalarFieldEnum)[keyof typeof ClassroomNotificationReadScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -9667,6 +12392,14 @@ export namespace Prisma {
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
   export const QueryMode: {
@@ -9683,6 +12416,15 @@ export namespace Prisma {
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   /**
@@ -9733,6 +12475,27 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'MemberRole'
    */
   export type EnumMemberRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MemberRole'>
@@ -9761,13 +12524,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -9789,7 +12545,8 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
-    googleId?: StringFilter<"User"> | string
+    googleId?: StringNullableFilter<"User"> | string | null
+    passwordHash?: StringNullableFilter<"User"> | string | null
     name?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     picture?: StringNullableFilter<"User"> | string | null
@@ -9800,11 +12557,14 @@ export namespace Prisma {
     classroomJoinRequests?: ClassroomJoinRequestListRelationFilter
     dailyGoals?: DailyGoalListRelationFilter
     dailyReflections?: DailyReflectionListRelationFilter
+    notificationsCreated?: ClassroomNotificationListRelationFilter
+    notificationReads?: ClassroomNotificationReadListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    googleId?: SortOrder
+    googleId?: SortOrderInput | SortOrder
+    passwordHash?: SortOrderInput | SortOrder
     name?: SortOrder
     email?: SortOrder
     picture?: SortOrderInput | SortOrder
@@ -9815,6 +12575,8 @@ export namespace Prisma {
     classroomJoinRequests?: ClassroomJoinRequestOrderByRelationAggregateInput
     dailyGoals?: DailyGoalOrderByRelationAggregateInput
     dailyReflections?: DailyReflectionOrderByRelationAggregateInput
+    notificationsCreated?: ClassroomNotificationOrderByRelationAggregateInput
+    notificationReads?: ClassroomNotificationReadOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -9824,6 +12586,7 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
+    passwordHash?: StringNullableFilter<"User"> | string | null
     name?: StringFilter<"User"> | string
     picture?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
@@ -9833,11 +12596,14 @@ export namespace Prisma {
     classroomJoinRequests?: ClassroomJoinRequestListRelationFilter
     dailyGoals?: DailyGoalListRelationFilter
     dailyReflections?: DailyReflectionListRelationFilter
+    notificationsCreated?: ClassroomNotificationListRelationFilter
+    notificationReads?: ClassroomNotificationReadListRelationFilter
   }, "id" | "googleId" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    googleId?: SortOrder
+    googleId?: SortOrderInput | SortOrder
+    passwordHash?: SortOrderInput | SortOrder
     name?: SortOrder
     email?: SortOrder
     picture?: SortOrderInput | SortOrder
@@ -9853,7 +12619,8 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
-    googleId?: StringWithAggregatesFilter<"User"> | string
+    googleId?: StringNullableWithAggregatesFilter<"User"> | string | null
+    passwordHash?: StringNullableWithAggregatesFilter<"User"> | string | null
     name?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     picture?: StringNullableWithAggregatesFilter<"User"> | string | null
@@ -9876,11 +12643,15 @@ export namespace Prisma {
     goalSettingTime?: StringNullableFilter<"Classroom"> | string | null
     reflectionTime?: StringNullableFilter<"Classroom"> | string | null
     tasksPerDay?: IntFilter<"Classroom"> | number
+    dayParts?: JsonNullableFilter<"Classroom">
+    timezone?: StringFilter<"Classroom"> | string
+    allowLateGoalEdits?: BoolFilter<"Classroom"> | boolean
     host?: XOR<UserScalarRelationFilter, UserWhereInput>
     members?: ClassroomMemberListRelationFilter
     joinRequests?: ClassroomJoinRequestListRelationFilter
     dailyGoals?: DailyGoalListRelationFilter
     dailyReflections?: DailyReflectionListRelationFilter
+    notifications?: ClassroomNotificationListRelationFilter
   }
 
   export type ClassroomOrderByWithRelationInput = {
@@ -9895,11 +12666,15 @@ export namespace Prisma {
     goalSettingTime?: SortOrderInput | SortOrder
     reflectionTime?: SortOrderInput | SortOrder
     tasksPerDay?: SortOrder
+    dayParts?: SortOrderInput | SortOrder
+    timezone?: SortOrder
+    allowLateGoalEdits?: SortOrder
     host?: UserOrderByWithRelationInput
     members?: ClassroomMemberOrderByRelationAggregateInput
     joinRequests?: ClassroomJoinRequestOrderByRelationAggregateInput
     dailyGoals?: DailyGoalOrderByRelationAggregateInput
     dailyReflections?: DailyReflectionOrderByRelationAggregateInput
+    notifications?: ClassroomNotificationOrderByRelationAggregateInput
   }
 
   export type ClassroomWhereUniqueInput = Prisma.AtLeast<{
@@ -9917,11 +12692,15 @@ export namespace Prisma {
     goalSettingTime?: StringNullableFilter<"Classroom"> | string | null
     reflectionTime?: StringNullableFilter<"Classroom"> | string | null
     tasksPerDay?: IntFilter<"Classroom"> | number
+    dayParts?: JsonNullableFilter<"Classroom">
+    timezone?: StringFilter<"Classroom"> | string
+    allowLateGoalEdits?: BoolFilter<"Classroom"> | boolean
     host?: XOR<UserScalarRelationFilter, UserWhereInput>
     members?: ClassroomMemberListRelationFilter
     joinRequests?: ClassroomJoinRequestListRelationFilter
     dailyGoals?: DailyGoalListRelationFilter
     dailyReflections?: DailyReflectionListRelationFilter
+    notifications?: ClassroomNotificationListRelationFilter
   }, "id" | "joinCode">
 
   export type ClassroomOrderByWithAggregationInput = {
@@ -9936,6 +12715,9 @@ export namespace Prisma {
     goalSettingTime?: SortOrderInput | SortOrder
     reflectionTime?: SortOrderInput | SortOrder
     tasksPerDay?: SortOrder
+    dayParts?: SortOrderInput | SortOrder
+    timezone?: SortOrder
+    allowLateGoalEdits?: SortOrder
     _count?: ClassroomCountOrderByAggregateInput
     _avg?: ClassroomAvgOrderByAggregateInput
     _max?: ClassroomMaxOrderByAggregateInput
@@ -9958,6 +12740,9 @@ export namespace Prisma {
     goalSettingTime?: StringNullableWithAggregatesFilter<"Classroom"> | string | null
     reflectionTime?: StringNullableWithAggregatesFilter<"Classroom"> | string | null
     tasksPerDay?: IntWithAggregatesFilter<"Classroom"> | number
+    dayParts?: JsonNullableWithAggregatesFilter<"Classroom">
+    timezone?: StringWithAggregatesFilter<"Classroom"> | string
+    allowLateGoalEdits?: BoolWithAggregatesFilter<"Classroom"> | boolean
   }
 
   export type ClassroomMemberWhereInput = {
@@ -10091,6 +12876,7 @@ export namespace Prisma {
     userId?: StringFilter<"DailyGoal"> | string
     classroomId?: StringFilter<"DailyGoal"> | string
     date?: DateTimeFilter<"DailyGoal"> | Date | string
+    statement?: StringNullableFilter<"DailyGoal"> | string | null
     createdAt?: DateTimeFilter<"DailyGoal"> | Date | string
     updatedAt?: DateTimeFilter<"DailyGoal"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -10103,6 +12889,7 @@ export namespace Prisma {
     userId?: SortOrder
     classroomId?: SortOrder
     date?: SortOrder
+    statement?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -10119,6 +12906,7 @@ export namespace Prisma {
     userId?: StringFilter<"DailyGoal"> | string
     classroomId?: StringFilter<"DailyGoal"> | string
     date?: DateTimeFilter<"DailyGoal"> | Date | string
+    statement?: StringNullableFilter<"DailyGoal"> | string | null
     createdAt?: DateTimeFilter<"DailyGoal"> | Date | string
     updatedAt?: DateTimeFilter<"DailyGoal"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -10131,6 +12919,7 @@ export namespace Prisma {
     userId?: SortOrder
     classroomId?: SortOrder
     date?: SortOrder
+    statement?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: DailyGoalCountOrderByAggregateInput
@@ -10146,6 +12935,7 @@ export namespace Prisma {
     userId?: StringWithAggregatesFilter<"DailyGoal"> | string
     classroomId?: StringWithAggregatesFilter<"DailyGoal"> | string
     date?: DateTimeWithAggregatesFilter<"DailyGoal"> | Date | string
+    statement?: StringNullableWithAggregatesFilter<"DailyGoal"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"DailyGoal"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"DailyGoal"> | Date | string
   }
@@ -10214,6 +13004,11 @@ export namespace Prisma {
     classroomId?: StringFilter<"DailyReflection"> | string
     date?: DateTimeFilter<"DailyReflection"> | Date | string
     content?: StringFilter<"DailyReflection"> | string
+    assessmentScore?: IntNullableFilter<"DailyReflection"> | number | null
+    assessmentCorrect?: IntNullableFilter<"DailyReflection"> | number | null
+    assessmentTotal?: IntNullableFilter<"DailyReflection"> | number | null
+    assessmentDetails?: JsonNullableFilter<"DailyReflection">
+    assessedAt?: DateTimeNullableFilter<"DailyReflection"> | Date | string | null
     createdAt?: DateTimeFilter<"DailyReflection"> | Date | string
     updatedAt?: DateTimeFilter<"DailyReflection"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -10226,6 +13021,11 @@ export namespace Prisma {
     classroomId?: SortOrder
     date?: SortOrder
     content?: SortOrder
+    assessmentScore?: SortOrderInput | SortOrder
+    assessmentCorrect?: SortOrderInput | SortOrder
+    assessmentTotal?: SortOrderInput | SortOrder
+    assessmentDetails?: SortOrderInput | SortOrder
+    assessedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -10242,6 +13042,11 @@ export namespace Prisma {
     classroomId?: StringFilter<"DailyReflection"> | string
     date?: DateTimeFilter<"DailyReflection"> | Date | string
     content?: StringFilter<"DailyReflection"> | string
+    assessmentScore?: IntNullableFilter<"DailyReflection"> | number | null
+    assessmentCorrect?: IntNullableFilter<"DailyReflection"> | number | null
+    assessmentTotal?: IntNullableFilter<"DailyReflection"> | number | null
+    assessmentDetails?: JsonNullableFilter<"DailyReflection">
+    assessedAt?: DateTimeNullableFilter<"DailyReflection"> | Date | string | null
     createdAt?: DateTimeFilter<"DailyReflection"> | Date | string
     updatedAt?: DateTimeFilter<"DailyReflection"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -10254,11 +13059,18 @@ export namespace Prisma {
     classroomId?: SortOrder
     date?: SortOrder
     content?: SortOrder
+    assessmentScore?: SortOrderInput | SortOrder
+    assessmentCorrect?: SortOrderInput | SortOrder
+    assessmentTotal?: SortOrderInput | SortOrder
+    assessmentDetails?: SortOrderInput | SortOrder
+    assessedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: DailyReflectionCountOrderByAggregateInput
+    _avg?: DailyReflectionAvgOrderByAggregateInput
     _max?: DailyReflectionMaxOrderByAggregateInput
     _min?: DailyReflectionMinOrderByAggregateInput
+    _sum?: DailyReflectionSumOrderByAggregateInput
   }
 
   export type DailyReflectionScalarWhereWithAggregatesInput = {
@@ -10270,13 +13082,144 @@ export namespace Prisma {
     classroomId?: StringWithAggregatesFilter<"DailyReflection"> | string
     date?: DateTimeWithAggregatesFilter<"DailyReflection"> | Date | string
     content?: StringWithAggregatesFilter<"DailyReflection"> | string
+    assessmentScore?: IntNullableWithAggregatesFilter<"DailyReflection"> | number | null
+    assessmentCorrect?: IntNullableWithAggregatesFilter<"DailyReflection"> | number | null
+    assessmentTotal?: IntNullableWithAggregatesFilter<"DailyReflection"> | number | null
+    assessmentDetails?: JsonNullableWithAggregatesFilter<"DailyReflection">
+    assessedAt?: DateTimeNullableWithAggregatesFilter<"DailyReflection"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"DailyReflection"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"DailyReflection"> | Date | string
   }
 
+  export type ClassroomNotificationWhereInput = {
+    AND?: ClassroomNotificationWhereInput | ClassroomNotificationWhereInput[]
+    OR?: ClassroomNotificationWhereInput[]
+    NOT?: ClassroomNotificationWhereInput | ClassroomNotificationWhereInput[]
+    id?: StringFilter<"ClassroomNotification"> | string
+    classroomId?: StringFilter<"ClassroomNotification"> | string
+    createdById?: StringNullableFilter<"ClassroomNotification"> | string | null
+    recipientEmail?: StringNullableFilter<"ClassroomNotification"> | string | null
+    type?: StringFilter<"ClassroomNotification"> | string
+    title?: StringFilter<"ClassroomNotification"> | string
+    content?: StringFilter<"ClassroomNotification"> | string
+    createdAt?: DateTimeFilter<"ClassroomNotification"> | Date | string
+    classroom?: XOR<ClassroomScalarRelationFilter, ClassroomWhereInput>
+    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    reads?: ClassroomNotificationReadListRelationFilter
+  }
+
+  export type ClassroomNotificationOrderByWithRelationInput = {
+    id?: SortOrder
+    classroomId?: SortOrder
+    createdById?: SortOrderInput | SortOrder
+    recipientEmail?: SortOrderInput | SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    classroom?: ClassroomOrderByWithRelationInput
+    createdBy?: UserOrderByWithRelationInput
+    reads?: ClassroomNotificationReadOrderByRelationAggregateInput
+  }
+
+  export type ClassroomNotificationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ClassroomNotificationWhereInput | ClassroomNotificationWhereInput[]
+    OR?: ClassroomNotificationWhereInput[]
+    NOT?: ClassroomNotificationWhereInput | ClassroomNotificationWhereInput[]
+    classroomId?: StringFilter<"ClassroomNotification"> | string
+    createdById?: StringNullableFilter<"ClassroomNotification"> | string | null
+    recipientEmail?: StringNullableFilter<"ClassroomNotification"> | string | null
+    type?: StringFilter<"ClassroomNotification"> | string
+    title?: StringFilter<"ClassroomNotification"> | string
+    content?: StringFilter<"ClassroomNotification"> | string
+    createdAt?: DateTimeFilter<"ClassroomNotification"> | Date | string
+    classroom?: XOR<ClassroomScalarRelationFilter, ClassroomWhereInput>
+    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+    reads?: ClassroomNotificationReadListRelationFilter
+  }, "id">
+
+  export type ClassroomNotificationOrderByWithAggregationInput = {
+    id?: SortOrder
+    classroomId?: SortOrder
+    createdById?: SortOrderInput | SortOrder
+    recipientEmail?: SortOrderInput | SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    _count?: ClassroomNotificationCountOrderByAggregateInput
+    _max?: ClassroomNotificationMaxOrderByAggregateInput
+    _min?: ClassroomNotificationMinOrderByAggregateInput
+  }
+
+  export type ClassroomNotificationScalarWhereWithAggregatesInput = {
+    AND?: ClassroomNotificationScalarWhereWithAggregatesInput | ClassroomNotificationScalarWhereWithAggregatesInput[]
+    OR?: ClassroomNotificationScalarWhereWithAggregatesInput[]
+    NOT?: ClassroomNotificationScalarWhereWithAggregatesInput | ClassroomNotificationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ClassroomNotification"> | string
+    classroomId?: StringWithAggregatesFilter<"ClassroomNotification"> | string
+    createdById?: StringNullableWithAggregatesFilter<"ClassroomNotification"> | string | null
+    recipientEmail?: StringNullableWithAggregatesFilter<"ClassroomNotification"> | string | null
+    type?: StringWithAggregatesFilter<"ClassroomNotification"> | string
+    title?: StringWithAggregatesFilter<"ClassroomNotification"> | string
+    content?: StringWithAggregatesFilter<"ClassroomNotification"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ClassroomNotification"> | Date | string
+  }
+
+  export type ClassroomNotificationReadWhereInput = {
+    AND?: ClassroomNotificationReadWhereInput | ClassroomNotificationReadWhereInput[]
+    OR?: ClassroomNotificationReadWhereInput[]
+    NOT?: ClassroomNotificationReadWhereInput | ClassroomNotificationReadWhereInput[]
+    notificationId?: StringFilter<"ClassroomNotificationRead"> | string
+    userId?: StringFilter<"ClassroomNotificationRead"> | string
+    readAt?: DateTimeFilter<"ClassroomNotificationRead"> | Date | string
+    notification?: XOR<ClassroomNotificationScalarRelationFilter, ClassroomNotificationWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type ClassroomNotificationReadOrderByWithRelationInput = {
+    notificationId?: SortOrder
+    userId?: SortOrder
+    readAt?: SortOrder
+    notification?: ClassroomNotificationOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type ClassroomNotificationReadWhereUniqueInput = Prisma.AtLeast<{
+    notificationId_userId?: ClassroomNotificationReadNotificationIdUserIdCompoundUniqueInput
+    AND?: ClassroomNotificationReadWhereInput | ClassroomNotificationReadWhereInput[]
+    OR?: ClassroomNotificationReadWhereInput[]
+    NOT?: ClassroomNotificationReadWhereInput | ClassroomNotificationReadWhereInput[]
+    notificationId?: StringFilter<"ClassroomNotificationRead"> | string
+    userId?: StringFilter<"ClassroomNotificationRead"> | string
+    readAt?: DateTimeFilter<"ClassroomNotificationRead"> | Date | string
+    notification?: XOR<ClassroomNotificationScalarRelationFilter, ClassroomNotificationWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "notificationId_userId">
+
+  export type ClassroomNotificationReadOrderByWithAggregationInput = {
+    notificationId?: SortOrder
+    userId?: SortOrder
+    readAt?: SortOrder
+    _count?: ClassroomNotificationReadCountOrderByAggregateInput
+    _max?: ClassroomNotificationReadMaxOrderByAggregateInput
+    _min?: ClassroomNotificationReadMinOrderByAggregateInput
+  }
+
+  export type ClassroomNotificationReadScalarWhereWithAggregatesInput = {
+    AND?: ClassroomNotificationReadScalarWhereWithAggregatesInput | ClassroomNotificationReadScalarWhereWithAggregatesInput[]
+    OR?: ClassroomNotificationReadScalarWhereWithAggregatesInput[]
+    NOT?: ClassroomNotificationReadScalarWhereWithAggregatesInput | ClassroomNotificationReadScalarWhereWithAggregatesInput[]
+    notificationId?: StringWithAggregatesFilter<"ClassroomNotificationRead"> | string
+    userId?: StringWithAggregatesFilter<"ClassroomNotificationRead"> | string
+    readAt?: DateTimeWithAggregatesFilter<"ClassroomNotificationRead"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
-    googleId: string
+    googleId?: string | null
+    passwordHash?: string | null
     name: string
     email: string
     picture?: string | null
@@ -10287,11 +13230,14 @@ export namespace Prisma {
     classroomJoinRequests?: ClassroomJoinRequestCreateNestedManyWithoutUserInput
     dailyGoals?: DailyGoalCreateNestedManyWithoutUserInput
     dailyReflections?: DailyReflectionCreateNestedManyWithoutUserInput
+    notificationsCreated?: ClassroomNotificationCreateNestedManyWithoutCreatedByInput
+    notificationReads?: ClassroomNotificationReadCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: string
-    googleId: string
+    googleId?: string | null
+    passwordHash?: string | null
     name: string
     email: string
     picture?: string | null
@@ -10302,11 +13248,14 @@ export namespace Prisma {
     classroomJoinRequests?: ClassroomJoinRequestUncheckedCreateNestedManyWithoutUserInput
     dailyGoals?: DailyGoalUncheckedCreateNestedManyWithoutUserInput
     dailyReflections?: DailyReflectionUncheckedCreateNestedManyWithoutUserInput
+    notificationsCreated?: ClassroomNotificationUncheckedCreateNestedManyWithoutCreatedByInput
+    notificationReads?: ClassroomNotificationReadUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    googleId?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     picture?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10317,11 +13266,14 @@ export namespace Prisma {
     classroomJoinRequests?: ClassroomJoinRequestUpdateManyWithoutUserNestedInput
     dailyGoals?: DailyGoalUpdateManyWithoutUserNestedInput
     dailyReflections?: DailyReflectionUpdateManyWithoutUserNestedInput
+    notificationsCreated?: ClassroomNotificationUpdateManyWithoutCreatedByNestedInput
+    notificationReads?: ClassroomNotificationReadUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    googleId?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     picture?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10332,11 +13284,14 @@ export namespace Prisma {
     classroomJoinRequests?: ClassroomJoinRequestUncheckedUpdateManyWithoutUserNestedInput
     dailyGoals?: DailyGoalUncheckedUpdateManyWithoutUserNestedInput
     dailyReflections?: DailyReflectionUncheckedUpdateManyWithoutUserNestedInput
+    notificationsCreated?: ClassroomNotificationUncheckedUpdateManyWithoutCreatedByNestedInput
+    notificationReads?: ClassroomNotificationReadUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: string
-    googleId: string
+    googleId?: string | null
+    passwordHash?: string | null
     name: string
     email: string
     picture?: string | null
@@ -10346,7 +13301,8 @@ export namespace Prisma {
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    googleId?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     picture?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10356,7 +13312,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    googleId?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     picture?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10375,11 +13332,15 @@ export namespace Prisma {
     goalSettingTime?: string | null
     reflectionTime?: string | null
     tasksPerDay?: number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: string
+    allowLateGoalEdits?: boolean
     host: UserCreateNestedOneWithoutHostedClassroomsInput
     members?: ClassroomMemberCreateNestedManyWithoutClassroomInput
     joinRequests?: ClassroomJoinRequestCreateNestedManyWithoutClassroomInput
     dailyGoals?: DailyGoalCreateNestedManyWithoutClassroomInput
     dailyReflections?: DailyReflectionCreateNestedManyWithoutClassroomInput
+    notifications?: ClassroomNotificationCreateNestedManyWithoutClassroomInput
   }
 
   export type ClassroomUncheckedCreateInput = {
@@ -10394,10 +13355,14 @@ export namespace Prisma {
     goalSettingTime?: string | null
     reflectionTime?: string | null
     tasksPerDay?: number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: string
+    allowLateGoalEdits?: boolean
     members?: ClassroomMemberUncheckedCreateNestedManyWithoutClassroomInput
     joinRequests?: ClassroomJoinRequestUncheckedCreateNestedManyWithoutClassroomInput
     dailyGoals?: DailyGoalUncheckedCreateNestedManyWithoutClassroomInput
     dailyReflections?: DailyReflectionUncheckedCreateNestedManyWithoutClassroomInput
+    notifications?: ClassroomNotificationUncheckedCreateNestedManyWithoutClassroomInput
   }
 
   export type ClassroomUpdateInput = {
@@ -10411,11 +13376,15 @@ export namespace Prisma {
     goalSettingTime?: NullableStringFieldUpdateOperationsInput | string | null
     reflectionTime?: NullableStringFieldUpdateOperationsInput | string | null
     tasksPerDay?: IntFieldUpdateOperationsInput | number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: StringFieldUpdateOperationsInput | string
+    allowLateGoalEdits?: BoolFieldUpdateOperationsInput | boolean
     host?: UserUpdateOneRequiredWithoutHostedClassroomsNestedInput
     members?: ClassroomMemberUpdateManyWithoutClassroomNestedInput
     joinRequests?: ClassroomJoinRequestUpdateManyWithoutClassroomNestedInput
     dailyGoals?: DailyGoalUpdateManyWithoutClassroomNestedInput
     dailyReflections?: DailyReflectionUpdateManyWithoutClassroomNestedInput
+    notifications?: ClassroomNotificationUpdateManyWithoutClassroomNestedInput
   }
 
   export type ClassroomUncheckedUpdateInput = {
@@ -10430,10 +13399,14 @@ export namespace Prisma {
     goalSettingTime?: NullableStringFieldUpdateOperationsInput | string | null
     reflectionTime?: NullableStringFieldUpdateOperationsInput | string | null
     tasksPerDay?: IntFieldUpdateOperationsInput | number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: StringFieldUpdateOperationsInput | string
+    allowLateGoalEdits?: BoolFieldUpdateOperationsInput | boolean
     members?: ClassroomMemberUncheckedUpdateManyWithoutClassroomNestedInput
     joinRequests?: ClassroomJoinRequestUncheckedUpdateManyWithoutClassroomNestedInput
     dailyGoals?: DailyGoalUncheckedUpdateManyWithoutClassroomNestedInput
     dailyReflections?: DailyReflectionUncheckedUpdateManyWithoutClassroomNestedInput
+    notifications?: ClassroomNotificationUncheckedUpdateManyWithoutClassroomNestedInput
   }
 
   export type ClassroomCreateManyInput = {
@@ -10448,6 +13421,9 @@ export namespace Prisma {
     goalSettingTime?: string | null
     reflectionTime?: string | null
     tasksPerDay?: number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: string
+    allowLateGoalEdits?: boolean
   }
 
   export type ClassroomUpdateManyMutationInput = {
@@ -10461,6 +13437,9 @@ export namespace Prisma {
     goalSettingTime?: NullableStringFieldUpdateOperationsInput | string | null
     reflectionTime?: NullableStringFieldUpdateOperationsInput | string | null
     tasksPerDay?: IntFieldUpdateOperationsInput | number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: StringFieldUpdateOperationsInput | string
+    allowLateGoalEdits?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ClassroomUncheckedUpdateManyInput = {
@@ -10475,6 +13454,9 @@ export namespace Prisma {
     goalSettingTime?: NullableStringFieldUpdateOperationsInput | string | null
     reflectionTime?: NullableStringFieldUpdateOperationsInput | string | null
     tasksPerDay?: IntFieldUpdateOperationsInput | number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: StringFieldUpdateOperationsInput | string
+    allowLateGoalEdits?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ClassroomMemberCreateInput = {
@@ -10595,6 +13577,7 @@ export namespace Prisma {
   export type DailyGoalCreateInput = {
     id?: string
     date?: Date | string
+    statement?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutDailyGoalsInput
@@ -10607,6 +13590,7 @@ export namespace Prisma {
     userId: string
     classroomId: string
     date?: Date | string
+    statement?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     tasks?: DailyGoalTaskUncheckedCreateNestedManyWithoutDailyGoalInput
@@ -10615,6 +13599,7 @@ export namespace Prisma {
   export type DailyGoalUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    statement?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutDailyGoalsNestedInput
@@ -10627,6 +13612,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     classroomId?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    statement?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tasks?: DailyGoalTaskUncheckedUpdateManyWithoutDailyGoalNestedInput
@@ -10637,6 +13623,7 @@ export namespace Prisma {
     userId: string
     classroomId: string
     date?: Date | string
+    statement?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10644,6 +13631,7 @@ export namespace Prisma {
   export type DailyGoalUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    statement?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10653,6 +13641,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     classroomId?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    statement?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10716,6 +13705,11 @@ export namespace Prisma {
     id?: string
     date?: Date | string
     content: string
+    assessmentScore?: number | null
+    assessmentCorrect?: number | null
+    assessmentTotal?: number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutDailyReflectionsInput
@@ -10728,6 +13722,11 @@ export namespace Prisma {
     classroomId: string
     date?: Date | string
     content: string
+    assessmentScore?: number | null
+    assessmentCorrect?: number | null
+    assessmentTotal?: number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10736,6 +13735,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    assessmentScore?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentCorrect?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentTotal?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutDailyReflectionsNestedInput
@@ -10748,6 +13752,11 @@ export namespace Prisma {
     classroomId?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    assessmentScore?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentCorrect?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentTotal?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10758,6 +13767,11 @@ export namespace Prisma {
     classroomId: string
     date?: Date | string
     content: string
+    assessmentScore?: number | null
+    assessmentCorrect?: number | null
+    assessmentTotal?: number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10766,6 +13780,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    assessmentScore?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentCorrect?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentTotal?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10776,8 +13795,132 @@ export namespace Prisma {
     classroomId?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    assessmentScore?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentCorrect?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentTotal?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClassroomNotificationCreateInput = {
+    id?: string
+    recipientEmail?: string | null
+    type?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+    classroom: ClassroomCreateNestedOneWithoutNotificationsInput
+    createdBy?: UserCreateNestedOneWithoutNotificationsCreatedInput
+    reads?: ClassroomNotificationReadCreateNestedManyWithoutNotificationInput
+  }
+
+  export type ClassroomNotificationUncheckedCreateInput = {
+    id?: string
+    classroomId: string
+    createdById?: string | null
+    recipientEmail?: string | null
+    type?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+    reads?: ClassroomNotificationReadUncheckedCreateNestedManyWithoutNotificationInput
+  }
+
+  export type ClassroomNotificationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    recipientEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classroom?: ClassroomUpdateOneRequiredWithoutNotificationsNestedInput
+    createdBy?: UserUpdateOneWithoutNotificationsCreatedNestedInput
+    reads?: ClassroomNotificationReadUpdateManyWithoutNotificationNestedInput
+  }
+
+  export type ClassroomNotificationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    classroomId?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
+    recipientEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reads?: ClassroomNotificationReadUncheckedUpdateManyWithoutNotificationNestedInput
+  }
+
+  export type ClassroomNotificationCreateManyInput = {
+    id?: string
+    classroomId: string
+    createdById?: string | null
+    recipientEmail?: string | null
+    type?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ClassroomNotificationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    recipientEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClassroomNotificationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    classroomId?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
+    recipientEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClassroomNotificationReadCreateInput = {
+    readAt?: Date | string
+    notification: ClassroomNotificationCreateNestedOneWithoutReadsInput
+    user: UserCreateNestedOneWithoutNotificationReadsInput
+  }
+
+  export type ClassroomNotificationReadUncheckedCreateInput = {
+    notificationId: string
+    userId: string
+    readAt?: Date | string
+  }
+
+  export type ClassroomNotificationReadUpdateInput = {
+    readAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    notification?: ClassroomNotificationUpdateOneRequiredWithoutReadsNestedInput
+    user?: UserUpdateOneRequiredWithoutNotificationReadsNestedInput
+  }
+
+  export type ClassroomNotificationReadUncheckedUpdateInput = {
+    notificationId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    readAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClassroomNotificationReadCreateManyInput = {
+    notificationId: string
+    userId: string
+    readAt?: Date | string
+  }
+
+  export type ClassroomNotificationReadUpdateManyMutationInput = {
+    readAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClassroomNotificationReadUncheckedUpdateManyInput = {
+    notificationId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    readAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -10851,6 +13994,18 @@ export namespace Prisma {
     none?: DailyReflectionWhereInput
   }
 
+  export type ClassroomNotificationListRelationFilter = {
+    every?: ClassroomNotificationWhereInput
+    some?: ClassroomNotificationWhereInput
+    none?: ClassroomNotificationWhereInput
+  }
+
+  export type ClassroomNotificationReadListRelationFilter = {
+    every?: ClassroomNotificationReadWhereInput
+    some?: ClassroomNotificationReadWhereInput
+    none?: ClassroomNotificationReadWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -10876,9 +14031,18 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type ClassroomNotificationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ClassroomNotificationReadOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     googleId?: SortOrder
+    passwordHash?: SortOrder
     name?: SortOrder
     email?: SortOrder
     picture?: SortOrder
@@ -10889,6 +14053,7 @@ export namespace Prisma {
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     googleId?: SortOrder
+    passwordHash?: SortOrder
     name?: SortOrder
     email?: SortOrder
     picture?: SortOrder
@@ -10899,6 +14064,7 @@ export namespace Prisma {
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     googleId?: SortOrder
+    passwordHash?: SortOrder
     name?: SortOrder
     email?: SortOrder
     picture?: SortOrder
@@ -10966,6 +14132,34 @@ export namespace Prisma {
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
   }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
 
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
@@ -10984,6 +14178,9 @@ export namespace Prisma {
     goalSettingTime?: SortOrder
     reflectionTime?: SortOrder
     tasksPerDay?: SortOrder
+    dayParts?: SortOrder
+    timezone?: SortOrder
+    allowLateGoalEdits?: SortOrder
   }
 
   export type ClassroomAvgOrderByAggregateInput = {
@@ -11002,6 +14199,8 @@ export namespace Prisma {
     goalSettingTime?: SortOrder
     reflectionTime?: SortOrder
     tasksPerDay?: SortOrder
+    timezone?: SortOrder
+    allowLateGoalEdits?: SortOrder
   }
 
   export type ClassroomMinOrderByAggregateInput = {
@@ -11016,6 +14215,8 @@ export namespace Prisma {
     goalSettingTime?: SortOrder
     reflectionTime?: SortOrder
     tasksPerDay?: SortOrder
+    timezone?: SortOrder
+    allowLateGoalEdits?: SortOrder
   }
 
   export type ClassroomSumOrderByAggregateInput = {
@@ -11036,6 +14237,40 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type EnumMemberRoleFilter<$PrismaModel = never> = {
@@ -11159,6 +14394,7 @@ export namespace Prisma {
     userId?: SortOrder
     classroomId?: SortOrder
     date?: SortOrder
+    statement?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -11168,6 +14404,7 @@ export namespace Prisma {
     userId?: SortOrder
     classroomId?: SortOrder
     date?: SortOrder
+    statement?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -11177,13 +14414,9 @@ export namespace Prisma {
     userId?: SortOrder
     classroomId?: SortOrder
     date?: SortOrder
+    statement?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type DailyGoalScalarRelationFilter = {
@@ -11215,12 +14448,26 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type DailyReflectionUserIdClassroomIdDateCompoundUniqueInput = {
@@ -11235,8 +14482,19 @@ export namespace Prisma {
     classroomId?: SortOrder
     date?: SortOrder
     content?: SortOrder
+    assessmentScore?: SortOrder
+    assessmentCorrect?: SortOrder
+    assessmentTotal?: SortOrder
+    assessmentDetails?: SortOrder
+    assessedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type DailyReflectionAvgOrderByAggregateInput = {
+    assessmentScore?: SortOrder
+    assessmentCorrect?: SortOrder
+    assessmentTotal?: SortOrder
   }
 
   export type DailyReflectionMaxOrderByAggregateInput = {
@@ -11245,6 +14503,10 @@ export namespace Prisma {
     classroomId?: SortOrder
     date?: SortOrder
     content?: SortOrder
+    assessmentScore?: SortOrder
+    assessmentCorrect?: SortOrder
+    assessmentTotal?: SortOrder
+    assessedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -11255,8 +14517,114 @@ export namespace Prisma {
     classroomId?: SortOrder
     date?: SortOrder
     content?: SortOrder
+    assessmentScore?: SortOrder
+    assessmentCorrect?: SortOrder
+    assessmentTotal?: SortOrder
+    assessedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type DailyReflectionSumOrderByAggregateInput = {
+    assessmentScore?: SortOrder
+    assessmentCorrect?: SortOrder
+    assessmentTotal?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
+  }
+
+  export type ClassroomNotificationCountOrderByAggregateInput = {
+    id?: SortOrder
+    classroomId?: SortOrder
+    createdById?: SortOrder
+    recipientEmail?: SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ClassroomNotificationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    classroomId?: SortOrder
+    createdById?: SortOrder
+    recipientEmail?: SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ClassroomNotificationMinOrderByAggregateInput = {
+    id?: SortOrder
+    classroomId?: SortOrder
+    createdById?: SortOrder
+    recipientEmail?: SortOrder
+    type?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ClassroomNotificationScalarRelationFilter = {
+    is?: ClassroomNotificationWhereInput
+    isNot?: ClassroomNotificationWhereInput
+  }
+
+  export type ClassroomNotificationReadNotificationIdUserIdCompoundUniqueInput = {
+    notificationId: string
+    userId: string
+  }
+
+  export type ClassroomNotificationReadCountOrderByAggregateInput = {
+    notificationId?: SortOrder
+    userId?: SortOrder
+    readAt?: SortOrder
+  }
+
+  export type ClassroomNotificationReadMaxOrderByAggregateInput = {
+    notificationId?: SortOrder
+    userId?: SortOrder
+    readAt?: SortOrder
+  }
+
+  export type ClassroomNotificationReadMinOrderByAggregateInput = {
+    notificationId?: SortOrder
+    userId?: SortOrder
+    readAt?: SortOrder
   }
 
   export type ClassroomCreateNestedManyWithoutHostInput = {
@@ -11294,6 +14662,20 @@ export namespace Prisma {
     connect?: DailyReflectionWhereUniqueInput | DailyReflectionWhereUniqueInput[]
   }
 
+  export type ClassroomNotificationCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<ClassroomNotificationCreateWithoutCreatedByInput, ClassroomNotificationUncheckedCreateWithoutCreatedByInput> | ClassroomNotificationCreateWithoutCreatedByInput[] | ClassroomNotificationUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ClassroomNotificationCreateOrConnectWithoutCreatedByInput | ClassroomNotificationCreateOrConnectWithoutCreatedByInput[]
+    createMany?: ClassroomNotificationCreateManyCreatedByInputEnvelope
+    connect?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+  }
+
+  export type ClassroomNotificationReadCreateNestedManyWithoutUserInput = {
+    create?: XOR<ClassroomNotificationReadCreateWithoutUserInput, ClassroomNotificationReadUncheckedCreateWithoutUserInput> | ClassroomNotificationReadCreateWithoutUserInput[] | ClassroomNotificationReadUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ClassroomNotificationReadCreateOrConnectWithoutUserInput | ClassroomNotificationReadCreateOrConnectWithoutUserInput[]
+    createMany?: ClassroomNotificationReadCreateManyUserInputEnvelope
+    connect?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+  }
+
   export type ClassroomUncheckedCreateNestedManyWithoutHostInput = {
     create?: XOR<ClassroomCreateWithoutHostInput, ClassroomUncheckedCreateWithoutHostInput> | ClassroomCreateWithoutHostInput[] | ClassroomUncheckedCreateWithoutHostInput[]
     connectOrCreate?: ClassroomCreateOrConnectWithoutHostInput | ClassroomCreateOrConnectWithoutHostInput[]
@@ -11327,6 +14709,20 @@ export namespace Prisma {
     connectOrCreate?: DailyReflectionCreateOrConnectWithoutUserInput | DailyReflectionCreateOrConnectWithoutUserInput[]
     createMany?: DailyReflectionCreateManyUserInputEnvelope
     connect?: DailyReflectionWhereUniqueInput | DailyReflectionWhereUniqueInput[]
+  }
+
+  export type ClassroomNotificationUncheckedCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<ClassroomNotificationCreateWithoutCreatedByInput, ClassroomNotificationUncheckedCreateWithoutCreatedByInput> | ClassroomNotificationCreateWithoutCreatedByInput[] | ClassroomNotificationUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ClassroomNotificationCreateOrConnectWithoutCreatedByInput | ClassroomNotificationCreateOrConnectWithoutCreatedByInput[]
+    createMany?: ClassroomNotificationCreateManyCreatedByInputEnvelope
+    connect?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+  }
+
+  export type ClassroomNotificationReadUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ClassroomNotificationReadCreateWithoutUserInput, ClassroomNotificationReadUncheckedCreateWithoutUserInput> | ClassroomNotificationReadCreateWithoutUserInput[] | ClassroomNotificationReadUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ClassroomNotificationReadCreateOrConnectWithoutUserInput | ClassroomNotificationReadCreateOrConnectWithoutUserInput[]
+    createMany?: ClassroomNotificationReadCreateManyUserInputEnvelope
+    connect?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -11411,6 +14807,34 @@ export namespace Prisma {
     deleteMany?: DailyReflectionScalarWhereInput | DailyReflectionScalarWhereInput[]
   }
 
+  export type ClassroomNotificationUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<ClassroomNotificationCreateWithoutCreatedByInput, ClassroomNotificationUncheckedCreateWithoutCreatedByInput> | ClassroomNotificationCreateWithoutCreatedByInput[] | ClassroomNotificationUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ClassroomNotificationCreateOrConnectWithoutCreatedByInput | ClassroomNotificationCreateOrConnectWithoutCreatedByInput[]
+    upsert?: ClassroomNotificationUpsertWithWhereUniqueWithoutCreatedByInput | ClassroomNotificationUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: ClassroomNotificationCreateManyCreatedByInputEnvelope
+    set?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+    disconnect?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+    delete?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+    connect?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+    update?: ClassroomNotificationUpdateWithWhereUniqueWithoutCreatedByInput | ClassroomNotificationUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: ClassroomNotificationUpdateManyWithWhereWithoutCreatedByInput | ClassroomNotificationUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: ClassroomNotificationScalarWhereInput | ClassroomNotificationScalarWhereInput[]
+  }
+
+  export type ClassroomNotificationReadUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ClassroomNotificationReadCreateWithoutUserInput, ClassroomNotificationReadUncheckedCreateWithoutUserInput> | ClassroomNotificationReadCreateWithoutUserInput[] | ClassroomNotificationReadUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ClassroomNotificationReadCreateOrConnectWithoutUserInput | ClassroomNotificationReadCreateOrConnectWithoutUserInput[]
+    upsert?: ClassroomNotificationReadUpsertWithWhereUniqueWithoutUserInput | ClassroomNotificationReadUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ClassroomNotificationReadCreateManyUserInputEnvelope
+    set?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+    disconnect?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+    delete?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+    connect?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+    update?: ClassroomNotificationReadUpdateWithWhereUniqueWithoutUserInput | ClassroomNotificationReadUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ClassroomNotificationReadUpdateManyWithWhereWithoutUserInput | ClassroomNotificationReadUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ClassroomNotificationReadScalarWhereInput | ClassroomNotificationReadScalarWhereInput[]
+  }
+
   export type ClassroomUncheckedUpdateManyWithoutHostNestedInput = {
     create?: XOR<ClassroomCreateWithoutHostInput, ClassroomUncheckedCreateWithoutHostInput> | ClassroomCreateWithoutHostInput[] | ClassroomUncheckedCreateWithoutHostInput[]
     connectOrCreate?: ClassroomCreateOrConnectWithoutHostInput | ClassroomCreateOrConnectWithoutHostInput[]
@@ -11481,6 +14905,34 @@ export namespace Prisma {
     deleteMany?: DailyReflectionScalarWhereInput | DailyReflectionScalarWhereInput[]
   }
 
+  export type ClassroomNotificationUncheckedUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<ClassroomNotificationCreateWithoutCreatedByInput, ClassroomNotificationUncheckedCreateWithoutCreatedByInput> | ClassroomNotificationCreateWithoutCreatedByInput[] | ClassroomNotificationUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: ClassroomNotificationCreateOrConnectWithoutCreatedByInput | ClassroomNotificationCreateOrConnectWithoutCreatedByInput[]
+    upsert?: ClassroomNotificationUpsertWithWhereUniqueWithoutCreatedByInput | ClassroomNotificationUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: ClassroomNotificationCreateManyCreatedByInputEnvelope
+    set?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+    disconnect?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+    delete?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+    connect?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+    update?: ClassroomNotificationUpdateWithWhereUniqueWithoutCreatedByInput | ClassroomNotificationUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: ClassroomNotificationUpdateManyWithWhereWithoutCreatedByInput | ClassroomNotificationUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: ClassroomNotificationScalarWhereInput | ClassroomNotificationScalarWhereInput[]
+  }
+
+  export type ClassroomNotificationReadUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ClassroomNotificationReadCreateWithoutUserInput, ClassroomNotificationReadUncheckedCreateWithoutUserInput> | ClassroomNotificationReadCreateWithoutUserInput[] | ClassroomNotificationReadUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ClassroomNotificationReadCreateOrConnectWithoutUserInput | ClassroomNotificationReadCreateOrConnectWithoutUserInput[]
+    upsert?: ClassroomNotificationReadUpsertWithWhereUniqueWithoutUserInput | ClassroomNotificationReadUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ClassroomNotificationReadCreateManyUserInputEnvelope
+    set?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+    disconnect?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+    delete?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+    connect?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+    update?: ClassroomNotificationReadUpdateWithWhereUniqueWithoutUserInput | ClassroomNotificationReadUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ClassroomNotificationReadUpdateManyWithWhereWithoutUserInput | ClassroomNotificationReadUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ClassroomNotificationReadScalarWhereInput | ClassroomNotificationReadScalarWhereInput[]
+  }
+
   export type UserCreateNestedOneWithoutHostedClassroomsInput = {
     create?: XOR<UserCreateWithoutHostedClassroomsInput, UserUncheckedCreateWithoutHostedClassroomsInput>
     connectOrCreate?: UserCreateOrConnectWithoutHostedClassroomsInput
@@ -11515,6 +14967,13 @@ export namespace Prisma {
     connect?: DailyReflectionWhereUniqueInput | DailyReflectionWhereUniqueInput[]
   }
 
+  export type ClassroomNotificationCreateNestedManyWithoutClassroomInput = {
+    create?: XOR<ClassroomNotificationCreateWithoutClassroomInput, ClassroomNotificationUncheckedCreateWithoutClassroomInput> | ClassroomNotificationCreateWithoutClassroomInput[] | ClassroomNotificationUncheckedCreateWithoutClassroomInput[]
+    connectOrCreate?: ClassroomNotificationCreateOrConnectWithoutClassroomInput | ClassroomNotificationCreateOrConnectWithoutClassroomInput[]
+    createMany?: ClassroomNotificationCreateManyClassroomInputEnvelope
+    connect?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+  }
+
   export type ClassroomMemberUncheckedCreateNestedManyWithoutClassroomInput = {
     create?: XOR<ClassroomMemberCreateWithoutClassroomInput, ClassroomMemberUncheckedCreateWithoutClassroomInput> | ClassroomMemberCreateWithoutClassroomInput[] | ClassroomMemberUncheckedCreateWithoutClassroomInput[]
     connectOrCreate?: ClassroomMemberCreateOrConnectWithoutClassroomInput | ClassroomMemberCreateOrConnectWithoutClassroomInput[]
@@ -11543,12 +15002,23 @@ export namespace Prisma {
     connect?: DailyReflectionWhereUniqueInput | DailyReflectionWhereUniqueInput[]
   }
 
+  export type ClassroomNotificationUncheckedCreateNestedManyWithoutClassroomInput = {
+    create?: XOR<ClassroomNotificationCreateWithoutClassroomInput, ClassroomNotificationUncheckedCreateWithoutClassroomInput> | ClassroomNotificationCreateWithoutClassroomInput[] | ClassroomNotificationUncheckedCreateWithoutClassroomInput[]
+    connectOrCreate?: ClassroomNotificationCreateOrConnectWithoutClassroomInput | ClassroomNotificationCreateOrConnectWithoutClassroomInput[]
+    createMany?: ClassroomNotificationCreateManyClassroomInputEnvelope
+    connect?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type UserUpdateOneRequiredWithoutHostedClassroomsNestedInput = {
@@ -11615,6 +15085,20 @@ export namespace Prisma {
     deleteMany?: DailyReflectionScalarWhereInput | DailyReflectionScalarWhereInput[]
   }
 
+  export type ClassroomNotificationUpdateManyWithoutClassroomNestedInput = {
+    create?: XOR<ClassroomNotificationCreateWithoutClassroomInput, ClassroomNotificationUncheckedCreateWithoutClassroomInput> | ClassroomNotificationCreateWithoutClassroomInput[] | ClassroomNotificationUncheckedCreateWithoutClassroomInput[]
+    connectOrCreate?: ClassroomNotificationCreateOrConnectWithoutClassroomInput | ClassroomNotificationCreateOrConnectWithoutClassroomInput[]
+    upsert?: ClassroomNotificationUpsertWithWhereUniqueWithoutClassroomInput | ClassroomNotificationUpsertWithWhereUniqueWithoutClassroomInput[]
+    createMany?: ClassroomNotificationCreateManyClassroomInputEnvelope
+    set?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+    disconnect?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+    delete?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+    connect?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+    update?: ClassroomNotificationUpdateWithWhereUniqueWithoutClassroomInput | ClassroomNotificationUpdateWithWhereUniqueWithoutClassroomInput[]
+    updateMany?: ClassroomNotificationUpdateManyWithWhereWithoutClassroomInput | ClassroomNotificationUpdateManyWithWhereWithoutClassroomInput[]
+    deleteMany?: ClassroomNotificationScalarWhereInput | ClassroomNotificationScalarWhereInput[]
+  }
+
   export type ClassroomMemberUncheckedUpdateManyWithoutClassroomNestedInput = {
     create?: XOR<ClassroomMemberCreateWithoutClassroomInput, ClassroomMemberUncheckedCreateWithoutClassroomInput> | ClassroomMemberCreateWithoutClassroomInput[] | ClassroomMemberUncheckedCreateWithoutClassroomInput[]
     connectOrCreate?: ClassroomMemberCreateOrConnectWithoutClassroomInput | ClassroomMemberCreateOrConnectWithoutClassroomInput[]
@@ -11669,6 +15153,20 @@ export namespace Prisma {
     update?: DailyReflectionUpdateWithWhereUniqueWithoutClassroomInput | DailyReflectionUpdateWithWhereUniqueWithoutClassroomInput[]
     updateMany?: DailyReflectionUpdateManyWithWhereWithoutClassroomInput | DailyReflectionUpdateManyWithWhereWithoutClassroomInput[]
     deleteMany?: DailyReflectionScalarWhereInput | DailyReflectionScalarWhereInput[]
+  }
+
+  export type ClassroomNotificationUncheckedUpdateManyWithoutClassroomNestedInput = {
+    create?: XOR<ClassroomNotificationCreateWithoutClassroomInput, ClassroomNotificationUncheckedCreateWithoutClassroomInput> | ClassroomNotificationCreateWithoutClassroomInput[] | ClassroomNotificationUncheckedCreateWithoutClassroomInput[]
+    connectOrCreate?: ClassroomNotificationCreateOrConnectWithoutClassroomInput | ClassroomNotificationCreateOrConnectWithoutClassroomInput[]
+    upsert?: ClassroomNotificationUpsertWithWhereUniqueWithoutClassroomInput | ClassroomNotificationUpsertWithWhereUniqueWithoutClassroomInput[]
+    createMany?: ClassroomNotificationCreateManyClassroomInputEnvelope
+    set?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+    disconnect?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+    delete?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+    connect?: ClassroomNotificationWhereUniqueInput | ClassroomNotificationWhereUniqueInput[]
+    update?: ClassroomNotificationUpdateWithWhereUniqueWithoutClassroomInput | ClassroomNotificationUpdateWithWhereUniqueWithoutClassroomInput[]
+    updateMany?: ClassroomNotificationUpdateManyWithWhereWithoutClassroomInput | ClassroomNotificationUpdateManyWithWhereWithoutClassroomInput[]
+    deleteMany?: ClassroomNotificationScalarWhereInput | ClassroomNotificationScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutMembershipsInput = {
@@ -11811,10 +15309,6 @@ export namespace Prisma {
     connect?: DailyGoalWhereUniqueInput
   }
 
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
-  }
-
   export type DailyGoalUpdateOneRequiredWithoutTasksNestedInput = {
     create?: XOR<DailyGoalCreateWithoutTasksInput, DailyGoalUncheckedCreateWithoutTasksInput>
     connectOrCreate?: DailyGoalCreateOrConnectWithoutTasksInput
@@ -11835,6 +15329,18 @@ export namespace Prisma {
     connect?: ClassroomWhereUniqueInput
   }
 
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type UserUpdateOneRequiredWithoutDailyReflectionsNestedInput = {
     create?: XOR<UserCreateWithoutDailyReflectionsInput, UserUncheckedCreateWithoutDailyReflectionsInput>
     connectOrCreate?: UserCreateOrConnectWithoutDailyReflectionsInput
@@ -11849,6 +15355,106 @@ export namespace Prisma {
     upsert?: ClassroomUpsertWithoutDailyReflectionsInput
     connect?: ClassroomWhereUniqueInput
     update?: XOR<XOR<ClassroomUpdateToOneWithWhereWithoutDailyReflectionsInput, ClassroomUpdateWithoutDailyReflectionsInput>, ClassroomUncheckedUpdateWithoutDailyReflectionsInput>
+  }
+
+  export type ClassroomCreateNestedOneWithoutNotificationsInput = {
+    create?: XOR<ClassroomCreateWithoutNotificationsInput, ClassroomUncheckedCreateWithoutNotificationsInput>
+    connectOrCreate?: ClassroomCreateOrConnectWithoutNotificationsInput
+    connect?: ClassroomWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutNotificationsCreatedInput = {
+    create?: XOR<UserCreateWithoutNotificationsCreatedInput, UserUncheckedCreateWithoutNotificationsCreatedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNotificationsCreatedInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ClassroomNotificationReadCreateNestedManyWithoutNotificationInput = {
+    create?: XOR<ClassroomNotificationReadCreateWithoutNotificationInput, ClassroomNotificationReadUncheckedCreateWithoutNotificationInput> | ClassroomNotificationReadCreateWithoutNotificationInput[] | ClassroomNotificationReadUncheckedCreateWithoutNotificationInput[]
+    connectOrCreate?: ClassroomNotificationReadCreateOrConnectWithoutNotificationInput | ClassroomNotificationReadCreateOrConnectWithoutNotificationInput[]
+    createMany?: ClassroomNotificationReadCreateManyNotificationInputEnvelope
+    connect?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+  }
+
+  export type ClassroomNotificationReadUncheckedCreateNestedManyWithoutNotificationInput = {
+    create?: XOR<ClassroomNotificationReadCreateWithoutNotificationInput, ClassroomNotificationReadUncheckedCreateWithoutNotificationInput> | ClassroomNotificationReadCreateWithoutNotificationInput[] | ClassroomNotificationReadUncheckedCreateWithoutNotificationInput[]
+    connectOrCreate?: ClassroomNotificationReadCreateOrConnectWithoutNotificationInput | ClassroomNotificationReadCreateOrConnectWithoutNotificationInput[]
+    createMany?: ClassroomNotificationReadCreateManyNotificationInputEnvelope
+    connect?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+  }
+
+  export type ClassroomUpdateOneRequiredWithoutNotificationsNestedInput = {
+    create?: XOR<ClassroomCreateWithoutNotificationsInput, ClassroomUncheckedCreateWithoutNotificationsInput>
+    connectOrCreate?: ClassroomCreateOrConnectWithoutNotificationsInput
+    upsert?: ClassroomUpsertWithoutNotificationsInput
+    connect?: ClassroomWhereUniqueInput
+    update?: XOR<XOR<ClassroomUpdateToOneWithWhereWithoutNotificationsInput, ClassroomUpdateWithoutNotificationsInput>, ClassroomUncheckedUpdateWithoutNotificationsInput>
+  }
+
+  export type UserUpdateOneWithoutNotificationsCreatedNestedInput = {
+    create?: XOR<UserCreateWithoutNotificationsCreatedInput, UserUncheckedCreateWithoutNotificationsCreatedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNotificationsCreatedInput
+    upsert?: UserUpsertWithoutNotificationsCreatedInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNotificationsCreatedInput, UserUpdateWithoutNotificationsCreatedInput>, UserUncheckedUpdateWithoutNotificationsCreatedInput>
+  }
+
+  export type ClassroomNotificationReadUpdateManyWithoutNotificationNestedInput = {
+    create?: XOR<ClassroomNotificationReadCreateWithoutNotificationInput, ClassroomNotificationReadUncheckedCreateWithoutNotificationInput> | ClassroomNotificationReadCreateWithoutNotificationInput[] | ClassroomNotificationReadUncheckedCreateWithoutNotificationInput[]
+    connectOrCreate?: ClassroomNotificationReadCreateOrConnectWithoutNotificationInput | ClassroomNotificationReadCreateOrConnectWithoutNotificationInput[]
+    upsert?: ClassroomNotificationReadUpsertWithWhereUniqueWithoutNotificationInput | ClassroomNotificationReadUpsertWithWhereUniqueWithoutNotificationInput[]
+    createMany?: ClassroomNotificationReadCreateManyNotificationInputEnvelope
+    set?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+    disconnect?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+    delete?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+    connect?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+    update?: ClassroomNotificationReadUpdateWithWhereUniqueWithoutNotificationInput | ClassroomNotificationReadUpdateWithWhereUniqueWithoutNotificationInput[]
+    updateMany?: ClassroomNotificationReadUpdateManyWithWhereWithoutNotificationInput | ClassroomNotificationReadUpdateManyWithWhereWithoutNotificationInput[]
+    deleteMany?: ClassroomNotificationReadScalarWhereInput | ClassroomNotificationReadScalarWhereInput[]
+  }
+
+  export type ClassroomNotificationReadUncheckedUpdateManyWithoutNotificationNestedInput = {
+    create?: XOR<ClassroomNotificationReadCreateWithoutNotificationInput, ClassroomNotificationReadUncheckedCreateWithoutNotificationInput> | ClassroomNotificationReadCreateWithoutNotificationInput[] | ClassroomNotificationReadUncheckedCreateWithoutNotificationInput[]
+    connectOrCreate?: ClassroomNotificationReadCreateOrConnectWithoutNotificationInput | ClassroomNotificationReadCreateOrConnectWithoutNotificationInput[]
+    upsert?: ClassroomNotificationReadUpsertWithWhereUniqueWithoutNotificationInput | ClassroomNotificationReadUpsertWithWhereUniqueWithoutNotificationInput[]
+    createMany?: ClassroomNotificationReadCreateManyNotificationInputEnvelope
+    set?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+    disconnect?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+    delete?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+    connect?: ClassroomNotificationReadWhereUniqueInput | ClassroomNotificationReadWhereUniqueInput[]
+    update?: ClassroomNotificationReadUpdateWithWhereUniqueWithoutNotificationInput | ClassroomNotificationReadUpdateWithWhereUniqueWithoutNotificationInput[]
+    updateMany?: ClassroomNotificationReadUpdateManyWithWhereWithoutNotificationInput | ClassroomNotificationReadUpdateManyWithWhereWithoutNotificationInput[]
+    deleteMany?: ClassroomNotificationReadScalarWhereInput | ClassroomNotificationReadScalarWhereInput[]
+  }
+
+  export type ClassroomNotificationCreateNestedOneWithoutReadsInput = {
+    create?: XOR<ClassroomNotificationCreateWithoutReadsInput, ClassroomNotificationUncheckedCreateWithoutReadsInput>
+    connectOrCreate?: ClassroomNotificationCreateOrConnectWithoutReadsInput
+    connect?: ClassroomNotificationWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutNotificationReadsInput = {
+    create?: XOR<UserCreateWithoutNotificationReadsInput, UserUncheckedCreateWithoutNotificationReadsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNotificationReadsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ClassroomNotificationUpdateOneRequiredWithoutReadsNestedInput = {
+    create?: XOR<ClassroomNotificationCreateWithoutReadsInput, ClassroomNotificationUncheckedCreateWithoutReadsInput>
+    connectOrCreate?: ClassroomNotificationCreateOrConnectWithoutReadsInput
+    upsert?: ClassroomNotificationUpsertWithoutReadsInput
+    connect?: ClassroomNotificationWhereUniqueInput
+    update?: XOR<XOR<ClassroomNotificationUpdateToOneWithWhereWithoutReadsInput, ClassroomNotificationUpdateWithoutReadsInput>, ClassroomNotificationUncheckedUpdateWithoutReadsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutNotificationReadsNestedInput = {
+    create?: XOR<UserCreateWithoutNotificationReadsInput, UserUncheckedCreateWithoutNotificationReadsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNotificationReadsInput
+    upsert?: UserUpsertWithoutNotificationReadsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNotificationReadsInput, UserUpdateWithoutNotificationReadsInput>, UserUncheckedUpdateWithoutNotificationReadsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -11960,6 +15566,11 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -11985,6 +15596,37 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedEnumMemberRoleFilter<$PrismaModel = never> = {
@@ -12021,17 +15663,56 @@ export namespace Prisma {
     _max?: NestedEnumJoinRequestStatusFilter<$PrismaModel>
   }
 
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type ClassroomCreateWithoutHostInput = {
@@ -12045,10 +15726,14 @@ export namespace Prisma {
     goalSettingTime?: string | null
     reflectionTime?: string | null
     tasksPerDay?: number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: string
+    allowLateGoalEdits?: boolean
     members?: ClassroomMemberCreateNestedManyWithoutClassroomInput
     joinRequests?: ClassroomJoinRequestCreateNestedManyWithoutClassroomInput
     dailyGoals?: DailyGoalCreateNestedManyWithoutClassroomInput
     dailyReflections?: DailyReflectionCreateNestedManyWithoutClassroomInput
+    notifications?: ClassroomNotificationCreateNestedManyWithoutClassroomInput
   }
 
   export type ClassroomUncheckedCreateWithoutHostInput = {
@@ -12062,10 +15747,14 @@ export namespace Prisma {
     goalSettingTime?: string | null
     reflectionTime?: string | null
     tasksPerDay?: number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: string
+    allowLateGoalEdits?: boolean
     members?: ClassroomMemberUncheckedCreateNestedManyWithoutClassroomInput
     joinRequests?: ClassroomJoinRequestUncheckedCreateNestedManyWithoutClassroomInput
     dailyGoals?: DailyGoalUncheckedCreateNestedManyWithoutClassroomInput
     dailyReflections?: DailyReflectionUncheckedCreateNestedManyWithoutClassroomInput
+    notifications?: ClassroomNotificationUncheckedCreateNestedManyWithoutClassroomInput
   }
 
   export type ClassroomCreateOrConnectWithoutHostInput = {
@@ -12131,6 +15820,7 @@ export namespace Prisma {
   export type DailyGoalCreateWithoutUserInput = {
     id?: string
     date?: Date | string
+    statement?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     classroom: ClassroomCreateNestedOneWithoutDailyGoalsInput
@@ -12141,6 +15831,7 @@ export namespace Prisma {
     id?: string
     classroomId: string
     date?: Date | string
+    statement?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     tasks?: DailyGoalTaskUncheckedCreateNestedManyWithoutDailyGoalInput
@@ -12160,6 +15851,11 @@ export namespace Prisma {
     id?: string
     date?: Date | string
     content: string
+    assessmentScore?: number | null
+    assessmentCorrect?: number | null
+    assessmentTotal?: number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     classroom: ClassroomCreateNestedOneWithoutDailyReflectionsInput
@@ -12170,6 +15866,11 @@ export namespace Prisma {
     classroomId: string
     date?: Date | string
     content: string
+    assessmentScore?: number | null
+    assessmentCorrect?: number | null
+    assessmentTotal?: number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -12181,6 +15882,58 @@ export namespace Prisma {
 
   export type DailyReflectionCreateManyUserInputEnvelope = {
     data: DailyReflectionCreateManyUserInput | DailyReflectionCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ClassroomNotificationCreateWithoutCreatedByInput = {
+    id?: string
+    recipientEmail?: string | null
+    type?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+    classroom: ClassroomCreateNestedOneWithoutNotificationsInput
+    reads?: ClassroomNotificationReadCreateNestedManyWithoutNotificationInput
+  }
+
+  export type ClassroomNotificationUncheckedCreateWithoutCreatedByInput = {
+    id?: string
+    classroomId: string
+    recipientEmail?: string | null
+    type?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+    reads?: ClassroomNotificationReadUncheckedCreateNestedManyWithoutNotificationInput
+  }
+
+  export type ClassroomNotificationCreateOrConnectWithoutCreatedByInput = {
+    where: ClassroomNotificationWhereUniqueInput
+    create: XOR<ClassroomNotificationCreateWithoutCreatedByInput, ClassroomNotificationUncheckedCreateWithoutCreatedByInput>
+  }
+
+  export type ClassroomNotificationCreateManyCreatedByInputEnvelope = {
+    data: ClassroomNotificationCreateManyCreatedByInput | ClassroomNotificationCreateManyCreatedByInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ClassroomNotificationReadCreateWithoutUserInput = {
+    readAt?: Date | string
+    notification: ClassroomNotificationCreateNestedOneWithoutReadsInput
+  }
+
+  export type ClassroomNotificationReadUncheckedCreateWithoutUserInput = {
+    notificationId: string
+    readAt?: Date | string
+  }
+
+  export type ClassroomNotificationReadCreateOrConnectWithoutUserInput = {
+    where: ClassroomNotificationReadWhereUniqueInput
+    create: XOR<ClassroomNotificationReadCreateWithoutUserInput, ClassroomNotificationReadUncheckedCreateWithoutUserInput>
+  }
+
+  export type ClassroomNotificationReadCreateManyUserInputEnvelope = {
+    data: ClassroomNotificationReadCreateManyUserInput | ClassroomNotificationReadCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -12215,6 +15968,9 @@ export namespace Prisma {
     goalSettingTime?: StringNullableFilter<"Classroom"> | string | null
     reflectionTime?: StringNullableFilter<"Classroom"> | string | null
     tasksPerDay?: IntFilter<"Classroom"> | number
+    dayParts?: JsonNullableFilter<"Classroom">
+    timezone?: StringFilter<"Classroom"> | string
+    allowLateGoalEdits?: BoolFilter<"Classroom"> | boolean
   }
 
   export type ClassroomMemberUpsertWithWhereUniqueWithoutUserInput = {
@@ -12296,6 +16052,7 @@ export namespace Prisma {
     userId?: StringFilter<"DailyGoal"> | string
     classroomId?: StringFilter<"DailyGoal"> | string
     date?: DateTimeFilter<"DailyGoal"> | Date | string
+    statement?: StringNullableFilter<"DailyGoal"> | string | null
     createdAt?: DateTimeFilter<"DailyGoal"> | Date | string
     updatedAt?: DateTimeFilter<"DailyGoal"> | Date | string
   }
@@ -12325,13 +16082,74 @@ export namespace Prisma {
     classroomId?: StringFilter<"DailyReflection"> | string
     date?: DateTimeFilter<"DailyReflection"> | Date | string
     content?: StringFilter<"DailyReflection"> | string
+    assessmentScore?: IntNullableFilter<"DailyReflection"> | number | null
+    assessmentCorrect?: IntNullableFilter<"DailyReflection"> | number | null
+    assessmentTotal?: IntNullableFilter<"DailyReflection"> | number | null
+    assessmentDetails?: JsonNullableFilter<"DailyReflection">
+    assessedAt?: DateTimeNullableFilter<"DailyReflection"> | Date | string | null
     createdAt?: DateTimeFilter<"DailyReflection"> | Date | string
     updatedAt?: DateTimeFilter<"DailyReflection"> | Date | string
   }
 
+  export type ClassroomNotificationUpsertWithWhereUniqueWithoutCreatedByInput = {
+    where: ClassroomNotificationWhereUniqueInput
+    update: XOR<ClassroomNotificationUpdateWithoutCreatedByInput, ClassroomNotificationUncheckedUpdateWithoutCreatedByInput>
+    create: XOR<ClassroomNotificationCreateWithoutCreatedByInput, ClassroomNotificationUncheckedCreateWithoutCreatedByInput>
+  }
+
+  export type ClassroomNotificationUpdateWithWhereUniqueWithoutCreatedByInput = {
+    where: ClassroomNotificationWhereUniqueInput
+    data: XOR<ClassroomNotificationUpdateWithoutCreatedByInput, ClassroomNotificationUncheckedUpdateWithoutCreatedByInput>
+  }
+
+  export type ClassroomNotificationUpdateManyWithWhereWithoutCreatedByInput = {
+    where: ClassroomNotificationScalarWhereInput
+    data: XOR<ClassroomNotificationUpdateManyMutationInput, ClassroomNotificationUncheckedUpdateManyWithoutCreatedByInput>
+  }
+
+  export type ClassroomNotificationScalarWhereInput = {
+    AND?: ClassroomNotificationScalarWhereInput | ClassroomNotificationScalarWhereInput[]
+    OR?: ClassroomNotificationScalarWhereInput[]
+    NOT?: ClassroomNotificationScalarWhereInput | ClassroomNotificationScalarWhereInput[]
+    id?: StringFilter<"ClassroomNotification"> | string
+    classroomId?: StringFilter<"ClassroomNotification"> | string
+    createdById?: StringNullableFilter<"ClassroomNotification"> | string | null
+    recipientEmail?: StringNullableFilter<"ClassroomNotification"> | string | null
+    type?: StringFilter<"ClassroomNotification"> | string
+    title?: StringFilter<"ClassroomNotification"> | string
+    content?: StringFilter<"ClassroomNotification"> | string
+    createdAt?: DateTimeFilter<"ClassroomNotification"> | Date | string
+  }
+
+  export type ClassroomNotificationReadUpsertWithWhereUniqueWithoutUserInput = {
+    where: ClassroomNotificationReadWhereUniqueInput
+    update: XOR<ClassroomNotificationReadUpdateWithoutUserInput, ClassroomNotificationReadUncheckedUpdateWithoutUserInput>
+    create: XOR<ClassroomNotificationReadCreateWithoutUserInput, ClassroomNotificationReadUncheckedCreateWithoutUserInput>
+  }
+
+  export type ClassroomNotificationReadUpdateWithWhereUniqueWithoutUserInput = {
+    where: ClassroomNotificationReadWhereUniqueInput
+    data: XOR<ClassroomNotificationReadUpdateWithoutUserInput, ClassroomNotificationReadUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ClassroomNotificationReadUpdateManyWithWhereWithoutUserInput = {
+    where: ClassroomNotificationReadScalarWhereInput
+    data: XOR<ClassroomNotificationReadUpdateManyMutationInput, ClassroomNotificationReadUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ClassroomNotificationReadScalarWhereInput = {
+    AND?: ClassroomNotificationReadScalarWhereInput | ClassroomNotificationReadScalarWhereInput[]
+    OR?: ClassroomNotificationReadScalarWhereInput[]
+    NOT?: ClassroomNotificationReadScalarWhereInput | ClassroomNotificationReadScalarWhereInput[]
+    notificationId?: StringFilter<"ClassroomNotificationRead"> | string
+    userId?: StringFilter<"ClassroomNotificationRead"> | string
+    readAt?: DateTimeFilter<"ClassroomNotificationRead"> | Date | string
+  }
+
   export type UserCreateWithoutHostedClassroomsInput = {
     id?: string
-    googleId: string
+    googleId?: string | null
+    passwordHash?: string | null
     name: string
     email: string
     picture?: string | null
@@ -12341,11 +16159,14 @@ export namespace Prisma {
     classroomJoinRequests?: ClassroomJoinRequestCreateNestedManyWithoutUserInput
     dailyGoals?: DailyGoalCreateNestedManyWithoutUserInput
     dailyReflections?: DailyReflectionCreateNestedManyWithoutUserInput
+    notificationsCreated?: ClassroomNotificationCreateNestedManyWithoutCreatedByInput
+    notificationReads?: ClassroomNotificationReadCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutHostedClassroomsInput = {
     id?: string
-    googleId: string
+    googleId?: string | null
+    passwordHash?: string | null
     name: string
     email: string
     picture?: string | null
@@ -12355,6 +16176,8 @@ export namespace Prisma {
     classroomJoinRequests?: ClassroomJoinRequestUncheckedCreateNestedManyWithoutUserInput
     dailyGoals?: DailyGoalUncheckedCreateNestedManyWithoutUserInput
     dailyReflections?: DailyReflectionUncheckedCreateNestedManyWithoutUserInput
+    notificationsCreated?: ClassroomNotificationUncheckedCreateNestedManyWithoutCreatedByInput
+    notificationReads?: ClassroomNotificationReadUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutHostedClassroomsInput = {
@@ -12415,6 +16238,7 @@ export namespace Prisma {
   export type DailyGoalCreateWithoutClassroomInput = {
     id?: string
     date?: Date | string
+    statement?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutDailyGoalsInput
@@ -12425,6 +16249,7 @@ export namespace Prisma {
     id?: string
     userId: string
     date?: Date | string
+    statement?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     tasks?: DailyGoalTaskUncheckedCreateNestedManyWithoutDailyGoalInput
@@ -12444,6 +16269,11 @@ export namespace Prisma {
     id?: string
     date?: Date | string
     content: string
+    assessmentScore?: number | null
+    assessmentCorrect?: number | null
+    assessmentTotal?: number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutDailyReflectionsInput
@@ -12454,6 +16284,11 @@ export namespace Prisma {
     userId: string
     date?: Date | string
     content: string
+    assessmentScore?: number | null
+    assessmentCorrect?: number | null
+    assessmentTotal?: number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -12465,6 +16300,38 @@ export namespace Prisma {
 
   export type DailyReflectionCreateManyClassroomInputEnvelope = {
     data: DailyReflectionCreateManyClassroomInput | DailyReflectionCreateManyClassroomInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ClassroomNotificationCreateWithoutClassroomInput = {
+    id?: string
+    recipientEmail?: string | null
+    type?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+    createdBy?: UserCreateNestedOneWithoutNotificationsCreatedInput
+    reads?: ClassroomNotificationReadCreateNestedManyWithoutNotificationInput
+  }
+
+  export type ClassroomNotificationUncheckedCreateWithoutClassroomInput = {
+    id?: string
+    createdById?: string | null
+    recipientEmail?: string | null
+    type?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+    reads?: ClassroomNotificationReadUncheckedCreateNestedManyWithoutNotificationInput
+  }
+
+  export type ClassroomNotificationCreateOrConnectWithoutClassroomInput = {
+    where: ClassroomNotificationWhereUniqueInput
+    create: XOR<ClassroomNotificationCreateWithoutClassroomInput, ClassroomNotificationUncheckedCreateWithoutClassroomInput>
+  }
+
+  export type ClassroomNotificationCreateManyClassroomInputEnvelope = {
+    data: ClassroomNotificationCreateManyClassroomInput | ClassroomNotificationCreateManyClassroomInput[]
     skipDuplicates?: boolean
   }
 
@@ -12481,7 +16348,8 @@ export namespace Prisma {
 
   export type UserUpdateWithoutHostedClassroomsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    googleId?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     picture?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12491,11 +16359,14 @@ export namespace Prisma {
     classroomJoinRequests?: ClassroomJoinRequestUpdateManyWithoutUserNestedInput
     dailyGoals?: DailyGoalUpdateManyWithoutUserNestedInput
     dailyReflections?: DailyReflectionUpdateManyWithoutUserNestedInput
+    notificationsCreated?: ClassroomNotificationUpdateManyWithoutCreatedByNestedInput
+    notificationReads?: ClassroomNotificationReadUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutHostedClassroomsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    googleId?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     picture?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12505,6 +16376,8 @@ export namespace Prisma {
     classroomJoinRequests?: ClassroomJoinRequestUncheckedUpdateManyWithoutUserNestedInput
     dailyGoals?: DailyGoalUncheckedUpdateManyWithoutUserNestedInput
     dailyReflections?: DailyReflectionUncheckedUpdateManyWithoutUserNestedInput
+    notificationsCreated?: ClassroomNotificationUncheckedUpdateManyWithoutCreatedByNestedInput
+    notificationReads?: ClassroomNotificationReadUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ClassroomMemberUpsertWithWhereUniqueWithoutClassroomInput = {
@@ -12571,9 +16444,26 @@ export namespace Prisma {
     data: XOR<DailyReflectionUpdateManyMutationInput, DailyReflectionUncheckedUpdateManyWithoutClassroomInput>
   }
 
+  export type ClassroomNotificationUpsertWithWhereUniqueWithoutClassroomInput = {
+    where: ClassroomNotificationWhereUniqueInput
+    update: XOR<ClassroomNotificationUpdateWithoutClassroomInput, ClassroomNotificationUncheckedUpdateWithoutClassroomInput>
+    create: XOR<ClassroomNotificationCreateWithoutClassroomInput, ClassroomNotificationUncheckedCreateWithoutClassroomInput>
+  }
+
+  export type ClassroomNotificationUpdateWithWhereUniqueWithoutClassroomInput = {
+    where: ClassroomNotificationWhereUniqueInput
+    data: XOR<ClassroomNotificationUpdateWithoutClassroomInput, ClassroomNotificationUncheckedUpdateWithoutClassroomInput>
+  }
+
+  export type ClassroomNotificationUpdateManyWithWhereWithoutClassroomInput = {
+    where: ClassroomNotificationScalarWhereInput
+    data: XOR<ClassroomNotificationUpdateManyMutationInput, ClassroomNotificationUncheckedUpdateManyWithoutClassroomInput>
+  }
+
   export type UserCreateWithoutMembershipsInput = {
     id?: string
-    googleId: string
+    googleId?: string | null
+    passwordHash?: string | null
     name: string
     email: string
     picture?: string | null
@@ -12583,11 +16473,14 @@ export namespace Prisma {
     classroomJoinRequests?: ClassroomJoinRequestCreateNestedManyWithoutUserInput
     dailyGoals?: DailyGoalCreateNestedManyWithoutUserInput
     dailyReflections?: DailyReflectionCreateNestedManyWithoutUserInput
+    notificationsCreated?: ClassroomNotificationCreateNestedManyWithoutCreatedByInput
+    notificationReads?: ClassroomNotificationReadCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutMembershipsInput = {
     id?: string
-    googleId: string
+    googleId?: string | null
+    passwordHash?: string | null
     name: string
     email: string
     picture?: string | null
@@ -12597,6 +16490,8 @@ export namespace Prisma {
     classroomJoinRequests?: ClassroomJoinRequestUncheckedCreateNestedManyWithoutUserInput
     dailyGoals?: DailyGoalUncheckedCreateNestedManyWithoutUserInput
     dailyReflections?: DailyReflectionUncheckedCreateNestedManyWithoutUserInput
+    notificationsCreated?: ClassroomNotificationUncheckedCreateNestedManyWithoutCreatedByInput
+    notificationReads?: ClassroomNotificationReadUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutMembershipsInput = {
@@ -12615,10 +16510,14 @@ export namespace Prisma {
     goalSettingTime?: string | null
     reflectionTime?: string | null
     tasksPerDay?: number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: string
+    allowLateGoalEdits?: boolean
     host: UserCreateNestedOneWithoutHostedClassroomsInput
     joinRequests?: ClassroomJoinRequestCreateNestedManyWithoutClassroomInput
     dailyGoals?: DailyGoalCreateNestedManyWithoutClassroomInput
     dailyReflections?: DailyReflectionCreateNestedManyWithoutClassroomInput
+    notifications?: ClassroomNotificationCreateNestedManyWithoutClassroomInput
   }
 
   export type ClassroomUncheckedCreateWithoutMembersInput = {
@@ -12633,9 +16532,13 @@ export namespace Prisma {
     goalSettingTime?: string | null
     reflectionTime?: string | null
     tasksPerDay?: number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: string
+    allowLateGoalEdits?: boolean
     joinRequests?: ClassroomJoinRequestUncheckedCreateNestedManyWithoutClassroomInput
     dailyGoals?: DailyGoalUncheckedCreateNestedManyWithoutClassroomInput
     dailyReflections?: DailyReflectionUncheckedCreateNestedManyWithoutClassroomInput
+    notifications?: ClassroomNotificationUncheckedCreateNestedManyWithoutClassroomInput
   }
 
   export type ClassroomCreateOrConnectWithoutMembersInput = {
@@ -12656,7 +16559,8 @@ export namespace Prisma {
 
   export type UserUpdateWithoutMembershipsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    googleId?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     picture?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12666,11 +16570,14 @@ export namespace Prisma {
     classroomJoinRequests?: ClassroomJoinRequestUpdateManyWithoutUserNestedInput
     dailyGoals?: DailyGoalUpdateManyWithoutUserNestedInput
     dailyReflections?: DailyReflectionUpdateManyWithoutUserNestedInput
+    notificationsCreated?: ClassroomNotificationUpdateManyWithoutCreatedByNestedInput
+    notificationReads?: ClassroomNotificationReadUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMembershipsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    googleId?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     picture?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12680,6 +16587,8 @@ export namespace Prisma {
     classroomJoinRequests?: ClassroomJoinRequestUncheckedUpdateManyWithoutUserNestedInput
     dailyGoals?: DailyGoalUncheckedUpdateManyWithoutUserNestedInput
     dailyReflections?: DailyReflectionUncheckedUpdateManyWithoutUserNestedInput
+    notificationsCreated?: ClassroomNotificationUncheckedUpdateManyWithoutCreatedByNestedInput
+    notificationReads?: ClassroomNotificationReadUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ClassroomUpsertWithoutMembersInput = {
@@ -12704,10 +16613,14 @@ export namespace Prisma {
     goalSettingTime?: NullableStringFieldUpdateOperationsInput | string | null
     reflectionTime?: NullableStringFieldUpdateOperationsInput | string | null
     tasksPerDay?: IntFieldUpdateOperationsInput | number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: StringFieldUpdateOperationsInput | string
+    allowLateGoalEdits?: BoolFieldUpdateOperationsInput | boolean
     host?: UserUpdateOneRequiredWithoutHostedClassroomsNestedInput
     joinRequests?: ClassroomJoinRequestUpdateManyWithoutClassroomNestedInput
     dailyGoals?: DailyGoalUpdateManyWithoutClassroomNestedInput
     dailyReflections?: DailyReflectionUpdateManyWithoutClassroomNestedInput
+    notifications?: ClassroomNotificationUpdateManyWithoutClassroomNestedInput
   }
 
   export type ClassroomUncheckedUpdateWithoutMembersInput = {
@@ -12722,14 +16635,19 @@ export namespace Prisma {
     goalSettingTime?: NullableStringFieldUpdateOperationsInput | string | null
     reflectionTime?: NullableStringFieldUpdateOperationsInput | string | null
     tasksPerDay?: IntFieldUpdateOperationsInput | number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: StringFieldUpdateOperationsInput | string
+    allowLateGoalEdits?: BoolFieldUpdateOperationsInput | boolean
     joinRequests?: ClassroomJoinRequestUncheckedUpdateManyWithoutClassroomNestedInput
     dailyGoals?: DailyGoalUncheckedUpdateManyWithoutClassroomNestedInput
     dailyReflections?: DailyReflectionUncheckedUpdateManyWithoutClassroomNestedInput
+    notifications?: ClassroomNotificationUncheckedUpdateManyWithoutClassroomNestedInput
   }
 
   export type UserCreateWithoutClassroomJoinRequestsInput = {
     id?: string
-    googleId: string
+    googleId?: string | null
+    passwordHash?: string | null
     name: string
     email: string
     picture?: string | null
@@ -12739,11 +16657,14 @@ export namespace Prisma {
     memberships?: ClassroomMemberCreateNestedManyWithoutUserInput
     dailyGoals?: DailyGoalCreateNestedManyWithoutUserInput
     dailyReflections?: DailyReflectionCreateNestedManyWithoutUserInput
+    notificationsCreated?: ClassroomNotificationCreateNestedManyWithoutCreatedByInput
+    notificationReads?: ClassroomNotificationReadCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutClassroomJoinRequestsInput = {
     id?: string
-    googleId: string
+    googleId?: string | null
+    passwordHash?: string | null
     name: string
     email: string
     picture?: string | null
@@ -12753,6 +16674,8 @@ export namespace Prisma {
     memberships?: ClassroomMemberUncheckedCreateNestedManyWithoutUserInput
     dailyGoals?: DailyGoalUncheckedCreateNestedManyWithoutUserInput
     dailyReflections?: DailyReflectionUncheckedCreateNestedManyWithoutUserInput
+    notificationsCreated?: ClassroomNotificationUncheckedCreateNestedManyWithoutCreatedByInput
+    notificationReads?: ClassroomNotificationReadUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutClassroomJoinRequestsInput = {
@@ -12771,10 +16694,14 @@ export namespace Prisma {
     goalSettingTime?: string | null
     reflectionTime?: string | null
     tasksPerDay?: number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: string
+    allowLateGoalEdits?: boolean
     host: UserCreateNestedOneWithoutHostedClassroomsInput
     members?: ClassroomMemberCreateNestedManyWithoutClassroomInput
     dailyGoals?: DailyGoalCreateNestedManyWithoutClassroomInput
     dailyReflections?: DailyReflectionCreateNestedManyWithoutClassroomInput
+    notifications?: ClassroomNotificationCreateNestedManyWithoutClassroomInput
   }
 
   export type ClassroomUncheckedCreateWithoutJoinRequestsInput = {
@@ -12789,9 +16716,13 @@ export namespace Prisma {
     goalSettingTime?: string | null
     reflectionTime?: string | null
     tasksPerDay?: number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: string
+    allowLateGoalEdits?: boolean
     members?: ClassroomMemberUncheckedCreateNestedManyWithoutClassroomInput
     dailyGoals?: DailyGoalUncheckedCreateNestedManyWithoutClassroomInput
     dailyReflections?: DailyReflectionUncheckedCreateNestedManyWithoutClassroomInput
+    notifications?: ClassroomNotificationUncheckedCreateNestedManyWithoutClassroomInput
   }
 
   export type ClassroomCreateOrConnectWithoutJoinRequestsInput = {
@@ -12812,7 +16743,8 @@ export namespace Prisma {
 
   export type UserUpdateWithoutClassroomJoinRequestsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    googleId?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     picture?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12822,11 +16754,14 @@ export namespace Prisma {
     memberships?: ClassroomMemberUpdateManyWithoutUserNestedInput
     dailyGoals?: DailyGoalUpdateManyWithoutUserNestedInput
     dailyReflections?: DailyReflectionUpdateManyWithoutUserNestedInput
+    notificationsCreated?: ClassroomNotificationUpdateManyWithoutCreatedByNestedInput
+    notificationReads?: ClassroomNotificationReadUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutClassroomJoinRequestsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    googleId?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     picture?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12836,6 +16771,8 @@ export namespace Prisma {
     memberships?: ClassroomMemberUncheckedUpdateManyWithoutUserNestedInput
     dailyGoals?: DailyGoalUncheckedUpdateManyWithoutUserNestedInput
     dailyReflections?: DailyReflectionUncheckedUpdateManyWithoutUserNestedInput
+    notificationsCreated?: ClassroomNotificationUncheckedUpdateManyWithoutCreatedByNestedInput
+    notificationReads?: ClassroomNotificationReadUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ClassroomUpsertWithoutJoinRequestsInput = {
@@ -12860,10 +16797,14 @@ export namespace Prisma {
     goalSettingTime?: NullableStringFieldUpdateOperationsInput | string | null
     reflectionTime?: NullableStringFieldUpdateOperationsInput | string | null
     tasksPerDay?: IntFieldUpdateOperationsInput | number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: StringFieldUpdateOperationsInput | string
+    allowLateGoalEdits?: BoolFieldUpdateOperationsInput | boolean
     host?: UserUpdateOneRequiredWithoutHostedClassroomsNestedInput
     members?: ClassroomMemberUpdateManyWithoutClassroomNestedInput
     dailyGoals?: DailyGoalUpdateManyWithoutClassroomNestedInput
     dailyReflections?: DailyReflectionUpdateManyWithoutClassroomNestedInput
+    notifications?: ClassroomNotificationUpdateManyWithoutClassroomNestedInput
   }
 
   export type ClassroomUncheckedUpdateWithoutJoinRequestsInput = {
@@ -12878,14 +16819,19 @@ export namespace Prisma {
     goalSettingTime?: NullableStringFieldUpdateOperationsInput | string | null
     reflectionTime?: NullableStringFieldUpdateOperationsInput | string | null
     tasksPerDay?: IntFieldUpdateOperationsInput | number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: StringFieldUpdateOperationsInput | string
+    allowLateGoalEdits?: BoolFieldUpdateOperationsInput | boolean
     members?: ClassroomMemberUncheckedUpdateManyWithoutClassroomNestedInput
     dailyGoals?: DailyGoalUncheckedUpdateManyWithoutClassroomNestedInput
     dailyReflections?: DailyReflectionUncheckedUpdateManyWithoutClassroomNestedInput
+    notifications?: ClassroomNotificationUncheckedUpdateManyWithoutClassroomNestedInput
   }
 
   export type UserCreateWithoutDailyGoalsInput = {
     id?: string
-    googleId: string
+    googleId?: string | null
+    passwordHash?: string | null
     name: string
     email: string
     picture?: string | null
@@ -12895,11 +16841,14 @@ export namespace Prisma {
     memberships?: ClassroomMemberCreateNestedManyWithoutUserInput
     classroomJoinRequests?: ClassroomJoinRequestCreateNestedManyWithoutUserInput
     dailyReflections?: DailyReflectionCreateNestedManyWithoutUserInput
+    notificationsCreated?: ClassroomNotificationCreateNestedManyWithoutCreatedByInput
+    notificationReads?: ClassroomNotificationReadCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutDailyGoalsInput = {
     id?: string
-    googleId: string
+    googleId?: string | null
+    passwordHash?: string | null
     name: string
     email: string
     picture?: string | null
@@ -12909,6 +16858,8 @@ export namespace Prisma {
     memberships?: ClassroomMemberUncheckedCreateNestedManyWithoutUserInput
     classroomJoinRequests?: ClassroomJoinRequestUncheckedCreateNestedManyWithoutUserInput
     dailyReflections?: DailyReflectionUncheckedCreateNestedManyWithoutUserInput
+    notificationsCreated?: ClassroomNotificationUncheckedCreateNestedManyWithoutCreatedByInput
+    notificationReads?: ClassroomNotificationReadUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutDailyGoalsInput = {
@@ -12927,10 +16878,14 @@ export namespace Prisma {
     goalSettingTime?: string | null
     reflectionTime?: string | null
     tasksPerDay?: number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: string
+    allowLateGoalEdits?: boolean
     host: UserCreateNestedOneWithoutHostedClassroomsInput
     members?: ClassroomMemberCreateNestedManyWithoutClassroomInput
     joinRequests?: ClassroomJoinRequestCreateNestedManyWithoutClassroomInput
     dailyReflections?: DailyReflectionCreateNestedManyWithoutClassroomInput
+    notifications?: ClassroomNotificationCreateNestedManyWithoutClassroomInput
   }
 
   export type ClassroomUncheckedCreateWithoutDailyGoalsInput = {
@@ -12945,9 +16900,13 @@ export namespace Prisma {
     goalSettingTime?: string | null
     reflectionTime?: string | null
     tasksPerDay?: number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: string
+    allowLateGoalEdits?: boolean
     members?: ClassroomMemberUncheckedCreateNestedManyWithoutClassroomInput
     joinRequests?: ClassroomJoinRequestUncheckedCreateNestedManyWithoutClassroomInput
     dailyReflections?: DailyReflectionUncheckedCreateNestedManyWithoutClassroomInput
+    notifications?: ClassroomNotificationUncheckedCreateNestedManyWithoutClassroomInput
   }
 
   export type ClassroomCreateOrConnectWithoutDailyGoalsInput = {
@@ -12992,7 +16951,8 @@ export namespace Prisma {
 
   export type UserUpdateWithoutDailyGoalsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    googleId?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     picture?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13002,11 +16962,14 @@ export namespace Prisma {
     memberships?: ClassroomMemberUpdateManyWithoutUserNestedInput
     classroomJoinRequests?: ClassroomJoinRequestUpdateManyWithoutUserNestedInput
     dailyReflections?: DailyReflectionUpdateManyWithoutUserNestedInput
+    notificationsCreated?: ClassroomNotificationUpdateManyWithoutCreatedByNestedInput
+    notificationReads?: ClassroomNotificationReadUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutDailyGoalsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    googleId?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     picture?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13016,6 +16979,8 @@ export namespace Prisma {
     memberships?: ClassroomMemberUncheckedUpdateManyWithoutUserNestedInput
     classroomJoinRequests?: ClassroomJoinRequestUncheckedUpdateManyWithoutUserNestedInput
     dailyReflections?: DailyReflectionUncheckedUpdateManyWithoutUserNestedInput
+    notificationsCreated?: ClassroomNotificationUncheckedUpdateManyWithoutCreatedByNestedInput
+    notificationReads?: ClassroomNotificationReadUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ClassroomUpsertWithoutDailyGoalsInput = {
@@ -13040,10 +17005,14 @@ export namespace Prisma {
     goalSettingTime?: NullableStringFieldUpdateOperationsInput | string | null
     reflectionTime?: NullableStringFieldUpdateOperationsInput | string | null
     tasksPerDay?: IntFieldUpdateOperationsInput | number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: StringFieldUpdateOperationsInput | string
+    allowLateGoalEdits?: BoolFieldUpdateOperationsInput | boolean
     host?: UserUpdateOneRequiredWithoutHostedClassroomsNestedInput
     members?: ClassroomMemberUpdateManyWithoutClassroomNestedInput
     joinRequests?: ClassroomJoinRequestUpdateManyWithoutClassroomNestedInput
     dailyReflections?: DailyReflectionUpdateManyWithoutClassroomNestedInput
+    notifications?: ClassroomNotificationUpdateManyWithoutClassroomNestedInput
   }
 
   export type ClassroomUncheckedUpdateWithoutDailyGoalsInput = {
@@ -13058,9 +17027,13 @@ export namespace Prisma {
     goalSettingTime?: NullableStringFieldUpdateOperationsInput | string | null
     reflectionTime?: NullableStringFieldUpdateOperationsInput | string | null
     tasksPerDay?: IntFieldUpdateOperationsInput | number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: StringFieldUpdateOperationsInput | string
+    allowLateGoalEdits?: BoolFieldUpdateOperationsInput | boolean
     members?: ClassroomMemberUncheckedUpdateManyWithoutClassroomNestedInput
     joinRequests?: ClassroomJoinRequestUncheckedUpdateManyWithoutClassroomNestedInput
     dailyReflections?: DailyReflectionUncheckedUpdateManyWithoutClassroomNestedInput
+    notifications?: ClassroomNotificationUncheckedUpdateManyWithoutClassroomNestedInput
   }
 
   export type DailyGoalTaskUpsertWithWhereUniqueWithoutDailyGoalInput = {
@@ -13093,6 +17066,7 @@ export namespace Prisma {
   export type DailyGoalCreateWithoutTasksInput = {
     id?: string
     date?: Date | string
+    statement?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutDailyGoalsInput
@@ -13104,6 +17078,7 @@ export namespace Prisma {
     userId: string
     classroomId: string
     date?: Date | string
+    statement?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -13127,6 +17102,7 @@ export namespace Prisma {
   export type DailyGoalUpdateWithoutTasksInput = {
     id?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    statement?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutDailyGoalsNestedInput
@@ -13138,13 +17114,15 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     classroomId?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    statement?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserCreateWithoutDailyReflectionsInput = {
     id?: string
-    googleId: string
+    googleId?: string | null
+    passwordHash?: string | null
     name: string
     email: string
     picture?: string | null
@@ -13154,11 +17132,14 @@ export namespace Prisma {
     memberships?: ClassroomMemberCreateNestedManyWithoutUserInput
     classroomJoinRequests?: ClassroomJoinRequestCreateNestedManyWithoutUserInput
     dailyGoals?: DailyGoalCreateNestedManyWithoutUserInput
+    notificationsCreated?: ClassroomNotificationCreateNestedManyWithoutCreatedByInput
+    notificationReads?: ClassroomNotificationReadCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutDailyReflectionsInput = {
     id?: string
-    googleId: string
+    googleId?: string | null
+    passwordHash?: string | null
     name: string
     email: string
     picture?: string | null
@@ -13168,6 +17149,8 @@ export namespace Prisma {
     memberships?: ClassroomMemberUncheckedCreateNestedManyWithoutUserInput
     classroomJoinRequests?: ClassroomJoinRequestUncheckedCreateNestedManyWithoutUserInput
     dailyGoals?: DailyGoalUncheckedCreateNestedManyWithoutUserInput
+    notificationsCreated?: ClassroomNotificationUncheckedCreateNestedManyWithoutCreatedByInput
+    notificationReads?: ClassroomNotificationReadUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutDailyReflectionsInput = {
@@ -13186,10 +17169,14 @@ export namespace Prisma {
     goalSettingTime?: string | null
     reflectionTime?: string | null
     tasksPerDay?: number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: string
+    allowLateGoalEdits?: boolean
     host: UserCreateNestedOneWithoutHostedClassroomsInput
     members?: ClassroomMemberCreateNestedManyWithoutClassroomInput
     joinRequests?: ClassroomJoinRequestCreateNestedManyWithoutClassroomInput
     dailyGoals?: DailyGoalCreateNestedManyWithoutClassroomInput
+    notifications?: ClassroomNotificationCreateNestedManyWithoutClassroomInput
   }
 
   export type ClassroomUncheckedCreateWithoutDailyReflectionsInput = {
@@ -13204,9 +17191,13 @@ export namespace Prisma {
     goalSettingTime?: string | null
     reflectionTime?: string | null
     tasksPerDay?: number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: string
+    allowLateGoalEdits?: boolean
     members?: ClassroomMemberUncheckedCreateNestedManyWithoutClassroomInput
     joinRequests?: ClassroomJoinRequestUncheckedCreateNestedManyWithoutClassroomInput
     dailyGoals?: DailyGoalUncheckedCreateNestedManyWithoutClassroomInput
+    notifications?: ClassroomNotificationUncheckedCreateNestedManyWithoutClassroomInput
   }
 
   export type ClassroomCreateOrConnectWithoutDailyReflectionsInput = {
@@ -13227,7 +17218,8 @@ export namespace Prisma {
 
   export type UserUpdateWithoutDailyReflectionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    googleId?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     picture?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13237,11 +17229,14 @@ export namespace Prisma {
     memberships?: ClassroomMemberUpdateManyWithoutUserNestedInput
     classroomJoinRequests?: ClassroomJoinRequestUpdateManyWithoutUserNestedInput
     dailyGoals?: DailyGoalUpdateManyWithoutUserNestedInput
+    notificationsCreated?: ClassroomNotificationUpdateManyWithoutCreatedByNestedInput
+    notificationReads?: ClassroomNotificationReadUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutDailyReflectionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    googleId?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     picture?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13251,6 +17246,8 @@ export namespace Prisma {
     memberships?: ClassroomMemberUncheckedUpdateManyWithoutUserNestedInput
     classroomJoinRequests?: ClassroomJoinRequestUncheckedUpdateManyWithoutUserNestedInput
     dailyGoals?: DailyGoalUncheckedUpdateManyWithoutUserNestedInput
+    notificationsCreated?: ClassroomNotificationUncheckedUpdateManyWithoutCreatedByNestedInput
+    notificationReads?: ClassroomNotificationReadUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ClassroomUpsertWithoutDailyReflectionsInput = {
@@ -13275,10 +17272,14 @@ export namespace Prisma {
     goalSettingTime?: NullableStringFieldUpdateOperationsInput | string | null
     reflectionTime?: NullableStringFieldUpdateOperationsInput | string | null
     tasksPerDay?: IntFieldUpdateOperationsInput | number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: StringFieldUpdateOperationsInput | string
+    allowLateGoalEdits?: BoolFieldUpdateOperationsInput | boolean
     host?: UserUpdateOneRequiredWithoutHostedClassroomsNestedInput
     members?: ClassroomMemberUpdateManyWithoutClassroomNestedInput
     joinRequests?: ClassroomJoinRequestUpdateManyWithoutClassroomNestedInput
     dailyGoals?: DailyGoalUpdateManyWithoutClassroomNestedInput
+    notifications?: ClassroomNotificationUpdateManyWithoutClassroomNestedInput
   }
 
   export type ClassroomUncheckedUpdateWithoutDailyReflectionsInput = {
@@ -13293,9 +17294,377 @@ export namespace Prisma {
     goalSettingTime?: NullableStringFieldUpdateOperationsInput | string | null
     reflectionTime?: NullableStringFieldUpdateOperationsInput | string | null
     tasksPerDay?: IntFieldUpdateOperationsInput | number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: StringFieldUpdateOperationsInput | string
+    allowLateGoalEdits?: BoolFieldUpdateOperationsInput | boolean
     members?: ClassroomMemberUncheckedUpdateManyWithoutClassroomNestedInput
     joinRequests?: ClassroomJoinRequestUncheckedUpdateManyWithoutClassroomNestedInput
     dailyGoals?: DailyGoalUncheckedUpdateManyWithoutClassroomNestedInput
+    notifications?: ClassroomNotificationUncheckedUpdateManyWithoutClassroomNestedInput
+  }
+
+  export type ClassroomCreateWithoutNotificationsInput = {
+    id?: string
+    name: string
+    description?: string | null
+    joinCode: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    dailyGoal?: string | null
+    goalSettingTime?: string | null
+    reflectionTime?: string | null
+    tasksPerDay?: number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: string
+    allowLateGoalEdits?: boolean
+    host: UserCreateNestedOneWithoutHostedClassroomsInput
+    members?: ClassroomMemberCreateNestedManyWithoutClassroomInput
+    joinRequests?: ClassroomJoinRequestCreateNestedManyWithoutClassroomInput
+    dailyGoals?: DailyGoalCreateNestedManyWithoutClassroomInput
+    dailyReflections?: DailyReflectionCreateNestedManyWithoutClassroomInput
+  }
+
+  export type ClassroomUncheckedCreateWithoutNotificationsInput = {
+    id?: string
+    name: string
+    description?: string | null
+    joinCode: string
+    hostId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    dailyGoal?: string | null
+    goalSettingTime?: string | null
+    reflectionTime?: string | null
+    tasksPerDay?: number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: string
+    allowLateGoalEdits?: boolean
+    members?: ClassroomMemberUncheckedCreateNestedManyWithoutClassroomInput
+    joinRequests?: ClassroomJoinRequestUncheckedCreateNestedManyWithoutClassroomInput
+    dailyGoals?: DailyGoalUncheckedCreateNestedManyWithoutClassroomInput
+    dailyReflections?: DailyReflectionUncheckedCreateNestedManyWithoutClassroomInput
+  }
+
+  export type ClassroomCreateOrConnectWithoutNotificationsInput = {
+    where: ClassroomWhereUniqueInput
+    create: XOR<ClassroomCreateWithoutNotificationsInput, ClassroomUncheckedCreateWithoutNotificationsInput>
+  }
+
+  export type UserCreateWithoutNotificationsCreatedInput = {
+    id?: string
+    googleId?: string | null
+    passwordHash?: string | null
+    name: string
+    email: string
+    picture?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hostedClassrooms?: ClassroomCreateNestedManyWithoutHostInput
+    memberships?: ClassroomMemberCreateNestedManyWithoutUserInput
+    classroomJoinRequests?: ClassroomJoinRequestCreateNestedManyWithoutUserInput
+    dailyGoals?: DailyGoalCreateNestedManyWithoutUserInput
+    dailyReflections?: DailyReflectionCreateNestedManyWithoutUserInput
+    notificationReads?: ClassroomNotificationReadCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutNotificationsCreatedInput = {
+    id?: string
+    googleId?: string | null
+    passwordHash?: string | null
+    name: string
+    email: string
+    picture?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hostedClassrooms?: ClassroomUncheckedCreateNestedManyWithoutHostInput
+    memberships?: ClassroomMemberUncheckedCreateNestedManyWithoutUserInput
+    classroomJoinRequests?: ClassroomJoinRequestUncheckedCreateNestedManyWithoutUserInput
+    dailyGoals?: DailyGoalUncheckedCreateNestedManyWithoutUserInput
+    dailyReflections?: DailyReflectionUncheckedCreateNestedManyWithoutUserInput
+    notificationReads?: ClassroomNotificationReadUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutNotificationsCreatedInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutNotificationsCreatedInput, UserUncheckedCreateWithoutNotificationsCreatedInput>
+  }
+
+  export type ClassroomNotificationReadCreateWithoutNotificationInput = {
+    readAt?: Date | string
+    user: UserCreateNestedOneWithoutNotificationReadsInput
+  }
+
+  export type ClassroomNotificationReadUncheckedCreateWithoutNotificationInput = {
+    userId: string
+    readAt?: Date | string
+  }
+
+  export type ClassroomNotificationReadCreateOrConnectWithoutNotificationInput = {
+    where: ClassroomNotificationReadWhereUniqueInput
+    create: XOR<ClassroomNotificationReadCreateWithoutNotificationInput, ClassroomNotificationReadUncheckedCreateWithoutNotificationInput>
+  }
+
+  export type ClassroomNotificationReadCreateManyNotificationInputEnvelope = {
+    data: ClassroomNotificationReadCreateManyNotificationInput | ClassroomNotificationReadCreateManyNotificationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ClassroomUpsertWithoutNotificationsInput = {
+    update: XOR<ClassroomUpdateWithoutNotificationsInput, ClassroomUncheckedUpdateWithoutNotificationsInput>
+    create: XOR<ClassroomCreateWithoutNotificationsInput, ClassroomUncheckedCreateWithoutNotificationsInput>
+    where?: ClassroomWhereInput
+  }
+
+  export type ClassroomUpdateToOneWithWhereWithoutNotificationsInput = {
+    where?: ClassroomWhereInput
+    data: XOR<ClassroomUpdateWithoutNotificationsInput, ClassroomUncheckedUpdateWithoutNotificationsInput>
+  }
+
+  export type ClassroomUpdateWithoutNotificationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    joinCode?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    dailyGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    goalSettingTime?: NullableStringFieldUpdateOperationsInput | string | null
+    reflectionTime?: NullableStringFieldUpdateOperationsInput | string | null
+    tasksPerDay?: IntFieldUpdateOperationsInput | number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: StringFieldUpdateOperationsInput | string
+    allowLateGoalEdits?: BoolFieldUpdateOperationsInput | boolean
+    host?: UserUpdateOneRequiredWithoutHostedClassroomsNestedInput
+    members?: ClassroomMemberUpdateManyWithoutClassroomNestedInput
+    joinRequests?: ClassroomJoinRequestUpdateManyWithoutClassroomNestedInput
+    dailyGoals?: DailyGoalUpdateManyWithoutClassroomNestedInput
+    dailyReflections?: DailyReflectionUpdateManyWithoutClassroomNestedInput
+  }
+
+  export type ClassroomUncheckedUpdateWithoutNotificationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    joinCode?: StringFieldUpdateOperationsInput | string
+    hostId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    dailyGoal?: NullableStringFieldUpdateOperationsInput | string | null
+    goalSettingTime?: NullableStringFieldUpdateOperationsInput | string | null
+    reflectionTime?: NullableStringFieldUpdateOperationsInput | string | null
+    tasksPerDay?: IntFieldUpdateOperationsInput | number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: StringFieldUpdateOperationsInput | string
+    allowLateGoalEdits?: BoolFieldUpdateOperationsInput | boolean
+    members?: ClassroomMemberUncheckedUpdateManyWithoutClassroomNestedInput
+    joinRequests?: ClassroomJoinRequestUncheckedUpdateManyWithoutClassroomNestedInput
+    dailyGoals?: DailyGoalUncheckedUpdateManyWithoutClassroomNestedInput
+    dailyReflections?: DailyReflectionUncheckedUpdateManyWithoutClassroomNestedInput
+  }
+
+  export type UserUpsertWithoutNotificationsCreatedInput = {
+    update: XOR<UserUpdateWithoutNotificationsCreatedInput, UserUncheckedUpdateWithoutNotificationsCreatedInput>
+    create: XOR<UserCreateWithoutNotificationsCreatedInput, UserUncheckedCreateWithoutNotificationsCreatedInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutNotificationsCreatedInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutNotificationsCreatedInput, UserUncheckedUpdateWithoutNotificationsCreatedInput>
+  }
+
+  export type UserUpdateWithoutNotificationsCreatedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    picture?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hostedClassrooms?: ClassroomUpdateManyWithoutHostNestedInput
+    memberships?: ClassroomMemberUpdateManyWithoutUserNestedInput
+    classroomJoinRequests?: ClassroomJoinRequestUpdateManyWithoutUserNestedInput
+    dailyGoals?: DailyGoalUpdateManyWithoutUserNestedInput
+    dailyReflections?: DailyReflectionUpdateManyWithoutUserNestedInput
+    notificationReads?: ClassroomNotificationReadUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutNotificationsCreatedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    picture?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hostedClassrooms?: ClassroomUncheckedUpdateManyWithoutHostNestedInput
+    memberships?: ClassroomMemberUncheckedUpdateManyWithoutUserNestedInput
+    classroomJoinRequests?: ClassroomJoinRequestUncheckedUpdateManyWithoutUserNestedInput
+    dailyGoals?: DailyGoalUncheckedUpdateManyWithoutUserNestedInput
+    dailyReflections?: DailyReflectionUncheckedUpdateManyWithoutUserNestedInput
+    notificationReads?: ClassroomNotificationReadUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ClassroomNotificationReadUpsertWithWhereUniqueWithoutNotificationInput = {
+    where: ClassroomNotificationReadWhereUniqueInput
+    update: XOR<ClassroomNotificationReadUpdateWithoutNotificationInput, ClassroomNotificationReadUncheckedUpdateWithoutNotificationInput>
+    create: XOR<ClassroomNotificationReadCreateWithoutNotificationInput, ClassroomNotificationReadUncheckedCreateWithoutNotificationInput>
+  }
+
+  export type ClassroomNotificationReadUpdateWithWhereUniqueWithoutNotificationInput = {
+    where: ClassroomNotificationReadWhereUniqueInput
+    data: XOR<ClassroomNotificationReadUpdateWithoutNotificationInput, ClassroomNotificationReadUncheckedUpdateWithoutNotificationInput>
+  }
+
+  export type ClassroomNotificationReadUpdateManyWithWhereWithoutNotificationInput = {
+    where: ClassroomNotificationReadScalarWhereInput
+    data: XOR<ClassroomNotificationReadUpdateManyMutationInput, ClassroomNotificationReadUncheckedUpdateManyWithoutNotificationInput>
+  }
+
+  export type ClassroomNotificationCreateWithoutReadsInput = {
+    id?: string
+    recipientEmail?: string | null
+    type?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+    classroom: ClassroomCreateNestedOneWithoutNotificationsInput
+    createdBy?: UserCreateNestedOneWithoutNotificationsCreatedInput
+  }
+
+  export type ClassroomNotificationUncheckedCreateWithoutReadsInput = {
+    id?: string
+    classroomId: string
+    createdById?: string | null
+    recipientEmail?: string | null
+    type?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ClassroomNotificationCreateOrConnectWithoutReadsInput = {
+    where: ClassroomNotificationWhereUniqueInput
+    create: XOR<ClassroomNotificationCreateWithoutReadsInput, ClassroomNotificationUncheckedCreateWithoutReadsInput>
+  }
+
+  export type UserCreateWithoutNotificationReadsInput = {
+    id?: string
+    googleId?: string | null
+    passwordHash?: string | null
+    name: string
+    email: string
+    picture?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hostedClassrooms?: ClassroomCreateNestedManyWithoutHostInput
+    memberships?: ClassroomMemberCreateNestedManyWithoutUserInput
+    classroomJoinRequests?: ClassroomJoinRequestCreateNestedManyWithoutUserInput
+    dailyGoals?: DailyGoalCreateNestedManyWithoutUserInput
+    dailyReflections?: DailyReflectionCreateNestedManyWithoutUserInput
+    notificationsCreated?: ClassroomNotificationCreateNestedManyWithoutCreatedByInput
+  }
+
+  export type UserUncheckedCreateWithoutNotificationReadsInput = {
+    id?: string
+    googleId?: string | null
+    passwordHash?: string | null
+    name: string
+    email: string
+    picture?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    hostedClassrooms?: ClassroomUncheckedCreateNestedManyWithoutHostInput
+    memberships?: ClassroomMemberUncheckedCreateNestedManyWithoutUserInput
+    classroomJoinRequests?: ClassroomJoinRequestUncheckedCreateNestedManyWithoutUserInput
+    dailyGoals?: DailyGoalUncheckedCreateNestedManyWithoutUserInput
+    dailyReflections?: DailyReflectionUncheckedCreateNestedManyWithoutUserInput
+    notificationsCreated?: ClassroomNotificationUncheckedCreateNestedManyWithoutCreatedByInput
+  }
+
+  export type UserCreateOrConnectWithoutNotificationReadsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutNotificationReadsInput, UserUncheckedCreateWithoutNotificationReadsInput>
+  }
+
+  export type ClassroomNotificationUpsertWithoutReadsInput = {
+    update: XOR<ClassroomNotificationUpdateWithoutReadsInput, ClassroomNotificationUncheckedUpdateWithoutReadsInput>
+    create: XOR<ClassroomNotificationCreateWithoutReadsInput, ClassroomNotificationUncheckedCreateWithoutReadsInput>
+    where?: ClassroomNotificationWhereInput
+  }
+
+  export type ClassroomNotificationUpdateToOneWithWhereWithoutReadsInput = {
+    where?: ClassroomNotificationWhereInput
+    data: XOR<ClassroomNotificationUpdateWithoutReadsInput, ClassroomNotificationUncheckedUpdateWithoutReadsInput>
+  }
+
+  export type ClassroomNotificationUpdateWithoutReadsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    recipientEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classroom?: ClassroomUpdateOneRequiredWithoutNotificationsNestedInput
+    createdBy?: UserUpdateOneWithoutNotificationsCreatedNestedInput
+  }
+
+  export type ClassroomNotificationUncheckedUpdateWithoutReadsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    classroomId?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
+    recipientEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpsertWithoutNotificationReadsInput = {
+    update: XOR<UserUpdateWithoutNotificationReadsInput, UserUncheckedUpdateWithoutNotificationReadsInput>
+    create: XOR<UserCreateWithoutNotificationReadsInput, UserUncheckedCreateWithoutNotificationReadsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutNotificationReadsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutNotificationReadsInput, UserUncheckedUpdateWithoutNotificationReadsInput>
+  }
+
+  export type UserUpdateWithoutNotificationReadsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    picture?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hostedClassrooms?: ClassroomUpdateManyWithoutHostNestedInput
+    memberships?: ClassroomMemberUpdateManyWithoutUserNestedInput
+    classroomJoinRequests?: ClassroomJoinRequestUpdateManyWithoutUserNestedInput
+    dailyGoals?: DailyGoalUpdateManyWithoutUserNestedInput
+    dailyReflections?: DailyReflectionUpdateManyWithoutUserNestedInput
+    notificationsCreated?: ClassroomNotificationUpdateManyWithoutCreatedByNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutNotificationReadsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    picture?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    hostedClassrooms?: ClassroomUncheckedUpdateManyWithoutHostNestedInput
+    memberships?: ClassroomMemberUncheckedUpdateManyWithoutUserNestedInput
+    classroomJoinRequests?: ClassroomJoinRequestUncheckedUpdateManyWithoutUserNestedInput
+    dailyGoals?: DailyGoalUncheckedUpdateManyWithoutUserNestedInput
+    dailyReflections?: DailyReflectionUncheckedUpdateManyWithoutUserNestedInput
+    notificationsCreated?: ClassroomNotificationUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
   export type ClassroomCreateManyHostInput = {
@@ -13309,6 +17678,9 @@ export namespace Prisma {
     goalSettingTime?: string | null
     reflectionTime?: string | null
     tasksPerDay?: number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: string
+    allowLateGoalEdits?: boolean
   }
 
   export type ClassroomMemberCreateManyUserInput = {
@@ -13330,6 +17702,7 @@ export namespace Prisma {
     id?: string
     classroomId: string
     date?: Date | string
+    statement?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -13339,8 +17712,28 @@ export namespace Prisma {
     classroomId: string
     date?: Date | string
     content: string
+    assessmentScore?: number | null
+    assessmentCorrect?: number | null
+    assessmentTotal?: number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type ClassroomNotificationCreateManyCreatedByInput = {
+    id?: string
+    classroomId: string
+    recipientEmail?: string | null
+    type?: string
+    title: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ClassroomNotificationReadCreateManyUserInput = {
+    notificationId: string
+    readAt?: Date | string
   }
 
   export type ClassroomUpdateWithoutHostInput = {
@@ -13354,10 +17747,14 @@ export namespace Prisma {
     goalSettingTime?: NullableStringFieldUpdateOperationsInput | string | null
     reflectionTime?: NullableStringFieldUpdateOperationsInput | string | null
     tasksPerDay?: IntFieldUpdateOperationsInput | number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: StringFieldUpdateOperationsInput | string
+    allowLateGoalEdits?: BoolFieldUpdateOperationsInput | boolean
     members?: ClassroomMemberUpdateManyWithoutClassroomNestedInput
     joinRequests?: ClassroomJoinRequestUpdateManyWithoutClassroomNestedInput
     dailyGoals?: DailyGoalUpdateManyWithoutClassroomNestedInput
     dailyReflections?: DailyReflectionUpdateManyWithoutClassroomNestedInput
+    notifications?: ClassroomNotificationUpdateManyWithoutClassroomNestedInput
   }
 
   export type ClassroomUncheckedUpdateWithoutHostInput = {
@@ -13371,10 +17768,14 @@ export namespace Prisma {
     goalSettingTime?: NullableStringFieldUpdateOperationsInput | string | null
     reflectionTime?: NullableStringFieldUpdateOperationsInput | string | null
     tasksPerDay?: IntFieldUpdateOperationsInput | number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: StringFieldUpdateOperationsInput | string
+    allowLateGoalEdits?: BoolFieldUpdateOperationsInput | boolean
     members?: ClassroomMemberUncheckedUpdateManyWithoutClassroomNestedInput
     joinRequests?: ClassroomJoinRequestUncheckedUpdateManyWithoutClassroomNestedInput
     dailyGoals?: DailyGoalUncheckedUpdateManyWithoutClassroomNestedInput
     dailyReflections?: DailyReflectionUncheckedUpdateManyWithoutClassroomNestedInput
+    notifications?: ClassroomNotificationUncheckedUpdateManyWithoutClassroomNestedInput
   }
 
   export type ClassroomUncheckedUpdateManyWithoutHostInput = {
@@ -13388,6 +17789,9 @@ export namespace Prisma {
     goalSettingTime?: NullableStringFieldUpdateOperationsInput | string | null
     reflectionTime?: NullableStringFieldUpdateOperationsInput | string | null
     tasksPerDay?: IntFieldUpdateOperationsInput | number
+    dayParts?: NullableJsonNullValueInput | InputJsonValue
+    timezone?: StringFieldUpdateOperationsInput | string
+    allowLateGoalEdits?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ClassroomMemberUpdateWithoutUserInput = {
@@ -13438,6 +17842,7 @@ export namespace Prisma {
   export type DailyGoalUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    statement?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     classroom?: ClassroomUpdateOneRequiredWithoutDailyGoalsNestedInput
@@ -13448,6 +17853,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     classroomId?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    statement?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tasks?: DailyGoalTaskUncheckedUpdateManyWithoutDailyGoalNestedInput
@@ -13457,6 +17863,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     classroomId?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    statement?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13465,6 +17872,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    assessmentScore?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentCorrect?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentTotal?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     classroom?: ClassroomUpdateOneRequiredWithoutDailyReflectionsNestedInput
@@ -13475,6 +17887,11 @@ export namespace Prisma {
     classroomId?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    assessmentScore?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentCorrect?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentTotal?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13484,8 +17901,60 @@ export namespace Prisma {
     classroomId?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    assessmentScore?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentCorrect?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentTotal?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClassroomNotificationUpdateWithoutCreatedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    recipientEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classroom?: ClassroomUpdateOneRequiredWithoutNotificationsNestedInput
+    reads?: ClassroomNotificationReadUpdateManyWithoutNotificationNestedInput
+  }
+
+  export type ClassroomNotificationUncheckedUpdateWithoutCreatedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    classroomId?: StringFieldUpdateOperationsInput | string
+    recipientEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reads?: ClassroomNotificationReadUncheckedUpdateManyWithoutNotificationNestedInput
+  }
+
+  export type ClassroomNotificationUncheckedUpdateManyWithoutCreatedByInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    classroomId?: StringFieldUpdateOperationsInput | string
+    recipientEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClassroomNotificationReadUpdateWithoutUserInput = {
+    readAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    notification?: ClassroomNotificationUpdateOneRequiredWithoutReadsNestedInput
+  }
+
+  export type ClassroomNotificationReadUncheckedUpdateWithoutUserInput = {
+    notificationId?: StringFieldUpdateOperationsInput | string
+    readAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClassroomNotificationReadUncheckedUpdateManyWithoutUserInput = {
+    notificationId?: StringFieldUpdateOperationsInput | string
+    readAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ClassroomMemberCreateManyClassroomInput = {
@@ -13507,6 +17976,7 @@ export namespace Prisma {
     id?: string
     userId: string
     date?: Date | string
+    statement?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -13516,8 +17986,23 @@ export namespace Prisma {
     userId: string
     date?: Date | string
     content: string
+    assessmentScore?: number | null
+    assessmentCorrect?: number | null
+    assessmentTotal?: number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type ClassroomNotificationCreateManyClassroomInput = {
+    id?: string
+    createdById?: string | null
+    recipientEmail?: string | null
+    type?: string
+    title: string
+    content: string
+    createdAt?: Date | string
   }
 
   export type ClassroomMemberUpdateWithoutClassroomInput = {
@@ -13568,6 +18053,7 @@ export namespace Prisma {
   export type DailyGoalUpdateWithoutClassroomInput = {
     id?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    statement?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutDailyGoalsNestedInput
@@ -13578,6 +18064,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    statement?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tasks?: DailyGoalTaskUncheckedUpdateManyWithoutDailyGoalNestedInput
@@ -13587,6 +18074,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    statement?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13595,6 +18083,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    assessmentScore?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentCorrect?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentTotal?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutDailyReflectionsNestedInput
@@ -13605,6 +18098,11 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    assessmentScore?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentCorrect?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentTotal?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13614,8 +18112,45 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    assessmentScore?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentCorrect?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentTotal?: NullableIntFieldUpdateOperationsInput | number | null
+    assessmentDetails?: NullableJsonNullValueInput | InputJsonValue
+    assessedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClassroomNotificationUpdateWithoutClassroomInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    recipientEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: UserUpdateOneWithoutNotificationsCreatedNestedInput
+    reads?: ClassroomNotificationReadUpdateManyWithoutNotificationNestedInput
+  }
+
+  export type ClassroomNotificationUncheckedUpdateWithoutClassroomInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
+    recipientEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reads?: ClassroomNotificationReadUncheckedUpdateManyWithoutNotificationNestedInput
+  }
+
+  export type ClassroomNotificationUncheckedUpdateManyWithoutClassroomInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdById?: NullableStringFieldUpdateOperationsInput | string | null
+    recipientEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DailyGoalTaskCreateManyDailyGoalInput = {
@@ -13644,6 +18179,26 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     completed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClassroomNotificationReadCreateManyNotificationInput = {
+    userId: string
+    readAt?: Date | string
+  }
+
+  export type ClassroomNotificationReadUpdateWithoutNotificationInput = {
+    readAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutNotificationReadsNestedInput
+  }
+
+  export type ClassroomNotificationReadUncheckedUpdateWithoutNotificationInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    readAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClassroomNotificationReadUncheckedUpdateManyWithoutNotificationInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    readAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { getClassroomTheme } from "../utils/classroomTheme";
 
 function ClassroomDetails() {
   const { classroomId } = useParams();
@@ -40,9 +41,16 @@ function ClassroomDetails() {
   if (loading) return <p>Loading classroom...</p>;
 
   if (!classroom) return <p>Classroom not found.</p>;
+  const theme = getClassroomTheme(classroom.id);
 
   return (
-    <div>
+    <div className="classroom-dashboard classroom-details-page" style={{
+      "--classroom-primary": theme.primary,
+      "--classroom-soft": theme.soft,
+      "--classroom-accent": theme.accent,
+      "--cover-start": theme.start,
+      "--cover-end": theme.end,
+    }}>
       <button onClick={() => navigate("/classrooms")}>
         Back to Classrooms
       </button>

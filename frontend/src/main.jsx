@@ -6,6 +6,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 
 import App from "./App";
 import "./index.css";
+import VoiceAssistantProvider from "./hooks/VoiceAssistantProvider";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -13,7 +14,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}
     >
       <BrowserRouter>
-        <App />
+        <VoiceAssistantProvider>
+          <App />
+        </VoiceAssistantProvider>
       </BrowserRouter>
     </GoogleOAuthProvider>
   </React.StrictMode>

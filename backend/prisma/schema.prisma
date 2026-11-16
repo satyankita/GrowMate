@@ -22,18 +22,21 @@ enum JoinRequestStatus {
 
 model User {
   id        String   @id @default(uuid())
-  googleId  String   @unique
+  googleId  String?  @unique
+  passwordHash String?
   name      String
   email     String   @unique
   picture   String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  hostedClassrooms      Classroom[]            @relation("ClassroomHost")
+  hostedClassrooms      Classroom[]                 @relation("ClassroomHost")
   memberships           ClassroomMember[]
   classroomJoinRequests ClassroomJoinRequest[]
   dailyGoals            DailyGoal[]
   dailyReflections      DailyReflection[]
+  notificationsCreated  ClassroomNotification[]     @relation("NotificationAuthor")
+  notificationReads     ClassroomNotificationRead[]
 }
 
 model Classroom {
@@ -45,17 +48,20 @@ model Classroom {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-
   dailyGoal       String?
   goalSettingTime String?
   reflectionTime  String?
-  tasksPerDay     Int      @default(5)
+  tasksPerDay       Int     @default(5)
+  dayParts          Json?
+  timezone          String  @default("Asia/Kolkata")
+  allowLateGoalEdits Boolean @default(false)
 
-  host             User                   @relation("ClassroomHost", fields: [hostId], references: [id])
+  host             User                    @relation("ClassroomHost", fields: [hostId], references: [id])
   members          ClassroomMember[]
   joinRequests     ClassroomJoinRequest[]
   dailyGoals       DailyGoal[]
   dailyReflections DailyReflection[]
+  notifications    ClassroomNotification[]
 }
 
 model ClassroomMember {
@@ -91,6 +97,7 @@ model DailyGoal {
   userId      String
   classroomId String
   date        DateTime @default(now()) @db.Date
+  statement   String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -120,6 +127,11 @@ model DailyReflection {
   classroomId String
   date        DateTime @default(now()) @db.Date
   content     String
+  assessmentScore   Int?
+  assessmentCorrect Int?
+  assessmentTotal   Int?
+  assessmentDetails Json?
+  assessedAt        DateTime?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -128,4 +140,34 @@ model DailyReflection {
 
   @@unique([userId, classroomId, date])
   @@index([classroomId, date])
+}
+
+model ClassroomNotification {
+  id             String   @id @default(uuid())
+  classroomId    String
+  createdById    String?
+  recipientEmail String?
+  type           String   @default("ANNOUNCEMENT")
+  title          String
+  content        String
+  createdAt      DateTime @default(now())
+
+  classroom Classroom                   @relation(fields: [classroomId], references: [id], onDelete: Cascade)
+  createdBy User?                       @relation("NotificationAuthor", fields: [createdById], references: [id], onDelete: SetNull)
+  reads     ClassroomNotificationRead[]
+
+  @@index([classroomId, createdAt])
+  @@index([recipientEmail])
+}
+
+model ClassroomNotificationRead {
+  notificationId String
+  userId         String
+  readAt         DateTime @default(now())
+
+  notification ClassroomNotification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
+  user         User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([notificationId, userId])
+  @@index([userId, readAt])
 }

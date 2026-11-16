@@ -13,24 +13,21 @@ import "./GrowthTracker.css";
 
 const API_URL = "http://localhost:5000/api/daily-growth";
 
-function getToday() {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-
-  return `${year}-${month}-${day}`;
+function getToday(timezone = "Asia/Kolkata") {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: timezone, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 }
 
 function GrowthTracker() {
   const { classroomId } = useParams();
 
   const [tasks, setTasks] = useState([]);
+  const [assessment, setAssessment] = useState(null);
+  const [timezone, setTimezone] = useState("Asia/Kolkata");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   const token = localStorage.getItem("token");
-  const today = getToday();
+  const today = getToday(timezone);
 
   useEffect(() => {
     const fetchProgress = async () => {
@@ -38,17 +35,21 @@ function GrowthTracker() {
         setLoading(true);
         setError("");
 
-        const response = await axios.get(
-          `${API_URL}/${classroomId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-            params: { date: today },
-          }
-        );
+        const headers = { Authorization: `Bearer ${token}` };
+        const [response, settingsResponse] = await Promise.all([
+          axios.get(`${API_URL}/${classroomId}`, { headers, params: { date: today } }),
+          axios.get(`http://localhost:5000/api/classrooms/${classroomId}/settings`, { headers }),
+        ]);
 
         setTasks(response.data.goal?.tasks || []);
+        const reflection = response.data.reflection;
+        setAssessment(reflection?.assessmentScore == null ? null : {
+          score: reflection.assessmentScore,
+          correct: reflection.assessmentCorrect,
+          total: reflection.assessmentTotal,
+          assessedAt: reflection.assessedAt,
+        });
+        if (settingsResponse.data.classroom.timezone) setTimezone(settingsResponse.data.classroom.timezone);
       } catch (err) {
         console.error("Growth Tracker Error:", err);
         setError(
@@ -75,11 +76,6 @@ function GrowthTracker() {
   const pendingTasks = tasks.length - completedTasks;
   const totalTasks = tasks.length;
 
-  const progress =
-    totalTasks === 0
-      ? 0
-      : Math.round((completedTasks / totalTasks) * 100);
-
   if (loading) {
     return <p>Loading your growth progress...</p>;
   }
@@ -98,24 +94,24 @@ function GrowthTracker() {
 
       {error && <p className="growth-error">{error}</p>}
 
-      <div className="growth-progress-card">
+      <div className={`growth-progress-card ${assessment ? "has-assessment" : "awaiting-assessment"}`}>
         <div className="growth-progress-top">
           <div>
-            <span>Today's progress</span>
-            <h3>{progress}%</h3>
+            <span>AI reflection assessment</span>
+            <h3>{assessment ? `${assessment.score}%` : "Not assessed yet"}</h3>
           </div>
 
           <Target size={34} />
         </div>
 
-        <div className="growth-progress-track">
-          <div style={{ width: `${progress}%` }} />
+        <div className="growth-progress-track" role="meter" aria-label="AI reflection assessment score" aria-valuemin="0" aria-valuemax="100" aria-valuenow={assessment?.score ?? 0}>
+          <div style={{ width: `${assessment?.score ?? 0}%` }} />
         </div>
 
         <p>
-          {totalTasks === 0
-            ? "Add your first goal to start tracking progress."
-            : "Keep going! Every small step matters."}
+          {assessment
+            ? `${assessment.correct} of ${assessment.total} reflection answers were assessed as correct${assessment.assessedAt ? ` · Assessed ${new Date(assessment.assessedAt).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}` : ""}.`
+            : "Complete the AI assessment on your Reflection page to measure your score here."}
         </p>
       </div>
 

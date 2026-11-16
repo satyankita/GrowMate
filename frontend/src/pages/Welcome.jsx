@@ -1,5 +1,4 @@
 
-import { useState } from "react";
 import "../styles/Welcome.css";
 import "../styles/Theme.css";
 import "../styles/Responsive.css";
@@ -18,10 +17,7 @@ import {
 } from "lucide-react";
 
 function Welcome() {
-  const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("growmate-theme") === "dark"
-  );
-
+  const [darkMode, setDarkMode] = useState(localStorage.getItem("growmate-theme") === "dark");
   const toggleTheme = () => {
     const newMode = !darkMode;
     setDarkMode(newMode);
@@ -43,11 +39,7 @@ function Welcome() {
         </div>
 
         <div className="nav-actions">
-          <button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-          >
+          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
             {darkMode ? <Sun size={19} /> : <Moon size={19} />}
           </button>
 
@@ -248,3 +240,4 @@ function Welcome() {
 }
 
 export default Welcome;
+import { useState } from "react";

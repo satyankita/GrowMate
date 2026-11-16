@@ -312,3 +312,98 @@
   margin: 10px 0;
 }
 
+.auth-page {
+  min-height: 100vh;
+  background: var(--gm-surface, #fff);
+  color: var(--gm-ink, #23233d);
+}
+
+.auth-left {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 4% 94%, rgba(68, 194, 170, 0.25), transparent 27%),
+    radial-gradient(circle at 93% 4%, rgba(158, 142, 245, 0.29), transparent 31%),
+    linear-gradient(145deg, #f3f0ff, #eef9f7);
+}
+
+.auth-page > .auth-right:only-child {
+  grid-column: 1 / -1;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.auth-left::after {
+  position: absolute;
+  right: -150px;
+  bottom: -180px;
+  width: 420px;
+  height: 420px;
+  border: 1px solid rgba(102, 86, 196, 0.12);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.auth-brand-icon {
+  border-radius: 14px;
+  background: linear-gradient(145deg, #715ddd, #48bba9);
+  box-shadow: 0 9px 20px rgba(109, 91, 208, 0.2);
+}
+
+.auth-welcome h1 {
+  letter-spacing: -1.8px;
+  color: #292747;
+}
+
+.auth-quote {
+  border: 1px solid rgba(228, 225, 244, 0.85);
+  border-radius: 19px;
+  box-shadow: var(--gm-shadow-md, 0 14px 36px rgba(40, 43, 83, 0.09));
+}
+
+.auth-right {
+  background:
+    radial-gradient(ellipse at 85% 12%, rgba(126, 111, 222, 0.07), transparent 28%),
+    #fff;
+}
+
+.auth-form-container h2 {
+  color: var(--gm-ink, #23233d);
+  letter-spacing: -1px;
+}
+
+.auth-input-wrapper {
+  min-height: 54px;
+  border-color: #e5e5ef;
+  border-radius: 12px;
+  background: #fbfbfe;
+  transition: border-color var(--gm-ease, 180ms ease), background var(--gm-ease, 180ms ease), box-shadow var(--gm-ease, 180ms ease);
+}
+
+.auth-input-wrapper:focus-within {
+  border-color: #8b7ade;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(109, 91, 208, 0.1);
+}
+
+.auth-submit-btn {
+  border-radius: 12px;
+  background: linear-gradient(110deg, #6856cf, #7a68dc);
+  box-shadow: 0 9px 22px rgba(101, 81, 190, 0.2);
+}
+
+.auth-submit-btn:hover {
+  background: linear-gradient(110deg, #5947bd, #6d5bcf);
+  box-shadow: 0 13px 25px rgba(101, 81, 190, 0.24);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 760px) {
+  .auth-page { grid-template-columns: 1fr; }
+  .auth-left { min-height: 300px; padding: 28px 7%; }
+  .auth-welcome { margin: 55px 0 10px; }
+  .auth-decoration { display: none; }
+  .auth-right { padding: 45px 7%; }
+}
+

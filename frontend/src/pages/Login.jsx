@@ -16,11 +16,28 @@ import "../styles/Auth.css";
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [googleError, setGoogleError] = useState("");
+  const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Email/password authentication will be connected next.
+    setError("");
+    setSubmitting(true);
+    const data = new FormData(e.currentTarget);
+    try {
+      const response = await axios.post("http://localhost:5000/api/auth/login", {
+        email: data.get("email"), password: data.get("password"),
+      });
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      const pendingJoinCode = localStorage.getItem("pendingJoinCode");
+      navigate(pendingJoinCode ? `/join?code=${encodeURIComponent(pendingJoinCode)}` : "/classrooms");
+    } catch (loginError) {
+      setError(loginError.response?.data?.message || "Could not log in. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
 const handleGoogleSuccess = async (credentialResponse) => {
@@ -119,6 +136,7 @@ const handleGoogleSuccess = async (credentialResponse) => {
           {googleError && (
             <p className="auth-error">{googleError}</p>
           )}
+          {error && <p className="auth-error" role="alert">{error}</p>}
 
           <div className="auth-divider">
             <span>OR CONTINUE WITH EMAIL</span>
@@ -132,6 +150,7 @@ const handleGoogleSuccess = async (credentialResponse) => {
               <div className="auth-input-wrapper">
                 <Mail size={19} />
                 <input
+                  name="email"
                   type="email"
                   placeholder="Enter your email"
                   required
@@ -146,6 +165,7 @@ const handleGoogleSuccess = async (credentialResponse) => {
                 <Lock size={19} />
 
                 <input
+                  name="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter your password"
                   required
@@ -167,8 +187,8 @@ const handleGoogleSuccess = async (credentialResponse) => {
               </div>
             </div>
 
-            <button type="submit" className="auth-submit-btn">
-              Login to Account
+            <button type="submit" className="auth-submit-btn" disabled={submitting}>
+              {submitting ? "Logging in..." : "Login to Account"}
               <ArrowRight size={19} />
             </button>
           </form>

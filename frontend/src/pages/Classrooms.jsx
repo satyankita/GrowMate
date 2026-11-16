@@ -18,26 +18,11 @@ import {
 } from "lucide-react";
 
 import "../styles/Classrooms.css";
+import ClassroomNotifications from "../components/ClassroomNotifications";
+import { getClassroomTheme } from "../utils/classroomTheme";
+import Navbar from "../components/Navbar";
 
 const API_URL = "http://localhost:5000/api/classrooms";
-
-const getTheme = (name = "") => {
-  const themes = [
-    ["#28245c", "#7657e8"],
-    ["#123d48", "#20a69a"],
-    ["#45234f", "#b45bd1"],
-    ["#263b62", "#4389d9"],
-    ["#49301f", "#d18b45"],
-    ["#263d37", "#5baf82"],
-  ];
-
-  const hash = [...name].reduce(
-    (total, char) => total + char.charCodeAt(0),
-    0
-  );
-
-  return themes[hash % themes.length];
-};
 
 function Classrooms() {
   const navigate = useNavigate();
@@ -306,29 +291,7 @@ const handleInviteSubmit = async (e) => {
     <div className="gm-page">
 
       {/* Header */}
-      <header className="gm-header">
-        <div className="gm-brand">
-          <div className="gm-brand-icon">
-            <Sprout size={23} />
-          </div>
-          <span>GrowMate</span>
-        </div>
-
-        <div className="gm-header-right">
-          <div className="gm-user">
-            <div className="gm-avatar">
-              {(user.name || "G").charAt(0).toUpperCase()}
-            </div>
-
-            <span>{user.name || "GrowMate User"}</span>
-          </div>
-
-          <button className="gm-logout" onClick={handleLogout}>
-            <LogOut size={17} />
-            <span>Logout</span>
-          </button>
-        </div>
-      </header>
+      <Navbar />
 
       <main className="gm-main">
 
@@ -370,6 +333,11 @@ const handleInviteSubmit = async (e) => {
             />
           </div>
         </section>
+
+        <details className="gm-notification-drawer">
+          <summary>Classroom notifications and invitations</summary>
+          <ClassroomNotifications />
+        </details>
 
         {/* Stats */}
         <section className="gm-stats">
@@ -507,7 +475,7 @@ const handleInviteSubmit = async (e) => {
           ) : (
             <div className="gm-classroom-grid">
               {classrooms.map((classroom) => {
-                const theme = getTheme(classroom.name);
+                const theme = getClassroomTheme(classroom.id);
 
                 const role =
                   classroom.members?.[0]?.role || "PARTICIPANT";
@@ -518,14 +486,29 @@ const handleInviteSubmit = async (e) => {
                   <article
                     className="gm-classroom-card"
                     key={classroom.id}
+                    role="link"
+                    tabIndex={0}
+                    aria-label={`Open ${classroom.name} classroom`}
                     onClick={() => navigate(`/classrooms/${classroom.id}`)}
-                    style={{ cursor: "pointer" }}>
+                    onKeyDown={(event) => {
+                      if (event.target !== event.currentTarget) return;
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        navigate(`/classrooms/${classroom.id}`);
+                      }
+                    }}
+                    style={{
+                      cursor: "pointer",
+                      "--classroom-primary": theme.primary,
+                      "--classroom-soft": theme.soft,
+                      "--classroom-accent": theme.accent,
+                    }}>
 
                     <div
                       className="gm-classroom-cover"
                       style={{
-                        "--cover-start": theme[0],
-                        "--cover-end": theme[1],
+                        "--cover-start": theme.start,
+                        "--cover-end": theme.end,
                       }}
                     >
                       <div className="gm-cover-decoration" />

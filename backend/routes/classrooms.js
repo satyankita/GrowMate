@@ -44,6 +44,14 @@ const checkClassroomAdmin = async (classroomId, userId) => {
   );
 };
 
+const respondWithNotificationError = (error, res, fallbackMessage) => {
+  console.error("Classroom Notification API Error:", error);
+  if (["P2021", "P2022"].includes(error.code)) {
+    return res.status(503).json({ message: "Notification database tables are missing or outdated. Apply the pending Prisma migrations and try again." });
+  }
+  return res.status(500).json({ message: fallbackMessage });
+};
+
 // 1. Create classroom
 router.post("/", async (req, res) => {
   try {
@@ -181,6 +189,17 @@ router.post("/:classroomId/invite", async (req, res) => {
       `,
     });
 
+    await prisma.classroomNotification.create({
+      data: {
+        classroomId,
+        createdById: userId,
+        recipientEmail: email.trim().toLowerCase(),
+        type: "INVITATION",
+        title: `Invitation to join ${classroom.name}`,
+        content: `You have been invited to join ${classroom.name}. Use the invitation link in your email or enter classroom code ${classroom.joinCode}.`,
+      },
+    });
+
     res.json({
       message: `Invitation sent successfully to ${email}`,
     });
@@ -191,6 +210,172 @@ router.post("/:classroomId/invite", async (req, res) => {
     res.status(500).json({
       message: "Could not send invitation email",
     });
+  }
+});
+
+// Classroom announcements and invitation notifications.
+router.get("/:classroomId/notifications", async (req, res) => {
+  try {
+    const { classroomId } = req.params;
+    const userId = req.user.userId;
+    const email = (req.user.email || "").trim().toLowerCase();
+    const membership = await prisma.classroomMember.findUnique({
+      where: { userId_classroomId: { userId, classroomId } },
+    });
+
+    if (!membership && !email) {
+      return res.status(403).json({ message: "Classroom access required." });
+    }
+
+    const notifications = await prisma.classroomNotification.findMany({
+      where: {
+        classroomId,
+        ...(membership
+          ? { OR: [{ recipientEmail: null }, { recipientEmail: email }] }
+          : { recipientEmail: email }),
+      },
+      include: {
+        createdBy: { select: { name: true } },
+        reads: { where: { userId }, select: { readAt: true } },
+      },
+      orderBy: { createdAt: "desc" },
+    });
+
+    res.json(notifications.map(({ reads, ...notification }) => ({
+      ...notification,
+      isRead: reads.length > 0,
+      readAt: reads[0]?.readAt || null,
+    })));
+  } catch (error) {
+    respondWithNotificationError(error, res, "Could not fetch classroom notifications.");
+  }
+});
+
+router.post("/:classroomId/notifications", async (req, res) => {
+  try {
+    const { classroomId } = req.params;
+    const userId = req.user.userId;
+    const { title, content } = req.body;
+    const isAdmin = await checkClassroomAdmin(classroomId, userId);
+
+    if (!isAdmin) {
+      return res.status(403).json({ message: "Only HOST or ADMIN can post announcements." });
+    }
+    if (typeof title !== "string" || !title.trim() || title.length > 140 ||
+        typeof content !== "string" || !content.trim() || content.length > 5000) {
+      return res.status(400).json({ message: "Provide an announcement title (up to 140 characters) and content (up to 5000 characters)." });
+    }
+
+    const notification = await prisma.classroomNotification.create({
+      data: {
+        classroomId,
+        createdById: userId,
+        type: "ANNOUNCEMENT",
+        title: title.trim(),
+        content: content.trim(),
+      },
+    });
+
+    res.status(201).json({ notification: { ...notification, isRead: false } });
+  } catch (error) {
+    respondWithNotificationError(error, res, "Could not publish the announcement.");
+  }
+});
+
+router.patch("/:classroomId/notifications/:notificationId/read", async (req, res) => {
+  try {
+    const { classroomId, notificationId } = req.params;
+    const userId = req.user.userId;
+    const email = (req.user.email || "").trim().toLowerCase();
+    const membership = await prisma.classroomMember.findUnique({
+      where: { userId_classroomId: { userId, classroomId } },
+    });
+    const notification = await prisma.classroomNotification.findFirst({
+      where: {
+        id: notificationId,
+        classroomId,
+        ...(membership
+          ? { OR: [{ recipientEmail: null }, { recipientEmail: email }] }
+          : { recipientEmail: email }),
+      },
+    });
+
+    if (!notification) {
+      return res.status(404).json({ message: "Notification not found." });
+    }
+
+    const read = await prisma.classroomNotificationRead.upsert({
+      where: { notificationId_userId: { notificationId, userId } },
+      update: {},
+      create: { notificationId, userId },
+    });
+    res.json({ message: "Notification marked as read.", readAt: read.readAt });
+  } catch (error) {
+    respondWithNotificationError(error, res, "Could not update notification status.");
+  }
+});
+
+router.get("/notifications", async (req, res) => {
+  try {
+    const userId = req.user.userId;
+    const email = (req.user.email || "").trim().toLowerCase();
+    const notifications = await prisma.classroomNotification.findMany({
+      where: {
+        OR: [
+          { recipientEmail: email },
+          {
+            recipientEmail: null,
+            classroom: { members: { some: { userId } } },
+          },
+        ],
+      },
+      include: {
+        classroom: { select: { name: true } },
+        createdBy: { select: { name: true } },
+        reads: { where: { userId }, select: { readAt: true } },
+      },
+      orderBy: { createdAt: "desc" },
+    });
+
+    res.json(notifications.map(({ reads, ...notification }) => ({
+      ...notification,
+      isRead: reads.length > 0,
+      readAt: reads[0]?.readAt || null,
+    })));
+  } catch (error) {
+    respondWithNotificationError(error, res, "Could not fetch notifications.");
+  }
+});
+
+router.patch("/notifications/:notificationId/read", async (req, res) => {
+  try {
+    const { notificationId } = req.params;
+    const userId = req.user.userId;
+    const email = (req.user.email || "").trim().toLowerCase();
+    const notification = await prisma.classroomNotification.findFirst({
+      where: {
+        id: notificationId,
+        OR: [
+          { recipientEmail: email },
+          {
+            recipientEmail: null,
+            classroom: { members: { some: { userId } } },
+          },
+        ],
+      },
+    });
+    if (!notification) {
+      return res.status(404).json({ message: "Notification not found." });
+    }
+
+    const read = await prisma.classroomNotificationRead.upsert({
+      where: { notificationId_userId: { notificationId, userId } },
+      update: {},
+      create: { notificationId, userId },
+    });
+    res.json({ message: "Notification marked as read.", readAt: read.readAt });
+  } catch (error) {
+    respondWithNotificationError(error, res, "Could not update notification status.");
   }
 });
 
@@ -289,6 +474,69 @@ router.get("/:classroomId", async (req, res) => {
   }
 });
 
+// Only the classroom creator may assign or remove ADMIN privileges.
+router.patch("/:classroomId/members/:memberId/role", async (req, res) => {
+  try {
+    const { classroomId, memberId } = req.params;
+    const requestedRole = req.body.role;
+    const classroom = await prisma.classroom.findUnique({ where: { id: classroomId }, select: { hostId: true } });
+    if (!classroom) return res.status(404).json({ message: "Classroom not found." });
+    const owner = await prisma.classroomMember.findUnique({ where: { userId_classroomId: { userId: req.user.userId, classroomId } } });
+    if (classroom.hostId !== req.user.userId || owner?.role !== "HOST") return res.status(403).json({ message: "Only the classroom owner can manage admin roles." });
+    if (!["ADMIN", "PARTICIPANT"].includes(requestedRole)) return res.status(400).json({ message: "Role must be ADMIN or PARTICIPANT." });
+    const target = await prisma.classroomMember.findFirst({ where: { id: memberId, classroomId } });
+    if (!target) return res.status(404).json({ message: "Participant not found." });
+    if (target.userId === classroom.hostId || target.role === "HOST") return res.status(400).json({ message: "The classroom owner's role cannot be changed." });
+    const member = await prisma.classroomMember.update({ where: { id: memberId }, data: { role: requestedRole } });
+    res.json({ message: requestedRole === "ADMIN" ? "Participant promoted to admin." : "Admin role removed.", member });
+  } catch (error) {
+    console.error("Update Member Role Error:", error);
+    res.status(500).json({ message: "Could not update participant role." });
+  }
+});
+
+// Owners can remove any non-owner member; admins can remove students only.
+router.delete("/:classroomId/members/:memberId", async (req, res) => {
+  try {
+    const { classroomId, memberId } = req.params;
+    const requesterId = req.user.userId;
+    const classroom = await prisma.classroom.findUnique({
+      where: { id: classroomId },
+      select: { hostId: true },
+    });
+    if (!classroom) return res.status(404).json({ message: "Classroom not found." });
+
+    const requester = await prisma.classroomMember.findUnique({
+      where: { userId_classroomId: { userId: requesterId, classroomId } },
+    });
+    const isOwner = classroom.hostId === requesterId && requester?.role === "HOST";
+    const isAdmin = requester?.role === "ADMIN";
+    if (!isOwner && !isAdmin) {
+      return res.status(403).json({ message: "Only the classroom owner or an admin can remove participants." });
+    }
+
+    const target = await prisma.classroomMember.findFirst({
+      where: { id: memberId, classroomId },
+    });
+    if (!target) return res.status(404).json({ message: "Participant not found." });
+    if (target.userId === classroom.hostId || target.role === "HOST") {
+      return res.status(400).json({ message: "The classroom owner cannot be removed." });
+    }
+    if (target.userId === requesterId) {
+      return res.status(400).json({ message: "You cannot remove yourself using participant management." });
+    }
+    if (isAdmin && target.role !== "PARTICIPANT") {
+      return res.status(403).json({ message: "Admins can remove students, but only the owner can remove another admin." });
+    }
+
+    await prisma.classroomMember.delete({ where: { id: memberId } });
+    res.json({ message: "Participant removed from the classroom.", member: target });
+  } catch (error) {
+    console.error("Remove Classroom Member Error:", error);
+    res.status(500).json({ message: "Could not remove the participant." });
+  }
+});
+
 
 // 3. Send classroom join request
 router.post("/join", async (req, res) => {
@@ -361,6 +609,22 @@ router.post("/join", async (req, res) => {
           userId,
           classroomId: classroom.id,
         },
+      });
+    }
+
+    const admins = await prisma.classroomMember.findMany({
+      where: { classroomId: classroom.id, role: { in: ["HOST", "ADMIN"] } },
+      include: { user: { select: { email: true } } },
+    });
+    if (admins.length) {
+      await prisma.classroomNotification.createMany({
+        data: admins.map(({ user }) => ({
+          classroomId: classroom.id,
+          recipientEmail: user.email.toLowerCase(),
+          type: "JOIN_REQUEST",
+          title: "New classroom join request",
+          content: `${req.user.email || "A student"} requested to join this classroom. Review the pending request in Classroom Members.`,
+        })),
       });
     }
 
@@ -448,6 +712,7 @@ router.post(
           classroomId,
           status: "PENDING",
         },
+        include: { user: { select: { email: true } } },
       });
 
       if (!request) {
@@ -471,6 +736,17 @@ router.post(
           },
           data: {
             status: "ACCEPTED",
+          },
+        });
+
+        await tx.classroomNotification.create({
+          data: {
+            classroomId,
+            createdById: userId,
+            recipientEmail: request.user.email.toLowerCase(),
+            type: "JOIN_APPROVED",
+            title: "Your classroom request was approved",
+            content: "Your request was approved. You can now open this classroom in GrowMate.",
           },
         });
       });
@@ -513,6 +789,7 @@ router.post(
           classroomId,
           status: "PENDING",
         },
+        include: { user: { select: { email: true } } },
       });
 
       if (!request) {
@@ -527,6 +804,17 @@ router.post(
         },
         data: {
           status: "REJECTED",
+        },
+      });
+
+      await prisma.classroomNotification.create({
+        data: {
+          classroomId,
+          createdById: userId,
+          recipientEmail: request.user.email.toLowerCase(),
+          type: "JOIN_REJECTED",
+          title: "Your classroom request was not approved",
+          content: "Your request to join this classroom was not approved. Contact the classroom host or admin if you have questions.",
         },
       });
 
@@ -554,6 +842,9 @@ router.put("/:classroomId/settings", async (req, res) => {
       goalSettingTime,
       reflectionTime,
       tasksPerDay,
+      dayParts,
+      timezone,
+      allowLateGoalEdits,
     } = req.body;
 
     // Check HOST / ADMIN permission
@@ -565,6 +856,12 @@ router.put("/:classroomId/settings", async (req, res) => {
       });
     }
 
+    let timezoneValid = true;
+    if (timezone !== undefined) {
+      try { new Intl.DateTimeFormat("en-US", { timeZone: timezone }).format(new Date()); }
+      catch { timezoneValid = false; }
+    }
+
     // Validate input
     if (
       typeof dailyGoal !== "string" ||
@@ -573,29 +870,75 @@ router.put("/:classroomId/settings", async (req, res) => {
       !/^([01]\d|2[0-3]):[0-5]\d$/.test(reflectionTime || "") ||
       !Number.isInteger(Number(tasksPerDay)) ||
       Number(tasksPerDay) < 1 ||
-      Number(tasksPerDay) > 20
+      Number(tasksPerDay) > 20 ||
+      (timezone !== undefined && (typeof timezone !== "string" || !timezone.trim() || !timezoneValid)) ||
+      (allowLateGoalEdits !== undefined && typeof allowLateGoalEdits !== "boolean") ||
+      (dayParts !== undefined && (!Array.isArray(dayParts) || dayParts.length < 1 || dayParts.length > 12 || dayParts.some((part, index) => !part || typeof part.name !== "string" || !part.name.trim() || part.order !== index + 1 || !/^([01]\d|2[0-3]):[0-5]\d$/.test(part.startTime || "") || !/^([01]\d|2[0-3]):[0-5]\d$/.test(part.endTime || "") || part.startTime >= part.endTime)))
     ) {
       return res.status(400).json({
         message: "Please provide a valid goal, schedule times and task count (1–20).",
       });
     }
 
-    const updatedClassroom = await prisma.classroom.update({
-      where: { id: classroomId },
-      data: {
-        dailyGoal: dailyGoal.trim(),
-        goalSettingTime,
-        reflectionTime,
-        tasksPerDay: Number(tasksPerDay),
-      },
-      select: {
-        id: true,
-        name: true,
-        dailyGoal: true,
-        goalSettingTime: true,
-        reflectionTime: true,
-        tasksPerDay: true,
-      },
+    const updatedClassroom = await prisma.$transaction(async (tx) => {
+      const previousClassroom = await tx.classroom.findUnique({
+        where: { id: classroomId },
+        select: {
+          dailyGoal: true,
+          goalSettingTime: true,
+          reflectionTime: true,
+          tasksPerDay: true,
+          dayParts: true,
+          timezone: true,
+          allowLateGoalEdits: true,
+        },
+      });
+
+      const updated = await tx.classroom.update({
+        where: { id: classroomId },
+        data: {
+          dailyGoal: dailyGoal.trim(),
+          goalSettingTime,
+          reflectionTime,
+          tasksPerDay: Number(tasksPerDay),
+          ...(dayParts === undefined ? {} : { dayParts: dayParts.map((part, index) => ({ name: part.name.trim(), order: index + 1, startTime: part.startTime, endTime: part.endTime })) }),
+          ...(timezone === undefined ? {} : { timezone: timezone.trim() }),
+          ...(allowLateGoalEdits === undefined ? {} : { allowLateGoalEdits }),
+        },
+        select: {
+          id: true,
+          name: true,
+          dailyGoal: true,
+          goalSettingTime: true,
+          reflectionTime: true,
+          tasksPerDay: true,
+          dayParts: true,
+          timezone: true,
+          allowLateGoalEdits: true,
+        },
+      });
+
+      const scheduleChanged = previousClassroom && (
+        previousClassroom.dailyGoal !== updated.dailyGoal ||
+        previousClassroom.goalSettingTime !== updated.goalSettingTime ||
+        previousClassroom.reflectionTime !== updated.reflectionTime ||
+        previousClassroom.tasksPerDay !== updated.tasksPerDay
+        || JSON.stringify(previousClassroom.dayParts) !== JSON.stringify(updated.dayParts)
+        || previousClassroom.timezone !== updated.timezone
+        || previousClassroom.allowLateGoalEdits !== updated.allowLateGoalEdits
+      );
+      if (scheduleChanged) {
+        await tx.classroomNotification.create({
+          data: {
+            classroomId,
+            createdById: userId,
+            type: "SCHEDULE_UPDATE",
+            title: "Classroom daily schedule updated",
+            content: `Today's classroom goal: ${updated.dailyGoal}. Goal setting time: ${updated.goalSettingTime}. Reflection time: ${updated.reflectionTime}. Tasks per student: ${updated.tasksPerDay}.`,
+          },
+        });
+      }
+      return updated;
     });
 
     res.json({
@@ -641,6 +984,9 @@ router.get("/:classroomId/settings", async (req, res) => {
         goalSettingTime: true,
         reflectionTime: true,
         tasksPerDay: true,
+        dayParts: true,
+        timezone: true,
+        allowLateGoalEdits: true,
       },
     });
 

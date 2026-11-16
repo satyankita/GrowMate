@@ -522,3 +522,193 @@
   font-size: 13px;
 }
 
+/* Refined public landing experience */
+.welcome-page {
+  color: var(--gm-ink, #23233d);
+  background: #fff;
+}
+
+.welcome-navbar {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  min-height: 76px;
+  height: auto;
+  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 1px 0 rgba(42, 38, 81, 0.045);
+}
+
+.brand-icon {
+  border-radius: 13px;
+  background: linear-gradient(145deg, #715ddd, #48bba9);
+  box-shadow: 0 8px 18px rgba(109, 91, 208, 0.2);
+}
+
+.nav-menu a:hover,
+.login-btn:hover {
+  color: var(--gm-primary, #6d5bd0);
+  transform: translateY(-1px);
+}
+
+.signup-btn,
+.primary-btn {
+  border-radius: 12px;
+  background: linear-gradient(115deg, #6856cf, #826fe1);
+  box-shadow: 0 8px 19px rgba(101, 81, 190, 0.18);
+}
+
+.signup-btn:hover,
+.primary-btn:hover {
+  background: linear-gradient(115deg, #5947bd, #725ed2);
+  box-shadow: 0 12px 25px rgba(101, 81, 190, 0.26);
+  transform: translateY(-2px);
+}
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 620px;
+  background:
+    radial-gradient(ellipse at 78% 20%, rgba(127, 110, 226, 0.15), transparent 31%),
+    radial-gradient(ellipse at 94% 79%, rgba(64, 186, 166, 0.12), transparent 30%),
+    linear-gradient(135deg, #fff 15%, #faf9ff 72%, #f2fbf9 100%);
+}
+
+.hero-section::before,
+.hero-section::after {
+  position: absolute;
+  border: 1px solid rgba(111, 96, 203, 0.08);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.hero-section::before {
+  top: -210px;
+  right: 6%;
+  width: 470px;
+  height: 470px;
+}
+
+.hero-section::after {
+  right: -50px;
+  bottom: -290px;
+  width: 580px;
+  height: 580px;
+  border-color: rgba(39, 165, 147, 0.08);
+}
+
+.hero-content h1 {
+  font-size: clamp(42px, 5vw, 64px);
+  letter-spacing: -2.5px;
+  line-height: 1.08;
+}
+
+.hero-content h1 span {
+  background: linear-gradient(105deg, #6655cb, #279a8a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-tag {
+  border: 1px solid #e5e0fa;
+  background: rgba(242, 239, 255, 0.85);
+  box-shadow: 0 5px 15px rgba(81, 67, 153, 0.06);
+}
+
+.hero-description {
+  color: var(--gm-muted, #77788f);
+  font-size: 17px;
+}
+
+.hero-visual { z-index: 1; }
+
+.visual-glow {
+  background: radial-gradient(circle, #e8e3ff 0%, rgba(220, 248, 242, 0.7) 58%, transparent 73%);
+}
+
+.growth-card {
+  border-color: rgba(230, 228, 244, 0.9);
+  border-radius: 24px;
+  box-shadow: 0 27px 75px rgba(57, 49, 112, 0.16);
+}
+
+.growth-quote {
+  border-radius: 12px;
+  background: linear-gradient(105deg, #f0edff, #eaf8f5);
+  color: #6055a2;
+}
+
+.floating-note {
+  border: 1px solid rgba(232, 230, 244, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(51, 47, 95, 0.1);
+  animation: welcome-note-float 5.5s ease-in-out infinite;
+}
+
+.note-two { animation-delay: -2.6s; }
+
+.about-section,
+.features-section {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.about-section { background: linear-gradient(180deg, #fff, #fbfaff); }
+
+.features-section {
+  background:
+    radial-gradient(ellipse at 4% 5%, rgba(134, 119, 231, 0.075), transparent 26%),
+    #f8f8fc;
+}
+
+.section-tag { color: var(--gm-primary, #6d5bd0); }
+
+.section-heading h2,
+.bottom-cta h2 { letter-spacing: -1.2px; }
+
+.feature-card {
+  border: 1px solid #e9e8f2;
+  border-radius: 19px;
+  box-shadow: 0 7px 22px rgba(40, 43, 83, 0.045);
+}
+
+.feature-card:hover {
+  border-color: #dcd6f7;
+  box-shadow: 0 17px 36px rgba(62, 55, 124, 0.11);
+  transform: translateY(-5px);
+}
+
+.feature-icon { border-radius: 15px; }
+
+.bottom-cta {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 27px;
+  background:
+    radial-gradient(circle at 94% 10%, rgba(93, 211, 188, 0.25), transparent 30%),
+    linear-gradient(118deg, #28234f, #52428e 68%, #604d9e);
+  box-shadow: 0 22px 48px rgba(47, 39, 104, 0.17);
+}
+
+.welcome-footer { color: #8a899c; }
+
+@keyframes welcome-note-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@media (max-width: 700px) {
+  .welcome-navbar { position: relative; }
+  .hero-section { min-height: auto; }
+  .hero-content h1 { letter-spacing: -1.5px; }
+  .about-section,
+  .features-section { padding-top: 70px; padding-bottom: 70px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-note { animation: none; }
+}
+
