@@ -241,6 +241,7 @@ const handleInviteSubmit = async (e) => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+        timeout: 30_000,
       }
     );
 
@@ -250,8 +251,9 @@ const handleInviteSubmit = async (e) => {
   } catch (error) {
     console.error("Invite Error:", error);
     alert(
-      error.response?.data?.message ||
-      "Could not send invitation email"
+      error.code === "ECONNABORTED"
+        ? "The invitation is taking too long to send. Please try again, or share the classroom code instead."
+        : error.response?.data?.message || "Could not send invitation email"
     );
   } finally {
     setBusy(false);
