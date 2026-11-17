@@ -30,6 +30,49 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+const sendInvitationEmail = async ({ to, subject, html }) => {
+  if (process.env.RESEND_API_KEY) {
+    const from = process.env.RESEND_FROM_EMAIL;
+    if (!from) {
+      const error = new Error("RESEND_FROM_EMAIL is not configured");
+      error.code = "EMAIL_CONFIG_MISSING";
+      throw error;
+    }
+
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ from, to: [to], subject, html }),
+      signal: AbortSignal.timeout(15_000),
+    });
+
+    if (!response.ok) {
+      const result = await response.json().catch(() => ({}));
+      const error = new Error(result.message || `Resend returned HTTP ${response.status}`);
+      error.code = "EMAIL_PROVIDER_REJECTED";
+      throw error;
+    }
+
+    return;
+  }
+
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+    const error = new Error("No email provider is configured");
+    error.code = "EMAIL_CONFIG_MISSING";
+    throw error;
+  }
+
+  await transporter.sendMail({
+    from: `"GrowMate" <${process.env.GMAIL_USER}>`,
+    to,
+    subject,
+    html,
+  });
+};
+
 // Check HOST or ADMIN permission
 const checkClassroomAdmin = async (classroomId, userId) => {
   const membership = await prisma.classroomMember.findUnique({
@@ -141,12 +184,7 @@ router.post("/:classroomId/invite", async (req, res) => {
       classroom.joinCode
     )}`;
 
-    await transporter.sendMail({
-      from: `"GrowMate" <${process.env.GMAIL_USER}>`,
-      to: email.trim(),
-      subject: `Invitation to join ${classroom.name} on GrowMate`,
-
-      html: `
+    const invitationHtml = `
         <div style="font-family: Arial, sans-serif; padding: 25px; color: #333;">
           <h2 style="color: #635bdb;">Welcome to GrowMate!</h2>
 
@@ -189,8 +227,22 @@ router.post("/:classroomId/invite", async (req, res) => {
 
           <p>Happy Learning!<br />Team GrowMate</p>
         </div>
-      `,
-    });
+      `;
+
+    try {
+      await sendInvitationEmail({
+        to: email.trim(),
+        subject: `Invitation to join ${classroom.name} on GrowMate`,
+        html: invitationHtml,
+      });
+    } catch (emailError) {
+      console.error("Invitation Email Delivery Error:", emailError.code, emailError.message);
+      return res.status(emailError.code === "EMAIL_CONFIG_MISSING" ? 503 : 502).json({
+        message: emailError.code === "EMAIL_CONFIG_MISSING"
+          ? "Email delivery is not configured. Add RESEND_API_KEY and RESEND_FROM_EMAIL to the backend service."
+          : "The email provider could not send this invitation. Check the backend email provider configuration and logs.",
+      });
+    }
 
     await prisma.classroomNotification.create({
       data: {

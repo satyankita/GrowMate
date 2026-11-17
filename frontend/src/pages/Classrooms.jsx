@@ -52,6 +52,7 @@ function Classrooms() {
   // Join request states
   const [joinRequests, setJoinRequests] = useState([]);
   const [requestsLoading, setRequestsLoading] = useState(false);
+  const [requestActionId, setRequestActionId] = useState(null);
 
   const headers = {
     Authorization: `Bearer ${token}`,
@@ -187,6 +188,7 @@ function Classrooms() {
 
   // Accept join request
   const handleAcceptRequest = async (requestId, classroomId) => {
+    setRequestActionId(requestId);
     try {
       await axios.post(
         `${API_URL}/${classroomId}/requests/${requestId}/accept`,
@@ -199,14 +201,20 @@ function Classrooms() {
       await fetchJoinRequests(classroomId);
       await fetchClassrooms();
     } catch (err) {
-      setError(
-        err.response?.data?.message || "Could not accept request."
-      );
+      if (err.response?.status === 404) {
+        await fetchJoinRequests(classroomId);
+        setError("This request is no longer pending. The list has been refreshed.");
+      } else {
+        setError(err.response?.data?.message || "Could not accept request.");
+      }
+    } finally {
+      setRequestActionId(null);
     }
   };
 
   // Reject join request
   const handleRejectRequest = async (requestId, classroomId) => {
+    setRequestActionId(requestId);
     try {
       await axios.post(
         `${API_URL}/${classroomId}/requests/${requestId}/reject`,
@@ -218,9 +226,14 @@ function Classrooms() {
 
       await fetchJoinRequests(classroomId);
     } catch (err) {
-      setError(
-        err.response?.data?.message || "Could not reject request."
-      );
+      if (err.response?.status === 404) {
+        await fetchJoinRequests(classroomId);
+        setError("This request is no longer pending. The list has been refreshed.");
+      } else {
+        setError(err.response?.data?.message || "Could not reject request.");
+      }
+    } finally {
+      setRequestActionId(null);
     }
   };
 
@@ -781,6 +794,7 @@ const handleInviteSubmit = async (e) => {
                         <div className="gm-request-actions">
                           <button
                             type="button"
+                            disabled={requestActionId !== null}
                             onClick={() =>
                               handleAcceptRequest(
                                 request.id,
@@ -788,11 +802,12 @@ const handleInviteSubmit = async (e) => {
                               )
                             }
                           >
-                            Accept
+                            {requestActionId === request.id ? "Accepting..." : "Accept"}
                           </button>
 
                           <button
                             type="button"
+                            disabled={requestActionId !== null}
                             onClick={() =>
                               handleRejectRequest(
                                 request.id,
@@ -800,7 +815,7 @@ const handleInviteSubmit = async (e) => {
                               )
                             }
                           >
-                            Reject
+                            {requestActionId === request.id ? "Rejecting..." : "Reject"}
                           </button>
                         </div>
                       </div>
