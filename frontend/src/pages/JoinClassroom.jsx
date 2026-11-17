@@ -56,8 +56,6 @@ function JoinClassroom() {
         );
       } catch (error) {
         if (error.response?.status === 401) {
-          localStorage.removeItem("token");
-          localStorage.removeItem("user");
           localStorage.setItem("pendingJoinCode", code);
           navigate("/login");
           return;

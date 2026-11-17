@@ -17,8 +17,7 @@ const googleClient = googleClientId ? new OAuth2Client(googleClientId) : null;
 const publicUser = ({ id, name, email, picture }) => ({ id, name, email, picture });
 const createToken = (user) => jwt.sign(
   { userId: user.id, googleId: user.googleId || null, email: user.email },
-  process.env.JWT_SECRET,
-  { expiresIn: "7d" }
+  process.env.JWT_SECRET
 );
 
 const hashPassword = async (password) => {
