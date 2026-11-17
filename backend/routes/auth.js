@@ -11,9 +11,8 @@ const scrypt = promisify(crypto.scrypt);
 const router = express.Router();
 
 
-const googleClient = new OAuth2Client(
-  process.env.GOOGLE_CLIENT_ID
-);
+const googleClientId = process.env.GOOGLE_CLIENT_ID?.trim() || "";
+const googleClient = googleClientId ? new OAuth2Client(googleClientId) : null;
 
 const publicUser = ({ id, name, email, picture }) => ({ id, name, email, picture });
 const createToken = (user) => jwt.sign(
@@ -91,6 +90,12 @@ router.post("/google", async (req, res) => {
   try {
     const { credential } = req.body;
 
+    if (!googleClient || !googleClientId) {
+      return res.status(503).json({
+        message: "Google sign-in is not configured on the server.",
+      });
+    }
+
     if (!credential) {
       return res.status(400).json({
         message: "Google credential is required",
@@ -100,7 +105,7 @@ router.post("/google", async (req, res) => {
     // Verify Google ID token
     const ticket = await googleClient.verifyIdToken({
       idToken: credential,
-      audience: process.env.GOOGLE_CLIENT_ID,
+      audience: googleClientId,
     });
 
     const payload = ticket.getPayload();

@@ -13,6 +13,9 @@ import {
 } from "lucide-react";
 import "../styles/Auth.css";
 
+const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID?.trim() || "";
+const hasValidGoogleClientId = /^\d+-[A-Za-z0-9_-]+\.apps\.googleusercontent\.com$/.test(googleClientId);
+
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [googleError, setGoogleError] = useState("");
@@ -121,16 +124,20 @@ const handleGoogleSuccess = async (credentialResponse) => {
 
           {/* Google Login */}
           <div className="google-login-wrapper">
-            <GoogleLogin
-              onSuccess={handleGoogleSuccess}
-              onError={() =>
-                setGoogleError("Google login was unsuccessful.")
-              }
-              text="continue_with"
-              shape="rectangular"
-              theme="outline"
-              width="320"
-            />
+            {hasValidGoogleClientId ? (
+              <GoogleLogin
+                onSuccess={handleGoogleSuccess}
+                onError={() => setGoogleError("Google login was unsuccessful.")}
+                text="continue_with"
+                shape="rectangular"
+                theme="outline"
+                width="320"
+              />
+            ) : (
+              <p className="auth-error" role="status">
+                Google sign-in is unavailable. Please use email and password.
+              </p>
+            )}
           </div>
 
           {googleError && (
